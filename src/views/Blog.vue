@@ -1,0 +1,468 @@
+<template>
+  <div class="content clearfix">
+    <div id="blog-header" class="section-block header-bg">
+      <div class="row flex">
+        <div class="column width-8 push-2">
+          <div class="feature-content">
+            <div class="feature-content-inner center">
+              <h1 class="color-white mb-0 font-mont">News & Events: COMING SOON </h1>
+              <p class="lead color-white grid__padding">
+                Get access to the best and updated news including educational tips and guides exclusive for african
+                scholars.Subscribe and follow us.
+              </p>
+              <div class="table-view m-auto">
+                <ul class="list-unstyled list-inline uppercase">
+                  <li class="webapp-social"><a href="https://www.facebook.com/efiweNGO/" class="fb white-bg"><i class="fab  fa-facebook-f"></i></a></li>
+                  <li class="webapp-social"><a href="https://twitter.com/efiweorg" class="tw white-bg"><i class="fab  fa-twitter"></i></a></li>
+                  <li class="webapp-social"><a href="https://www.linkedin.com/company/efiwe" class="ln white-bg"><i class="fab  fa-linkedin"></i></a></li>
+                  <li class="webapp-social"><a href="https://www.instagram.com/efiwengo/" class="in white-bg"><i class="fab fa-instagram"></i></a></li>
+                  <li class="webapp-social"><a href="https://www.youtube.com/channel/UCiCX2uangOHF_qTPGrCmm_Q" class="yt white-bg"><i class="fab  fa-youtube"></i></a></li>
+                  <li class="webapp-social"><a href="https://chat.whatsapp.com/Hii1MW4n10VKTz35W4MB2t" class="wh white-bg"><i class="fab  fa-whatsapp"></i></a></li>
+                </ul>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="blog" class="top-border animated fadeInUp">
+      <div class="section-block bkg-light">
+
+        <div class="row">
+          <div class="column width-8">
+            <div class="row flex">
+              <div class="column width-12 left center magic-b no-padding">
+                <div class="blog-entry card-2 card-stack">
+                  <div class="img-box">
+                    <img class="featured" src="../assets/images/blog/post1.jpg" alt="Blog Post Image">
+                  </div>
+                  <div class="content-box">
+                    <div class="date-box">
+                      <div class="inner">
+                        <div class="date">20</div>
+                        <div class="comment">SEP </div>
+                      </div>
+                    </div>
+                    <div class="content">
+                      <h3 class="bold-font">Over 40,000 Books Supplied to West Africa for Improved Education </h3>
+                      <p class="lead">
+                        Some amazing and catchy content will come here which will be supported by a nice call to action
+                        button so the user can read the post accordingly.
+                      </p>
+                      <div class="grid__half__sticky">
+                        <div class="for-mobile mt-20"></div>
+                        <button
+                          class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white">
+                          <i class="fas fa-book"></i> Read More
+                        </button>
+                      </div>
+                      <div class="grid__half__sticky">
+                        <ul class="list-unstyled list-inline uppercase relax-right">
+                          <li class="webapp-social"><a href="#" class="fb"><i class="fab  fa-facebook-f"></i></a></li>
+                          <li class="webapp-social"><a href="#" class="tw"><i class="fab  fa-twitter"></i></a></li>
+                          <li class="webapp-social"><a href="#" class="in"><i class="fab fa-instagram"></i></a></li>
+                          <li class="webapp-social"><a href="#" class="ln"><i class="fab  fa-linkedin"></i></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="event">
+              <div class="row">
+                <div class="event-banner">
+                  <a>
+                    <div class="event-thumb">
+                      <div class="thumb">
+                        <img class="full-width event-img" src="../assets/images/blog/post4.png" alt="">
+                      </div>
+                      <ul class="event-date">
+                        <li class="date">18</li>
+                        <li class="month">JAN</li>
+                      </ul>
+                    </div>
+                  </a>
+                </div>
+                <div class="event-details">
+                  <div class="event-content white-bg nb">
+                    <h5 class="event-title"><a href="#">Title Name</a></h5>
+                    <ul class="event-held list-inline">
+                      <li><i class="fas fa-hashtag"></i> Tag 1</li>
+                      <li><i class="fas fa-hashtag"></i> Tag 2</li>
+                    </ul>
+                    <p class="mb-0 lead-alt"> Get access to the best and updated news including educational tips and
+                      guides exclusive for african scholars.
+                      Get access to the best and updated news including educational tips and guides exclusive for
+                      african scholars.
+
+                    </p>
+                    <div class="grid__half__sticky">
+                      <div class="for-mobile mt-20"></div>
+
+                      <button
+                        class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white">
+                        <i class="fas fa-book"></i> Read More
+                      </button>
+                    </div>
+                    <div class="grid__half__sticky">
+                      <ul class="list-unstyled list-inline uppercase relax-right">
+                        <li class="webapp-social"><a href="#" class="fb"><i class="fab  fa-facebook-f"></i></a></li>
+                        <li class="webapp-social"><a href="#" class="tw"><i class="fab  fa-twitter"></i></a></li>
+                        <li class="webapp-social"><a href="#" class="in"><i class="fab fa-instagram"></i></a></li>
+                        <li class="webapp-social"><a href="#" class="ln"><i class="fab  fa-linkedin"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="event">
+              <div class="row">
+                <div class="event-banner">
+                  <a>
+                    <div class="event-thumb">
+                      <div class="thumb">
+                        <img class="full-width event-img" src="../assets/images/blog/post5.png" alt="">
+                      </div>
+                      <ul class="event-date">
+                        <li class="date">18</li>
+                        <li class="month">JAN</li>
+                      </ul>
+                    </div>
+                  </a>
+                </div>
+                <div class="event-details">
+                  <div class="event-content white-bg nb">
+                    <h5 class="event-title"><a href="#">Title Name</a></h5>
+                    <ul class="event-held list-inline">
+                      <li><i class="fas fa-hashtag"></i> Tag 1</li>
+                      <li><i class="fas fa-hashtag"></i> Tag 2</li>
+                    </ul>
+                    <p class="mb-0 lead-alt"> Get access to the best and updated news including educational tips and
+                      guides exclusive for african scholars.
+                      Get access to the best and updated news including educational tips and guides exclusive for
+                      african scholars.
+
+                    </p>
+                    <div class="grid__half__sticky">
+                      <div class="for-mobile mt-20"></div>
+                      <button
+                        class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white">
+                        <i class="fas fa-book"></i> Read More
+                      </button>
+                    </div>
+                    <div class="grid__half__sticky">
+                      <ul class="list-unstyled list-inline uppercase relax-right">
+                        <li class="webapp-social"><a href="#" class="fb"><i class="fab  fa-facebook-f"></i></a></li>
+                        <li class="webapp-social"><a href="#" class="tw"><i class="fab  fa-twitter"></i></a></li>
+                        <li class="webapp-social"><a href="#" class="in"><i class="fab fa-instagram"></i></a></li>
+                        <li class="webapp-social"><a href="#" class="ln"><i class="fab  fa-linkedin"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="event">
+              <div class="row">
+                <div class="event-banner">
+                  <a>
+                    <div class="event-thumb">
+                      <div class="thumb">
+                        <img class="full-width event-img" src="../assets/images/blog/post7.jpg" alt="">
+                      </div>
+                      <ul class="event-date">
+                        <li class="date">18</li>
+                        <li class="month">JAN</li>
+                      </ul>
+                    </div>
+                  </a>
+                </div>
+                <div class="event-details">
+                  <div class="event-content white-bg nb">
+                    <h5 class="event-title"><a href="#">Title Name</a></h5>
+                    <ul class="event-held list-inline">
+                      <li><i class="fas fa-hashtag"></i> Tag 1</li>
+                      <li><i class="fas fa-hashtag"></i> Tag 2</li>
+                    </ul>
+                    <p class="mb-0 lead-alt"> Get access to the best and updated news including educational tips and
+                      guides exclusive for african scholars.
+                      Get access to the best and updated news including educational tips and guides exclusive for
+                      african scholars.
+
+                    </p>
+                    <div class="grid__half__sticky">
+                      <div class="for-mobile mt-20"></div>
+                      <button
+                        class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white">
+                        <i class="fas fa-book"></i> Read More
+                      </button>
+                    </div>
+                    <div class="grid__half__sticky">
+                      <ul class="list-unstyled list-inline uppercase relax-right">
+                        <li class="webapp-social"><a href="#" class="fb"><i class="fab  fa-facebook-f"></i></a></li>
+                        <li class="webapp-social"><a href="#" class="tw"><i class="fab  fa-twitter"></i></a></li>
+                        <li class="webapp-social"><a href="#" class="in"><i class="fab fa-instagram"></i></a></li>
+                        <li class="webapp-social"><a href="#" class="ln"><i class="fab  fa-linkedin"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="event">
+              <div class="row">
+                <div class="event-banner">
+                  <a>
+                    <div class="event-thumb">
+                      <div class="thumb">
+                        <img class="full-width event-img" src="../assets/images/blog/post8.png" alt="">
+                      </div>
+                      <ul class="event-date">
+                        <li class="date">18</li>
+                        <li class="month">JAN</li>
+                      </ul>
+                    </div>
+                  </a>
+                </div>
+                <div class="event-details">
+                  <div class="event-content white-bg nb">
+                    <h5 class="event-title"><a href="#">Title Name</a></h5>
+                    <ul class="event-held list-inline">
+                      <li><i class="fas fa-hashtag"></i> Tag 1</li>
+                      <li><i class="fas fa-hashtag"></i> Tag 2</li>
+                    </ul>
+                    <p class="mb-0 lead-alt"> Get access to the best and updated news including educational tips and
+                      guides exclusive for african scholars.
+                      Get access to the best and updated news including educational tips and guides exclusive for
+                      african scholars.
+
+                    </p>
+                    <div class="grid__half__sticky">
+                      <div class="for-mobile mt-20"></div>
+
+                      <button
+                        class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white">
+                        <i class="fas fa-book"></i> Read More
+                      </button>
+                    </div>
+                    <div class="grid__half__sticky">
+                      <ul class="list-unstyled list-inline uppercase relax-right">
+                        <li class="webapp-social"><a href="#" class="fb"><i class="fab  fa-facebook-f"></i></a></li>
+                        <li class="webapp-social"><a href="#" class="tw"><i class="fab  fa-twitter"></i></a></li>
+                        <li class="webapp-social"><a href="#" class="in"><i class="fab fa-instagram"></i></a></li>
+                        <li class="webapp-social"><a href="#" class="ln"><i class="fab  fa-linkedin"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="column width-3 no-padding-right">
+            <div class="mb-60">
+              <h4 class="font-mont">Upcoming Events</h4>
+              <div class=" row flex boxes two-columns-on-mobile">
+                <div class="column width-12 left center no-padding-left blog-entry-inline">
+                  <div class="event">
+                    <div class="row">
+                      <div class="event-banner">
+                        <a>
+                          <div class="event-thumb">
+                            <div class="thumb">
+                              <img class="full-width event-img-small" src="../assets/images/blog/post9.jpg" alt="">
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="event-details">
+                        <div class="event-content-small white-bg nb">
+                          <h5 class="event-title small-text"><a href="#">Event Name</a></h5>
+                          <ul class="event-held list-inline">
+                            <li><i class="fas fa-calendar"></i> SEP 20 2018</li>
+                            <li><i class="fas fa-eye"></i> View Event</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="column width-12 left center no-padding-left blog-entry-inline">
+                  <div class="event">
+                    <div class="row">
+                      <div class="event-banner">
+                        <a>
+                          <div class="event-thumb">
+                            <div class="thumb">
+                              <img class="full-width event-img-small" src="../assets/images/blog/post11.jpg" alt="">
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="event-details">
+                        <div class="event-content-small white-bg nb">
+                          <h5 class="event-title small-text"><a href="#">Event Name</a></h5>
+                          <ul class="event-held list-inline">
+                            <li><i class="fas fa-calendar"></i> SEP 20 2018</li>
+                            <li><i class="fas fa-eye"></i> View Event</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="column width-12 left center no-padding-left blog-entry-inline">
+                  <div class="event">
+                    <div class="row">
+                      <div class="event-banner">
+                        <a>
+                          <div class="event-thumb">
+                            <div class="thumb">
+                              <img class="full-width event-img-small" src="../assets/images/blog/post2.jpg" alt="">
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="event-details">
+                        <div class="event-content-small white-bg nb">
+                          <h5 class="event-title small-text"><a href="#">Event Name</a></h5>
+                          <ul class="event-held list-inline">
+                            <li><i class="fas fa-calendar"></i> NOV 20 2018</li>
+                            <li><i class="fas fa-eye"></i> View Event</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="column width-12 left center no-padding-left blog-entry-inline">
+                  <div class="event">
+                    <div class="row">
+                      <div class="event-banner">
+                        <a>
+                          <div class="event-thumb">
+                            <div class="thumb">
+                              <img class="full-width event-img-small" src="../assets/images/blog/post10.jpg" alt="">
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="event-details">
+                        <div class="event-content-small white-bg nb">
+                          <h5 class="event-title small-text"><a href="#">Event Name</a></h5>
+                          <ul class="event-held list-inline">
+                            <li><i class="fas fa-calendar"></i> SEP 20 2018</li>
+                            <li><i class="fas fa-eye"></i> View Event</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+            <div class="mb-60">
+              <h4 class="font-mont">Categories</h4>
+              <div class="mt-20 blog-entry-inline">
+                <div class=" row flex boxes  two-columns-on-mobile">
+                  <div class="column width-6 left center no-padding-left blog-entry-inline">
+                    <div class="blog-entry card-2">
+                      <div class="img-box">
+                        <img src="../assets/images/blog/post2.jpg" alt="Blog Post Image">
+                      </div>
+                      <div class="content-box">
+                        <div class="content">
+                          <h3 class="category-text bold-font text-uppercase category-name center-txt">Category Name </h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="column width-6 left center no-padding-right blog-entry-inline">
+                    <div class="blog-entry card-2">
+                      <div class="img-box">
+                        <img src="../assets/images/blog/post3.jpg" alt="Blog Post Image">
+                      </div>
+                      <div class="content-box">
+                        <div class="content">
+                          <h3 class="category-text bold-font text-uppercase category-name center-txt">Category Name </h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-20 blog-entry-inline">
+                <div class=" row flex boxes  two-columns-on-mobile">
+                <div class="column width-6 left center no-padding-left blog-entry-inline">
+                  <div class="blog-entry card-2">
+                    <div class="img-box">
+                      <img src="../assets/images/blog/post9.jpg" alt="Blog Post Image">
+                    </div>
+                    <div class="content-box">
+                      <div class="content">
+                        <h3 class="category-text bold-font text-uppercase category-name center-txt">Category Name </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column width-6 left center no-padding-right blog-entry-inline">
+                  <div class="blog-entry card-2">
+                    <div class="img-box">
+                      <img src="../assets/images/blog/post5.png" alt="Blog Post Image">
+                    </div>
+                    <div class="content-box">
+                      <div class="content">
+                        <h3 class="category-text bold-font text-uppercase category-name center-txt">Category Name </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div>
+      <app-footernav></app-footernav>
+    </div>
+
+  </div>
+</template>
+<script>
+import FooterNav from "./FooterNav";
+
+export default {
+  data() {
+    return {
+      userData: []
+    };
+  },
+  components: {
+    "app-footernav": FooterNav
+  }
+};
+</script>

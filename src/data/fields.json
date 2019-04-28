@@ -1,0 +1,396 @@
+[
+    {
+    "name": "Accounting/Finance",
+    "code": "Accounting/Finance"
+},
+{
+    "name": "Acoustics",
+    "code": "Acoustics"
+},
+{
+    "name": "Aerospace",
+    "code": "Aerospace"
+},
+{
+    "name": "Agriculture",
+    "code": "Agriculture"
+},
+{
+    "name": "Allied Health",
+    "code": "Allied Health"
+},
+{
+    "name": "Animal Science",
+    "code": "Animal Science"
+},
+{
+    "name": "Anthropology",
+    "code": "Anthropology"
+},
+{
+    "name": "Archaeology",
+    "code": "Archaeology"
+},
+{
+    "name": "Architecture",
+    "code": "Architecture"
+},
+{
+    "name": "Area Studies",
+    "code": "Area Studies"
+},
+{
+    "name": "Art History",
+    "code": "Art History"
+},
+{
+    "name": "Arts",
+    "code": "Arts"
+},
+{
+    "name": "Astronomy",
+    "code": "Astronomy"
+},
+{
+    "name": "Biology",
+    "code": "Biology"
+},
+{
+    "name": "Biomedical Engineering",
+    "code": "Biomedical Engineering"
+},
+{
+    "name": "Business",
+    "code": "Business"
+},
+{
+    "name": "Chemistry",
+    "code": "Chemistry"
+},
+{
+    "name": "Civics",
+    "code": "Civics"
+},
+{
+    "name": "Cognitive Science",
+    "code": "Cognitive Science"
+},
+{
+    "name": "Communications",
+    "code": "Communications"
+},
+{
+    "name": "Computer Science",
+    "code": "Computer Science"
+},
+{
+    "name": "Criminal Justice",
+    "code": "Criminal Justice"
+},
+{
+    "name": "Criminology",
+    "code": "Criminology"
+},
+{
+    "name": "Crop Sciences",
+    "code": "Crop Sciences"
+},
+{
+    "name": "Culinary Arts",
+    "code": "Culinary Arts"
+},
+{
+    "name": "Dance",
+    "code": "Dance"
+},
+{
+    "name": "Demography",
+    "code": "Demography"
+},
+{
+    "name": "Dental Sciences",
+    "code": "Dental Sciences"
+},
+{
+    "name": "Design",
+    "code": "Design"
+},
+{
+    "name": "Drafting",
+    "code": "Drafting"
+},
+{
+    "name": "Drama/Theater Arts",
+    "code": "Drama/Theater Arts"
+},
+{
+    "name": "Economics",
+    "code": "Economics"
+},
+{
+    "name": "Education",
+    "code": "Education"
+},
+{
+    "name": "Energy",
+    "code": "Energy"
+},
+{
+    "name": "Engineering",
+    "code": "Engineering"
+},
+{
+    "name": "Environmental Sciences",
+    "code": "Environmental Sciences"
+},
+{
+    "name": "Fashion",
+    "code": "Fashion"
+},
+{
+    "name": "Film/Cinema Studies",
+    "code": "Film/Cinema Studies"
+},
+{
+    "name": "Fine Arts",
+    "code": "Fine Arts"
+},
+{
+    "name": "Fisheries",
+    "code": "Fisheries"
+},
+{
+    "name": "Forestry",
+    "code": "Forestry"
+},
+{
+    "name": "Gender Studies",
+    "code": "Gender Studies"
+},
+{
+    "name": "General Studies",
+    "code": "General Studies"
+},
+{
+    "name": "Genetics",
+    "code": "Genetics"
+},
+{
+    "name": "Geography",
+    "code": "Geography"
+},
+{
+    "name": "Geology",
+    "code": "Geology"
+},
+{
+    "name": "History",
+    "code": "History"
+},
+{
+    "name": "Home Economics",
+    "code": "Home Economics"
+},
+{
+    "name": "Humanities",
+    "code": "Humanities"
+},
+{
+    "name": "Information Sciences/Systems",
+    "code": "Information Sciences/Systems"
+},
+{
+    "name": "Interdisciplinary Studies",
+    "code": "Interdisciplinary Studies"
+},
+{
+    "name": "International Relations",
+    "code": "International Relations"
+},
+{
+    "name": "Journalism",
+    "code": "Journalism"
+},
+{
+    "name": "Labor/Industrial Relations",
+    "code": "Labor/Industrial Relations"
+},
+{
+    "name": "Language",
+    "code": "Language"
+},
+{
+    "name": "Language Teaching",
+    "code": "Language Teaching"
+},
+{
+    "name": "Law",
+    "code": "Law"
+},
+{
+    "name": "Liberal Arts",
+    "code": "Liberal Arts"
+},
+{
+    "name": "Library Science",
+    "code": "Library Science"
+},
+{
+    "name": "Linguistics",
+    "code": "Linguistics"
+},
+{
+    "name": "Literature",
+    "code": "Literature"
+},
+{
+    "name": "Marketing",
+    "code": "Marketing"
+},
+{
+    "name": "Materials Science",
+    "code": "Materials Science"
+},
+{
+    "name": "Mathematics",
+    "code": "Mathematics"
+},
+{
+    "name": "Medical Sciences",
+    "code": "Medical Sciences"
+},
+{
+    "name": "Meteorology",
+    "code": "Meteorology"
+},
+{
+    "name": "Music Music Studies",
+    "code": "Music Music Studies"
+},
+{
+    "name": "Neuroscience",
+    "code": "Neuroscience"
+},
+{
+    "name": "Nursing",
+    "code": "Nursing"
+},
+{
+    "name": "Nutrition",
+    "code": "Nutrition"
+},
+{
+    "name": "Occupational Training",
+    "code": "Occupational Training"
+},
+{
+    "name": "Oceanography",
+    "code": "Oceanography"
+},
+{
+    "name": "Ophthalmology",
+    "code": "Ophthalmology"
+},
+{
+    "name": "Optometry and Opthamology",
+    "code": "Optometry and Opthamology"
+},
+{
+    "name": "Paleontology",
+    "code": "Paleontology"
+},
+{
+    "name": "Pharmacology",
+    "code": "Pharmacology"
+},
+{
+    "name": "Philosophy",
+    "code": "Philosophy"
+},
+{
+    "name": "Physical Sciences",
+    "code": "Physical Sciences"
+},
+{
+    "name": "Physics",
+    "code": "Physics"
+},
+{
+    "name": "Physiology",
+    "code": "Physiology"
+},
+{
+    "name": "Political Science",
+    "code": "Political Science"
+},
+{
+    "name": "Psychology",
+    "code": "Psychology"
+},
+{
+    "name": "Public Administration",
+    "code": "Public Administration"
+},
+{
+    "name": "Public Health",
+    "code": "Public Health"
+},
+{
+    "name": "Public Policy",
+    "code": "Public Polic"
+},
+{
+    "name": "Religious Studies",
+    "code": "Religious Studies"
+},
+{
+    "name": "Social Sciences",
+    "code": "Social Sciences"
+},
+{
+    "name": "Social Work",
+    "code": "Social Work"
+},
+{
+    "name": "Sociology",
+    "code": "Sociology"
+},
+{
+    "name": "Telecommunications",
+    "code": "Telecommunications"
+},
+{
+    "name": "Theology/Religion",
+    "code": "Theology/Religion"
+},
+{
+    "name": "Toxicology",
+    "code": "Toxicology"
+},
+{
+    "name": "Transportation",
+    "code": "Transportation"
+},
+{
+    "name": "Travel/Tourism",
+    "code": "Travel/Tourism"
+},
+{
+    "name": "Urban Studies",
+    "code": "Urban Studies"
+},
+{
+    "name": "Veterinary Medicine",
+    "code": "Veterinary Medicine"
+},
+{
+    "name": "Virology",
+    "code": "Virology"
+},
+{
+    "name": "Zoology",
+    "code": "Zoology"
+}
+
+
+]
