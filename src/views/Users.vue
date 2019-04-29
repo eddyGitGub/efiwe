@@ -1,8 +1,6 @@
 <template>
   <div class="content clearfix">
-    <div id="blog-header" class="section-block header-bg">
-     
-    </div>
+    <div id="blog-header" class="section-block header-bg"></div>
 
     <div id="blog" class="top-border animated fadeInUp">
       <div class="section-block bkg-light">
@@ -46,11 +44,11 @@
 
                       <td>{{user.phone }}</td>
                       <td>
-                        <span v-if="user.role === 1">Admin</span>
-                        <span v-else-if="user.role === 2">Staff</span>
-                        <span v-else-if="user.role === 3">Librarian</span>
-                        <span v-else-if="user.role === 4">Student</span>
-                        <span v-else-if="user.role === 5">Others</span>
+                        <span v-if="user.role_id === 1">Admin</span>
+                        <span v-else-if="user.role_id === 2">Staff</span>
+                        <span v-else-if="user.role_id === 3">Librarian</span>
+                        <span v-else-if="user.role_id === 4">Student</span>
+                        <span v-else-if="user.role_id === 5">Others</span>
                         <span v-else></span>
                       </td>
                       <td>

@@ -65,13 +65,13 @@ export const router = new Router({
       path: "/librarian",
       name: "librarian",
       component: () => import("./views/Librarian.vue"),
-      meta: { requiresAuth: true ,libAuth : true, volunteerAuth : false, adminAuth:true }
+      meta: { requiresAuth: true, libAuth: true, volunteerAuth: false, adminAuth: true }
     },
     {
       path: "/volunteer",
       name: "volunteer",
       component: () => import("./views/VolunteerPage.vue"),
-      meta: { requiresAuth: true ,libAuth : false, volunteerAuth : true, adminAuth:true }
+      meta: { requiresAuth: true, libAuth: false, volunteerAuth: true, adminAuth: true }
     },
     {
       path: "/Books",
@@ -82,7 +82,7 @@ export const router = new Router({
       path: "/AddBook",
       name: "AddBook",
       component: () => import("./views/AddBook.vue"),
-      meta: { requiresAuth: true ,libAuth : true, volunteerAuth : false, adminAuth:true }
+      meta: { requiresAuth: true, libAuth: true, volunteerAuth: false, adminAuth: false }
     },
     {
       path: "/BookDetails",
@@ -93,7 +93,7 @@ export const router = new Router({
       path: "/users",
       name: "Users",
       component: () => import("./views/Users.vue"),
-      meta: { requiresAuth: true , adminAuth:true , libAuth : false, volunteerAuth : false}
+      meta: { requiresAuth: true, adminAuth: true, libAuth: false, volunteerAuth: false }
     },
     {
       path: "/404",
@@ -106,38 +106,39 @@ export const router = new Router({
 let isFirstTransition = true;
 router.beforeEach((to, from, next) => {
   let token = localStorage.getItem('loginToken');
-let userData = localStorage.getItem('loginUser') || "";
-  if(to.meta.requiresAuth) {
+  let userData = localStorage.getItem('loginUser') || "";
+  if (to.meta.requiresAuth) {
     const authUser = JSON.parse(userData);
-    if(!authUser || !token) {
-      next({name:'login'})
+    if (!authUser || !token) {
+      next({ name: 'login' })
     }
-    else if(to.meta.adminAuth) {
-    const authUser = JSON.parse(userData)
-    if(authUser.role_id === 1) {
-      next()
-    }else {
-      next('/books')
+    else if (to.meta.adminAuth) {
+      const authUser = JSON.parse(userData)
+      if (authUser.role_id === 1) {
+        next()
+      } else {
+        next('/books')
+      }
+    } else if (to.meta.volunteerAuth) {
+      const authUser = JSON.parse(userData)
+      if (authUser.role_id === 5) {
+        next()
+      } else {
+        console.log('Im in admin')
+        next('/admin')
+      }
+    } else if (to.meta.libAuth) {
+      const authUser = JSON.parse(userData)
+      console.log(authUser);
+      if (authUser.role_id === 3) {
+        next()
+      } else {
+        console.log('Im in admin')
+        next('/admin')
+      }
     }
-  } else if(to.meta.volunteerAuth) {
-    const authUser = JSON.parse(userData)
-    if(authUser.role_id === 5) {
-      next()
-    }else {
-      console.log('Im in admin')
-      next('/admin')
-    }
-  }else if(to.meta.libAuth) {
-    const authUser = JSON.parse(userData)
-    if(authUser.role_id === 3) {
-      next()
-    }else {
-      console.log('Im in admin')
-      next('/admin')
-    }
-  }
-  }else {
-  next()
+  } else {
+    next()
   }
 })
 // router.beforeEach((to, from, next) => {
@@ -174,7 +175,7 @@ let userData = localStorage.getItem('loginUser') || "";
 //     next() 
 //   }
 //   const lastRouteName = localStorage.getItem("lastRoute");
-  
+
 //   const shouldRedirect = Boolean(
 //     to.name === "home" && lastRouteName
 //     && isFirstTransition
