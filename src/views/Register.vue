@@ -83,9 +83,7 @@
                                       <i class="fas fa-user-plus"></i>
                                     </div>
                                     <div class="m-l-10 align-self-center">
-                                      <h3
-                                        class="wallet m-b-0 font-light text-white"
-                                      >Create Account</h3>
+                                      <h3 class="wallet m-b-0 font-light text-white">Create Account</h3>
                                       <h5
                                         class="wallet text-muted m-b-0 text-white"
                                       >2. African librarian</h5>
@@ -106,11 +104,22 @@
                             <input
                               id="fullName"
                               v-model.trim="librarianData.firstname"
-                              :class="validateUser.fname_error"
+                              :class="{ 'form-error': submitted && $v.librarianData.firstname.$error }"
                               class="form-control"
                               type="text"
                               placeholder="Firstname"
                             >
+                            <div
+                              class="invalid-fback"
+                              v-if="submitted && $v.librarianData.firstname.$error"
+                            >
+                              <div
+                                v-if="submitted && !$v.librarianData.firstname.required"
+                              >Firstname is required</div>
+                              <div
+                                v-if="!$v.librarianData.firstname.minLength"
+                              >Firstname must have at least {{$v.librarianData.firstname.$params.minLength.min}} letters.</div>
+                            </div>
                           </div>
                           <div
                             class="input-group grid__half__sticky top-border right-border bottom-border left-border-mobile"
@@ -118,11 +127,22 @@
                             <input
                               id="lastName"
                               v-model.trim="librarianData.lastname"
-                              :class="validateUser.lname_error"
+                              :class="{ 'form-error': submitted && $v.librarianData.lastname.$error }"
                               class="form-control"
                               type="text"
                               placeholder="Lastname"
                             >
+                            <div
+                              class="invalid-fback"
+                              v-if="submitted && $v.librarianData.lastname.$error"
+                            >
+                              <div
+                                v-if="submitted && !$v.librarianData.lastname.required"
+                              >Lastname is required</div>
+                              <div
+                                v-if="!$v.librarianData.lastname.minLength"
+                              >Lastname must have at least {{$v.librarianData.lastname.$params.minLength.min}} letters.</div>
+                            </div>
                           </div>
                         </div>
                         <div class="form-group grid__half">
@@ -134,11 +154,18 @@
                             <input
                               id="regEmail"
                               v-model.trim="librarianData.email"
-                              :class="validateUser.email_error"
+                              :class="{ 'form-error': submitted && $v.librarianData.email.$error }"
                               class="form-control"
                               type="text"
                               placeholder="Email Address"
                             >
+                            <div
+                              v-if="submitted && $v.librarianData.email.$error"
+                              class="invalid-fback"
+                            >
+                              <span v-if="!$v.librarianData.email.required">Email is required</span>
+                              <span v-if="!$v.librarianData.email.email">Email is invalid</span>
+                            </div>
                           </div>
                         </div>
                         <div class="form-group grid__half">
@@ -152,11 +179,20 @@
                             <input
                               id="contactLine"
                               v-model.trim="librarianData.phone"
-                              :class="validateUser.phone_error"
+                              :class="{ 'form-error': submitted && $v.librarianData.phone.$error }"
                               class="form-control"
                               type="text"
                               placeholder="+234..."
                             >
+                            <div
+                              v-if="submitted && $v.librarianData.phone.$error"
+                              class="invalid-fback"
+                            >
+                              <span v-if="!$v.librarianData.phone.required">Contact Line is required</span>
+                              <span
+                                v-if="!$v.librarianData.phone.minLength"
+                              >Contact Line must have at least {{$v.librarianData.phone.$params.minLength.min}} letters.</span>
+                            </div>
                           </div>
                         </div>
 
@@ -170,11 +206,22 @@
                               <input
                                 id="password"
                                 v-model.trim="librarianData.password"
-                                :class="validateUser.password_error"
+                                :class="{ 'form-error': submitted && $v.librarianData.password.$error }"
                                 class="form-control"
                                 type="password"
                                 placeholder="Password"
                               >
+                              <div
+                                v-if="submitted && $v.librarianData.password.$error"
+                                class="invalid-fback"
+                              >
+                                <span
+                                  v-if="!$v.librarianData.password.required"
+                                >Password is required</span>
+                                <span
+                                  v-if="!$v.librarianData.password.minLength"
+                                >Password must be at least 6 characters</span>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -190,11 +237,22 @@
                               <input
                                 id="verify-password"
                                 v-model.trim="librarianData.verify_password"
-                                :class="validateUser.verify_password_error"
+                                :class="{ 'form-error': submitted && $v.librarianData.verify_password.$error }"
                                 class="form-control"
                                 type="password"
-                                placeholder="Password"
+                                placeholder="Confirm Password"
                               >
+                              <div
+                                v-if="submitted && $v.librarianData.verify_password.$error"
+                                class="invalid-fback"
+                              >
+                                <span
+                                  v-if="!$v.librarianData.verify_password.required"
+                                >Verify Password is required</span>
+                                <span
+                                  v-else-if="!$v.librarianData.verify_password.sameAsPassword"
+                                >Passwords must match</span>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -211,6 +269,7 @@
                                   name="user-country"
                                   class="form-control center-txt camelcase"
                                   v-model="librarianData.country"
+                                  :class="{ 'form-error': submitted && $v.librarianData.country.$error }"
                                 >
                                   <option disabled value>Please select</option>
                                   <option
@@ -219,6 +278,15 @@
                                     :key="ctry.code"
                                   >{{ ctry.name }}</option>
                                 </select>
+                                <div
+                                  class="invalid-fback"
+                                  v-if="submitted && $v.librarianData.country.$error"
+                                >
+                                  <div
+                                    v-if="submitted && !$v.librarianData.country.required"
+                                  >Please select country</div>
+                                  <!-- <div v-if="!$v.otherData.lastname.minLength" >Lastname must have at least {{$v.otherData.lastname.$params.minLength.min}} letters.</div> -->
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -236,14 +304,25 @@
                                 <select
                                   name="school-name"
                                   class="form-control center-txt camelcase"
+                                  :class="{ 'form-error': submitted && $v.librarianData.school.$error }"
                                   v-model="librarianData.school"
                                 >
+                                  <option disabled value>Please select</option>
                                   <option
                                     v-for="school in schools.name"
                                     :value="school.name"
                                     :key="school.code"
                                   >{{school.name }}</option>
                                 </select>
+                                <div
+                                  class="invalid-fback"
+                                  v-if="submitted && $v.librarianData.school.$error"
+                                >
+                                  <div
+                                    v-if="submitted && !$v.librarianData.school.required"
+                                  >University is required</div>
+                                  <!-- <div v-if="!$v.otherData.lastname.minLength" >Lastname must have at least {{$v.otherData.lastname.$params.minLength.min}} letters.</div> -->
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -262,11 +341,20 @@
                             <input
                               id="adminEmail"
                               v-model.trim="librarianData.schoolAdmin"
-                              :class="validateUser.schoolAdmin_error"
+                              :class="{ 'form-error': submitted && $v.librarianData.schoolAdmin.$error }"
                               class="form-control"
                               type="text"
-                              placeholder="Email Address"
+                              placeholder="School Email Address"
                             >
+                            <div
+                              v-if="submitted && $v.librarianData.schoolAdmin.$error"
+                              class="invalid-fback"
+                            >
+                              <span
+                                v-if="!$v.librarianData.schoolAdmin.required"
+                              >School Email is required</span>
+                              <span v-if="!$v.librarianData.schoolAdmin.email">Email is invalid</span>
+                            </div>
                           </div>
                         </div>
 
@@ -642,15 +730,24 @@
                               v-model="otherData.firstname"
                               id="ofullName"
                               name="firstname"
-                              class="form-control" placeholder="Firstname"
+                              class="form-control"
+                              placeholder="Firstname"
                               :class="{ 'form-error': submitted && $v.otherData.firstname.$error }"
                             >
-                            <div class="invalid-fback" v-if="submitted && $v.otherData.firstname.$error">
-                              <div v-if="submitted && !$v.otherData.firstname.required">Firstname is required</div>
-                              <div v-if="!$v.otherData.firstname.minLength">Firstname must have at least {{$v.otherData.firstname.$params.minLength.min}} letters.</div>
+                            <div
+                              class="invalid-fback"
+                              v-if="submitted && $v.otherData.firstname.$error"
+                            >
+                              <div
+                                v-if="submitted && !$v.otherData.firstname.required"
+                              >Firstname is required</div>
+                              <div
+                                v-if="!$v.otherData.firstname.minLength"
+                              >Firstname must have at least {{$v.otherData.firstname.$params.minLength.min}} letters.</div>
                             </div>
                           </div>
-                          <div class="input-group grid__half__sticky top-border right-border bottom-border left-border-mobile"
+                          <div
+                            class="input-group grid__half__sticky top-border right-border bottom-border left-border-mobile"
                             :class="{ 'form-error': $v.otherData.lastname.$error }"
                           >
                             <input
@@ -661,22 +758,39 @@
                               type="text"
                               placeholder="Lastname"
                             >
-                            <div class="invalid-fback" v-if="submitted && $v.otherData.lastname.$error">
-                              <div v-if="submitted && !$v.otherData.lastname.required">Lastname is required</div>
-                            <div v-if="!$v.otherData.lastname.minLength" >Lastname must have at least {{$v.otherData.lastname.$params.minLength.min}} letters.</div>
+                            <div
+                              class="invalid-fback"
+                              v-if="submitted && $v.otherData.lastname.$error"
+                            >
+                              <div
+                                v-if="submitted && !$v.otherData.lastname.required"
+                              >Lastname is required</div>
+                              <div
+                                v-if="!$v.otherData.lastname.minLength"
+                              >Lastname must have at least {{$v.otherData.lastname.$params.minLength.min}} letters.</div>
                             </div>
-                            
                           </div>
                         </div>
                         <div class="form-group grid__half">
                           <label class="form-component text-white" for="oEmail">Email ID</label>
-                          <div class="input-group full-border" :class="{ 'form-error': submitted && $v.otherData.email.$error }">
+                          <div
+                            class="input-group full-border"
+                            :class="{ 'form-error': submitted && $v.otherData.email.$error }"
+                          >
                             <div class="input-group-addon">
                               <i class="fas fa-envelope"></i>
                             </div>
-                            <input id="oEmail"
-                              v-model.trim="otherData.email" class="form-control" type="text" placeholder="Email Address">
-                            <div v-if="submitted && $v.otherData.email.$error" class="invalid-fback">
+                            <input
+                              id="oEmail"
+                              v-model.trim="otherData.email"
+                              class="form-control"
+                              type="text"
+                              placeholder="Email Address"
+                            >
+                            <div
+                              v-if="submitted && $v.otherData.email.$error"
+                              class="invalid-fback"
+                            >
                               <span v-if="!$v.otherData.email.required">Email is required</span>
                               <span v-if="!$v.otherData.email.email">Email is invalid</span>
                             </div>
@@ -684,57 +798,113 @@
                         </div>
                         <div class="form-group grid__half">
                           <label class="form-component text-white" for="ocontactLine">Contact Line</label>
-                          <div class="input-group top-border right-border bottom-border left-border-mobile" :class="{ 'form-error': submitted && $v.otherData.phone.$error }">
+                          <div
+                            class="input-group top-border right-border bottom-border left-border-mobile"
+                            :class="{ 'form-error': submitted && $v.otherData.phone.$error }"
+                          >
                             <div class="input-group-addon">
                               <i class="fas fa-mobile"></i>
                             </div>
-                            <input id="ocontactLine" v-model.trim="otherData.phone" class="form-control" type="text" placeholder="+234...">
+                            <input
+                              id="ocontactLine"
+                              v-model.trim="otherData.phone"
+                              class="form-control"
+                              type="text"
+                              placeholder="+234..."
+                            >
                           </div>
                           <div v-if="submitted && $v.otherData.phone.$error" class="invalid-fback">
                             <span v-if="!$v.otherData.phone.required">Contact Line is required</span>
-                            <span v-if="!$v.otherData.phone.minLength">Contact Line must have at least {{$v.otherData.phone.$params.minLength.min}} letters.</span>
+                            <span
+                              v-if="!$v.otherData.phone.minLength"
+                            >Contact Line must have at least {{$v.otherData.phone.$params.minLength.min}} letters.</span>
                           </div>
                         </div>
                         <div class="grid__half__sticky">
                           <label class="form-component text-white" for="opassword">Password</label>
-                          <div class="form-group grid__full" :class="{ 'form-error': submitted && $v.otherData.password.$error }">
+                          <div
+                            class="form-group grid__full"
+                            :class="{ 'form-error': submitted && $v.otherData.password.$error }"
+                          >
                             <div class="input-group full-border">
                               <div class="input-group-addon">
                                 <i class="fas fa-lock"></i>
                               </div>
-                              <input id="opassword" v-model.trim="otherData.password" class="form-control" type="password" placeholder="Password">
+                              <input
+                                id="opassword"
+                                v-model.trim="otherData.password"
+                                class="form-control"
+                                type="password"
+                                placeholder="Password"
+                              >
                             </div>
-                            <div v-if="submitted && $v.otherData.password.$error" class="invalid-fback">
+                            <div
+                              v-if="submitted && $v.otherData.password.$error"
+                              class="invalid-fback"
+                            >
                               <span v-if="!$v.otherData.password.required">Password is required</span>
-                              <span v-if="!$v.otherData.password.minLength" >Password must be at least 6 characters</span>
+                              <span
+                                v-if="!$v.otherData.password.minLength"
+                              >Password must be at least 6 characters</span>
                             </div>
                           </div>
                         </div>
                         <div class="grid__half__sticky">
-                          <div class="form-group grid__full" :class="{ 'form-error': submitted && $v.otherData.verify_password.$error }">
-                            <label class="form-component text-white" for="overify-password">Verify Password</label>
-                            <div class="input-group top-border right-border bottom-border left-border-mobile">
-                              <input id="overify-password" v-model.trim="otherData.verify_password" class="form-control" type="password"
-                                placeholder="Password">
-                              <div v-if="submitted && $v.otherData.verify_password.$error" class="invalid-fback">
-                                <span  v-if="!$v.otherData.verify_password.required">Verify Password is required</span>
-                                <span  v-else-if="!$v.otherData.verify_password.sameAsPassword">Passwords must match</span>
+                          <div
+                            class="form-group grid__full"
+                            :class="{ 'form-error': submitted && $v.otherData.verify_password.$error }"
+                          >
+                            <label
+                              class="form-component text-white"
+                              for="overify-password"
+                            >Verify Password</label>
+                            <div
+                              class="input-group top-border right-border bottom-border left-border-mobile"
+                            >
+                              <input
+                                id="overify-password"
+                                v-model.trim="otherData.verify_password"
+                                class="form-control"
+                                type="password"
+                                placeholder="Password"
+                              >
+                              <div
+                                v-if="submitted && $v.otherData.verify_password.$error"
+                                class="invalid-fback"
+                              >
+                                <span
+                                  v-if="!$v.otherData.verify_password.required"
+                                >Verify Password is required</span>
+                                <span
+                                  v-else-if="!$v.otherData.verify_password.sameAsPassword"
+                                >Passwords must match</span>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="form-group grid__half">
                           <label class="form-component text-white" for="oCountry">Nationality</label>
-                          <div class="input-group full-border" :class="{ 'form-error': submitted && $v.otherData.nationality.$error }">
+                          <div
+                            class="input-group full-border"
+                            :class="{ 'form-error': submitted && $v.otherData.nationality.$error }"
+                          >
                             <div class="input-group-addon">
                               <i class="fas fa-flag"></i>
                             </div>
                             <div class="grid__full">
                               <div class="select" id="oCountry">
-                                <select name="student-nationality" class="form-control center-txt camelcase" v-model="otherData.nationality">
-                                  <option value ="" selected="selected">Choose</option>
+                                <select
+                                  name="student-nationality"
+                                  class="form-control center-txt camelcase"
+                                  v-model="otherData.nationality"
+                                >
+                                  <option value selected="selected">Choose</option>
                                   <option v-if="countries.length == 0">No result</option>
-                                  <option v-for="country in countries" :value="country.name" :key="country.code">{{country.name }}</option>
+                                  <option
+                                    v-for="country in countries"
+                                    :value="country.name"
+                                    :key="country.code"
+                                  >{{country.name }}</option>
                                 </select>
                               </div>
                             </div>
@@ -742,52 +912,84 @@
                         </div>
                         <div class="form-group grid__half">
                           <label class="form-component text-white" for="location">Current Location</label>
-                          <div  class="input-group top-border right-border bottom-border left-border-mobile"  :class="{ 'form-error': submitted && $v.otherData.location.$error }">
+                          <div
+                            class="input-group top-border right-border bottom-border left-border-mobile"
+                            :class="{ 'form-error': submitted && $v.otherData.location.$error }"
+                          >
                             <div class="input-group-addon" style="heigh:80%">
                               <i class="fas fa-map-marker-alt"></i>
                             </div>
-                          
+
                             <div class="grid__full">
-                                  <place-autocomplete-field v-model="otherData.location" placeholder="Enter Current Location" name="location" api-key="AIzaSyAhSv9zWvisiTXRPRw6K8AE0DCmrRMpQcU"></place-autocomplete-field>
+                              <place-autocomplete-field
+                                v-model="otherData.location"
+                                placeholder="Enter Current Location"
+                                name="location"
+                                api-key="AIzaSyAhSv9zWvisiTXRPRw6K8AE0DCmrRMpQcU"
+                              ></place-autocomplete-field>
                             </div>
-                            <div class="invalid-fback" v-if="submitted && $v.otherData.location.$error">
-                              <div v-if="submitted && !$v.otherData.location.required">Current Location is required</div>
-                            <!-- <div v-if="!$v.otherData.lastname.minLength" >Lastname must have at least {{$v.otherData.lastname.$params.minLength.min}} letters.</div> -->
+                            <div
+                              class="invalid-fback"
+                              v-if="submitted && $v.otherData.location.$error"
+                            >
+                              <div
+                                v-if="submitted && !$v.otherData.location.required"
+                              >Current Location is required</div>
+                              <!-- <div v-if="!$v.otherData.lastname.minLength" >Lastname must have at least {{$v.otherData.lastname.$params.minLength.min}} letters.</div> -->
                             </div>
                           </div>
                         </div>
 
                         <div class="form-group grid__half">
                           <label class="form-component text-white" for="workHours">Work Hours</label>
-                          <div class="input-group full-border" :class="{ 'form-error': submitted && $v.otherData.workHours.$error }">
+                          <div
+                            class="input-group full-border"
+                            :class="{ 'form-error': submitted && $v.otherData.workHours.$error }"
+                          >
                             <div class="input-group-addon">
                               <i class="fas fa-clock"></i>
                             </div>
                             <div class="grid__full">
                               <div class="select" id="workHours" v-if="workHours.slots.length">
-                                <select  name="school-name" class="form-control center-txt camelcase" v-model="otherData.workHours">
-                                  <option v-for="slot in workHours.slots" :value="slot.name" :key="slot.code">{{slot.name }}</option>
+                                <select
+                                  name="school-name"
+                                  class="form-control center-txt camelcase"
+                                  v-model="otherData.workHours"
+                                >
+                                  <option
+                                    v-for="slot in workHours.slots"
+                                    :value="slot.name"
+                                    :key="slot.code"
+                                  >{{slot.name }}</option>
                                 </select>
                               </div>
                             </div>
-                            <div class="invalid-fback" v-if="submitted && $v.otherData.workHours.$error">
-                              <div v-if="submitted && !$v.otherData.workHours.required">Work Hours is required</div>
-                            <!-- <div v-if="!$v.otherData.lastname.minLength" >Lastname must have at least {{$v.otherData.lastname.$params.minLength.min}} letters.</div> -->
+                            <div
+                              class="invalid-fback"
+                              v-if="submitted && $v.otherData.workHours.$error"
+                            >
+                              <div
+                                v-if="submitted && !$v.otherData.workHours.required"
+                              >Work Hours is required</div>
+                              <!-- <div v-if="!$v.otherData.lastname.minLength" >Lastname must have at least {{$v.otherData.lastname.$params.minLength.min}} letters.</div> -->
                             </div>
                           </div>
                         </div>
                         <div class="form-group grid__half">
                           <label class="form-component text-white" for="oposition">Volunteer Role</label>
-                          <div class="input-group top-border right-border bottom-border left-border-mobile" :class="{ 'form-error': submitted && $v.otherData.volunteerRole.$error }">
+                          <div
+                            class="input-group top-border right-border bottom-border left-border-mobile"
+                            :class="{ 'form-error': submitted && $v.otherData.volunteerRole.$error }"
+                          >
                             <div class="input-group-addon">
                               <i class="fas fa-id-badge"></i>
                             </div>
-                             <div class="grid__full">
+                            <div class="grid__full">
                               <div class="select" id="Country" v-if="countries.length">
                                 <select
                                   name="user-country"
                                   class="form-control center-txt camelcase"
-                                 v-model.trim="otherData.volunteerRole"
+                                  v-model.trim="otherData.volunteerRole"
                                 >
                                   <option disabled value>Please select</option>
                                   <option
@@ -799,25 +1001,48 @@
                               </div>
                             </div>
                           </div>
-                          <div class="invalid-fback" v-if="submitted && $v.otherData.volunteerRole.$error">
-                              <div v-if="submitted && !$v.otherData.volunteerRole.required">Volunteer Role is required</div>
+                          <div
+                            class="invalid-fback"
+                            v-if="submitted && $v.otherData.volunteerRole.$error"
+                          >
+                            <div
+                              v-if="submitted && !$v.otherData.volunteerRole.required"
+                            >Volunteer Role is required</div>
                             <!-- <div v-if="!$v.otherData.lastname.minLength" >Lastname must have at least {{$v.otherData.lastname.$params.minLength.min}} letters.</div> -->
-                            </div>
+                          </div>
                         </div>
                         <div class="form-group grid__full">
                           <label class="form-component text-white" for="motivation">Motivation</label>
-                          <div class="input-group grid__full full-border" :class="{ 'form-error': submitted && $v.otherData.motivation.$error }">
-                            <textarea v-model="otherData.motivation" name="motivation" id="motivation" class="form-control" 
-                            rows="5" cols="30" placeholder="Tell us why to want to join us" ></textarea>
+                          <div
+                            class="input-group grid__full full-border"
+                            :class="{ 'form-error': submitted && $v.otherData.motivation.$error }"
+                          >
+                            <textarea
+                              v-model="otherData.motivation"
+                              name="motivation"
+                              id="motivation"
+                              class="form-control"
+                              rows="5"
+                              cols="30"
+                              placeholder="Tell us why to want to join us"
+                            ></textarea>
                           </div>
-                           <div class="invalid-fback" v-if="submitted && $v.otherData.motivation.$error">
-                              <div v-if="submitted && !$v.otherData.motivation.required">Motivation is required</div>
+                          <div
+                            class="invalid-fback"
+                            v-if="submitted && $v.otherData.motivation.$error"
+                          >
+                            <div
+                              v-if="submitted && !$v.otherData.motivation.required"
+                            >Motivation is required</div>
                             <!-- <div v-if="!$v.otherData.lastname.minLength" >Lastname must have at least {{$v.otherData.lastname.$params.minLength.min}} letters.</div> -->
-                            </div>
+                          </div>
                         </div>
                         <div class="grid__full">
-                          <button  @click.prevent="createUser('other')" type="submit"
-                            class="button medium rounded bkg-green bkg-hover-green color-white color-hover-white">
+                          <button
+                            @click.prevent="createUser('other')"
+                            type="submit"
+                            class="button medium rounded bkg-green bkg-hover-green color-white color-hover-white"
+                          >
                             <i class="fas fa-user-plus"></i> Sign Up
                           </button>
                         </div>
@@ -910,7 +1135,7 @@ import axios from "../api/efiwe";
 import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
 import Vue from "vue";
 import Vuelidate from "vuelidate";
-import countries from '../data/countries.json'
+import countries from "../data/countries.json";
 
 Vue.use(Vuelidate);
 export default {
@@ -922,7 +1147,7 @@ export default {
       authenticated: this.session,
       validEmail: false,
       proceed: true,
-       volunteerRoles:[
+      volunteerRoles: [
         { code: "Book drive lead", name: "Book drive lead" },
         { code: "Book drive associate", name: "Book drive associate" },
         { code: "Logistics", name: "Logistics" },
@@ -1072,11 +1297,22 @@ export default {
       email: { required, email },
       password: { required, minLength: minLength(6) },
       verify_password: { required, sameAsPassword: sameAs("password") },
-        nationality: {required},
-        location: {required},
-        volunteerRole: {required},
-        workHours: {required},
-        motivation: {required}
+      nationality: { required },
+      location: { required },
+      volunteerRole: { required },
+      workHours: { required },
+      motivation: { required }
+    },
+    librarianData: {
+      firstname: { required, minLength: minLength(3) },
+      lastname: { required, minLength: minLength(3) },
+      phone: { required, minLength: minLength(6) },
+      email: { required, email },
+      schoolAdmin: { required, email },
+      password: { required, minLength: minLength(6) },
+      verify_password: { required, sameAsPassword: sameAs("password") },
+      country: { required },
+      school: { required }
     }
   },
   methods: {
@@ -1120,7 +1356,6 @@ export default {
         } else {
           this.validateUser.phone_error = { "form-error": false };
         }
-
 
         if (this.validEmail === false) {
           this.validateUser.email_error = { "form-error": true };
@@ -1172,7 +1407,14 @@ export default {
           this.proceed = true;
           let formActor = this.proceed;
           this.processRequest(formActor, category);
-        } else console.log("coudnt validate all fields");
+        } else {
+          // stop here if form is invalid
+          this.$v.$touch();
+          if (this.$v.$invalid) {
+            return;
+          }
+          console.log("coudnt validate all fields");
+        }
       } else if (category === "student") {
         this.validEmail = reg.test(this.studentData.email);
 
@@ -1430,8 +1672,8 @@ export default {
     },
     login() {
       this.$router.push("/login");
-    },
-    },
+    }
+  },
   props: ["session"],
   mounted() {
     this.populateForms();
@@ -1446,7 +1688,7 @@ export default {
 </script>
 <style scoped>
 .form-group {
-    margin-bottom: .1rem !important;
+  margin-bottom: 0.1rem !important;
 }
 .invalid-fback {
   display: block !important;

@@ -75,5 +75,6 @@ export default {
   beforeMount() {
     this.tokenizer();
   }
+  
 };
 </script>

@@ -11,7 +11,7 @@
               >We can pass any important message here so when philip logs in he gets a clear update from his last session.</p>
             </div>
           </div>
-        </div> -->
+        </div>-->
         <div v-if="userType === 0">
           <div class="column width-12">
             <div class="row flex boxes three-columns-on-tablet">
@@ -109,1280 +109,201 @@
       </div>
     </div>
     <div id="dashboard" class="top-border animated fadeInUp">
+      <div class="offset-6 col mt-3">
+        <router-link to="/addbook" class="btn btn-info">
+          <span class="fa fa-plus text-cente"></span> Add Book
+        </router-link>
+      </div>
       <div class="tab-wrapper">
         <div class="tabs cf">
           <input type="radio" name="tabs" id="tab1" class="tab-radio" checked>
           <label class="tab-label" for="tab1">Search Books</label>
           <!-- <input type="radio" name="tabs" id="tab2" class="tab-radio">
-          <label class="tab-label" for="tab2">List of Students</label> -->
+          <label class="tab-label" for="tab2">List of Students</label>-->
           <input type="radio" name="tabs" id="tab3" class="tab-radio">
           <label class="tab-label" for="tab3">Books Collected</label>
           <input type="radio" name="tabs" id="tab4" class="tab-radio">
           <label class="tab-label" for="tab4">Awaiting Shipment</label>
           <div id="tab-content1" class="tab-content">
-            <div v-if="userType === 1">
-              <div class="row flex mb-30">
-                <div class="column width-12">
-                  <div class="feature-content">
-                    <div class="feature-content-inner center">
-                      <div class="table-view m-auto no-padding column width 12">
-                        <div class="form-group grid__half nm">
-                          <label class="form-component">Search</label>
-                          <div class="input-group full-border">
-                            <div class="input-group-addon">
-                              <i class="fas fa-book"></i>
-                            </div>
-                            <input
-                              v-model.trim="loginData.email"
-                              :class="validateUser.email_error"
-                              class="form-control"
-                              type="text"
-                              placeholder="Book Name, Author or Category"
-                            >
-                          </div>
-                        </div>
-                        <div class="form-group grid__20 nm">
-                          <label class="form-component">Filter</label>
-                          <div class="input-group form-select form-element rounded medium">
-                            <select
-                              name="budget"
-                              tabindex="6"
-                              class="form-aux left-border-mobile"
-                              data-label="Project Budget"
-                            >
-                              <option selected="selected" value="Project Budget">All</option>
-                              <option value>Book</option>
-                              <option value>Journal</option>
-                              <option value>Encyclopedia</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="form-group grid__30 nm">
-                          <div class="grid__half__sticky nm relax-left">
-                            <label class="form-component">Search</label>
-                            <button
-                              @click.prevent="search"
-                              type="submit"
-                              class="relax-left mt-1 button medium rounded bkg-green bkg-hover-green color-white color-hover-white"
-                            >
-                              <i class="fas fa-search"></i> Search
-                            </button>
-                          </div>
-                          <div class="grid__half__sticky nm relax-right">
-                            <label class="form-component text-white">Search</label>
-                            <button
-                              @click.prevent="addBook"
-                              type="submit"
-                              class="relax-right mt-1 button medium rounded bkg-orange bkg-hover-orange color-white color-hover-white"
-                            >
-                              <i class="fas fa-book"></i> Add a Book
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="column width-3 no-padding">
-                  <div class="mb-60">
-                    <h5 class="font-mont text-uppercase bold-font">Filter Results</h5>
-                    <div class="event">
-                      <div class="row">
-                        <div class="card-no-border grid__full">
-                          <div class="event-content-small nb">
-                            <h6 class="event-title">Type</h6>
-                            <div class="col-md-12 custom-checkbox mt-5">
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Book
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Journal
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Encyclopedia
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="event">
-                      <div class="row">
-                        <div class="card-no-border grid__full">
-                          <div class="event-content-small nb">
-                            <h6 class="event-title">Field</h6>
-                            <div class="col-md-12 custom-checkbox mt-5">
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Arts
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Science
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  History
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Law
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Medicine
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="event">
-                      <div class="row">
-                        <div class="card-no-border grid__full">
-                          <div class="event-content-small nb">
-                            <h6 class="event-title">Status</h6>
-                            <div class="col-md-12 custom-checkbox mt-5">
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  All
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Awaiting Shipment
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Shipped
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="event">
-                      <div class="row">
-                        <div class="card-no-border grid__full">
-                          <div class="event-content-small nb">
-                            <h6 class="event-title">Region</h6>
-                            <div class="col-md-12 custom-checkbox mt-5">
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  North America
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  South America
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Africa
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Asia
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Europe
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="event">
-                      <div class="row">
-                        <div class="card-no-border grid__full">
-                          <div class="event-content-small nb">
-                            <h6 class="event-title">Condition</h6>
-                            <div class="col-md-12 custom-checkbox mt-5">
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Used
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  New
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="event">
-                      <div class="row">
-                        <div class="card-no-border grid__full">
-                          <div class="event-content-small nb">
-                            <h6 class="event-title">Publish Year</h6>
-                            <ul class="event-held list-inline no-padding-left">
-                              <div class="form-group grid__half__sticky mt-10">
-                                <label class="form-component">Min</label>
-                                <div class="input-group full-border">
-                                  <input
-                                    v-model.trim="loginData.email"
-                                    :class="validateUser.email_error"
-                                    class="form-control"
-                                    type="text"
-                                    placeholder="Min"
-                                  >
-                                </div>
-                              </div>
-                              <div class="form-group grid__half__sticky mt-10">
-                                <label class="form-component">Max</label>
-                                <div class="input-group full-border">
-                                  <input
-                                    v-model.trim="loginData.email"
-                                    :class="validateUser.email_error"
-                                    class="form-control"
-                                    type="text"
-                                    placeholder="Max"
-                                  >
-                                </div>
-                              </div>
-                              <li>
-                                <button
-                                  class="relax-left button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                                >
-                                  <i class="fas fa-search"></i> Go
-                                </button>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="column width-7 no-padding-right">
-                   <div class="event"  v-for="book in books" :key="book._id">
-                    <div class="row">
-                      <div class="search-banner">
-                        <a>
-                          <div class="event-thumb">
-                            <div class="thumb" style="width: 75%;">
-                              <img
-                                class="full-width search-img"
-                                :src="getPic(book.bookImage)"
-                                alt
-                              >
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="search-details white-bg">
-                        <div class="event-content white-bg nb">
-                          <h5 class="event-title">
-                            <a href="#">{{book.title}}</a>
-                          </h5>
-                          <ul class="event-held">
-                            <li>Author : {{ book.author }}</li>
-                            <li>Field : {{ book.field }}</li>
-                            <li>Edition : {{ book.edition }}</li>
-                            <li>Issue Date : April 23 2018</li>
-                            <li>Copies : {{ book.copies }}</li>
-                            <li>Collected From : School Name</li>
-                            <li>Delivered to : School Name</li>
-                            <li>Status: {{ book.status }}</li>
-                          </ul>
+            <!-- Book Request -->
 
-                          <div class="grid__half__sticky">
-                            <button
-                              class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                            >
-                              <i class="fas fa-book"></i> Show Less
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                 
-                </div>
-              </div>
-            </div>
-            <div v-else>
-              <div class="row flex mb-30">
-                <div class="column width-12">
-                  <div class="feature-content">
-                    <div class="feature-content-inner center">
-                      <div class="table-view m-auto no-padding column width 12">
-                        <div class="form-group grid__half nm">
-                          <label class="form-component">Search</label>
-                          <div class="input-group full-border">
-                            <div class="input-group-addon">
-                              <i class="fas fa-book"></i>
-                            </div>
-                            <input
-                              v-model.trim="loginData.email"
-                              :class="validateUser.email_error"
-                              class="form-control"
-                              type="text"
-                              placeholder="Book Name, Author or Category"
-                            >
-                          </div>
-                        </div>
-                        <div class="form-group grid__20 nm">
-                          <label class="form-component text-white invisible">Filter</label>
-                          <div class="input-group form-select form-element rounded medium">
-                            <select
-                              name="budget"
-                              tabindex="6"
-                              class="form-aux border-left-mobile"
-                              data-label="Project Budget"
-                            >
-                              <option selected="selected" value="Project Budget">All</option>
-                              <option value>Book</option>
-                              <option value>Journal</option>
-                              <option value>Encyclopedia</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="form-group grid__30 nm">
-                          <div class="grid__half__sticky nm relax-left">
-                            <label class="form-component text-white invisible">Search</label>
-                            <button
-                              @click.prevent="search"
-                              type="submit"
-                              class="relax-left mt-1 button medium rounded bkg-green bkg-hover-green color-white color-hover-white"
-                            >
-                              <i class="fas fa-search"></i> Search
-                            </button>
-                          </div>
-                          <div class="grid__half__sticky nm relax-right">
-                            <label class="form-component text-white invisible">Search</label>
-                            <button
-                              @click.prevent="search"
-                              type="submit"
-                              class="relax-right mt-1 button medium rounded bkg-orange bkg-hover-orange color-white color-hover-white"
-                            >
-                              <i class="fas fa-shopping-basket"></i> My Bag
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="container-fluid">
               <div class="row">
-                <div class="column width-2 no-padding">
-                  <div class="mb-60">
-                    <h5 class="font-mont text-uppercase bold-font">Filter Results</h5>
-                    <div class="event">
-                      <div class="row">
-                        <div class="card-no-border grid__full">
-                          <div class="event-content-small nb">
-                            <h6 class="event-title">Type</h6>
-                            <div class="col-md-12 custom-checkbox mt-5">
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Book
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Journal
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Encyclopedia
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="event">
-                      <div class="row">
-                        <div class="card-no-border grid__full">
-                          <div class="event-content-small nb">
-                            <h6 class="event-title">Field</h6>
-                            <div class="col-md-12 custom-checkbox mt-5">
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Arts
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Science
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  History
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Law
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Medicine
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="event">
-                      <div class="row">
-                        <div class="card-no-border grid__full">
-                          <div class="event-content-small nb">
-                            <h6 class="event-title">Status</h6>
-                            <div class="col-md-12 custom-checkbox mt-5">
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  All
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Awaiting Shipment
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Shipped
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="event">
-                      <div class="row">
-                        <div class="card-no-border grid__full">
-                          <div class="event-content-small nb">
-                            <h6 class="event-title">Region</h6>
-                            <div class="col-md-12 custom-checkbox mt-5">
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  North America
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  South America
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Africa
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Asia
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Europe
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="event">
-                      <div class="row">
-                        <div class="card-no-border grid__full">
-                          <div class="event-content-small nb">
-                            <h6 class="event-title">Condition</h6>
-                            <div class="col-md-12 custom-checkbox mt-5">
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  Used
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <label class="control-vertical control--checkbox">
-                                  New
-                                  <input type="checkbox">
-                                  <div class="control__indicator"></div>
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="event">
-                      <div class="row">
-                        <div class="card-no-border grid__full">
-                          <div class="event-content-small nb">
-                            <h6 class="event-title">Publish Year</h6>
-                            <ul class="event-held list-inline no-padding-left">
-                              <div class="form-group grid__half__sticky mt-10">
-                                <label class="form-component">Min</label>
-                                <div class="input-group full-border">
-                                  <input
-                                    v-model.trim="loginData.email"
-                                    :class="validateUser.email_error"
-                                    class="form-control"
-                                    type="text"
-                                    placeholder="Min"
-                                  >
-                                </div>
-                              </div>
-                              <div class="form-group grid__half__sticky mt-10">
-                                <label class="form-component">Max</label>
-                                <div class="input-group full-border">
-                                  <input
-                                    v-model.trim="loginData.email"
-                                    :class="validateUser.email_error"
-                                    class="form-control"
-                                    type="text"
-                                    placeholder="Max"
-                                  >
-                                </div>
-                              </div>
-                              <li>
-                                <button
-                                  class="relax-left button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                                >
-                                  <i class="fas fa-search"></i> Go
-                                </button>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="column width-8 no-padding-right">
-                  <div class="event">
-                    <div class="row">
-                      <div class="search-banner">
-                        <a>
-                          <div class="event-thumb">
-                            <div class="thumb">
-                              <img
-                                class="full-width search-img"
-                                src="../assets/images/blog/post1.jpg"
-                                alt
-                              >
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="search-details white-bg">
-                        <div class="event-content white-bg nb">
-                          <div class="grid__80">
-                            <h5 class="event-title">
-                              <a href="#">Programming Cook Book PHP 7</a>
-                            </h5>
-                            <ul class="event-held">
-                              <li>Author : Eric Johnson</li>
-                              <li>Field : Technology</li>
-                              <li>Edition : 1st</li>
-                              <li>Issue Date : April 23 2018</li>
-                              <li>Copies : 3</li>
-                              <li>Collected From : School Name</li>
-                              <li>Delivered to : School Name</li>
-                              <li>Status: Awaiting Shipment</li>
-                            </ul>
-                            <button
-                              class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                            >
-                              <i class="fas fa-book"></i> Show Less
-                            </button>
-                          </div>
-                          <div class="grid__20 mt-10">
-                            <div class="relax-left mb-10 mobile-half">
-                              <label class="form-component">Quantity</label>
-                              <div
-                                class="input-group form-select form-element rounded medium left-border"
-                              >
-                                <select
-                                  name="quantity"
-                                  tabindex="6"
-                                  data-label="Quantity"
-                                  class="form-aux"
-                                >
-                                  <option selected="selected" value="01">01</option>
-                                  <option value="02">02</option>
-                                  <option value="03">03</option>
-                                  <option value="04">04</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="relax-left mobile-half">
-                              <label class="form-component for-mobile invisible">Quantity</label>
-                              <button
-                                class="relax-right mobile-half landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                              >
-                                <i class="fas fa-check-circle"></i> Select
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="event">
-                    <div class="row">
-                      <div class="search-banner">
-                        <a>
-                          <div class="event-thumb">
-                            <div class="thumb">
-                              <img
-                                class="full-width search-img"
-                                src="../assets/images/blog/post1.jpg"
-                                alt
-                              >
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="search-details white-bg">
-                        <div class="event-content white-bg nb">
-                          <div class="grid__80">
-                            <h5 class="event-title">
-                              <a href="#">Learning C++ Through Game Programming</a>
-                            </h5>
-                            <ul class="event-held">
-                              <li>Author : Eric Johnson</li>
-                              <li>Field : Technology</li>
-                              <li>Edition : 1st</li>
-                              <li>Issue Date : April 23 2018</li>
-                              <li>Copies : 3</li>
-                              <li>Collected From : School Name</li>
-                              <li>Delivered to : School Name</li>
-                              <li>Status: Awaiting Shipment</li>
-                            </ul>
-                            <button
-                              class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                            >
-                              <i class="fas fa-book"></i> Show Less
-                            </button>
-                          </div>
-                          <div class="grid__20 mt-10">
-                            <div class="relax-left mb-10 mobile-half">
-                              <label class="form-component">Quantity</label>
-                              <div
-                                class="input-group form-select form-element rounded medium left-border"
-                              >
-                                <select
-                                  name="quantity"
-                                  tabindex="6"
-                                  data-label="Quantity"
-                                  class="form-aux"
-                                >
-                                  <option selected="selected" value="01">01</option>
-                                  <option value="02">02</option>
-                                  <option value="03">03</option>
-                                  <option value="04">04</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="relax-left mobile-half">
-                              <label class="form-component for-mobile invisible">Quantity</label>
-                              <button
-                                class="relax-right mobile-half landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                              >
-                                <i class="fas fa-check-circle"></i> Select
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="event">
-                    <div class="row">
-                      <div class="search-banner">
-                        <a>
-                          <div class="event-thumb">
-                            <div class="thumb">
-                              <img
-                                class="full-width search-img"
-                                src="../assets/images/blog/post1.jpg"
-                                alt
-                              >
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="search-details white-bg">
-                        <div class="event-content white-bg nb">
-                          <div class="grid__80">
-                            <h5 class="event-title">
-                              <a href="#">The Go Programming Language</a>
-                            </h5>
-                            <ul class="event-held">
-                              <li>Author : Eric Johnson</li>
-                              <li>Field : Technology</li>
-                              <li>Edition : 1st</li>
-                              <li>Issue Date : April 23 2018</li>
-                              <li>Copies : 3</li>
-                              <li>Collected From : School Name</li>
-                              <li>Delivered to : School Name</li>
-                              <li>Status: Awaiting Shipment</li>
-                            </ul>
-                            <button
-                              class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                            >
-                              <i class="fas fa-book"></i> Show Less
-                            </button>
-                          </div>
-                          <div class="grid__20 mt-10">
-                            <div class="relax-left mb-10 mobile-half">
-                              <label class="form-component">Quantity</label>
-                              <div
-                                class="input-group form-select form-element rounded medium left-border"
-                              >
-                                <select
-                                  name="quantity"
-                                  tabindex="6"
-                                  data-label="Quantity"
-                                  class="form-aux"
-                                >
-                                  <option selected="selected" value="01">01</option>
-                                  <option value="02">02</option>
-                                  <option value="03">03</option>
-                                  <option value="04">04</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="relax-left mobile-half">
-                              <label class="form-component for-mobile invisible">Quantity</label>
-                              <button
-                                class="relax-right mobile-half landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                              >
-                                <i class="fas fa-check-circle"></i> Select
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="event">
-                    <div class="row">
-                      <div class="search-banner">
-                        <a>
-                          <div class="event-thumb">
-                            <div class="thumb">
-                              <img
-                                class="full-width search-img"
-                                src="../assets/images/blog/post1.jpg"
-                                alt
-                              >
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="search-details white-bg">
-                        <div class="event-content white-bg nb">
-                          <div class="grid__80">
-                            <h5 class="event-title">
-                              <a href="#">Andriod App Development with Kotlin</a>
-                            </h5>
-                            <ul class="event-held">
-                              <li>Author : Eric Johnson</li>
-                              <li>Field : Technology</li>
-                              <li>Edition : 1st</li>
-                              <li>Issue Date : April 23 2018</li>
-                              <li>Copies : 3</li>
-                              <li>Collected From : School Name</li>
-                              <li>Delivered to : School Name</li>
-                              <li>Status: Awaiting Shipment</li>
-                            </ul>
-                            <button
-                              class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                            >
-                              <i class="fas fa-book"></i> Show Less
-                            </button>
-                          </div>
-                          <div class="grid__20 mt-10">
-                            <div class="relax-left mb-10 mobile-half">
-                              <label class="form-component">Quantity</label>
-                              <div
-                                class="input-group form-select form-element rounded medium left-border"
-                              >
-                                <select
-                                  name="quantity"
-                                  tabindex="6"
-                                  data-label="Quantity"
-                                  class="form-aux"
-                                >
-                                  <option selected="selected" value="01">01</option>
-                                  <option value="02">02</option>
-                                  <option value="03">03</option>
-                                  <option value="04">04</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="relax-left mobile-half">
-                              <label class="form-component for-mobile invisible">Quantity</label>
-                              <button
-                                class="relax-right mobile-half landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                              >
-                                <i class="fas fa-check-circle"></i> Select
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div class="col-sm-12">
+                  <h3 class="text-center">Book Requested</h3>
+                  <hr>
                 </div>
               </div>
+
+              <img v-if="loading" src="//placehold.it/100">
+
+              <section v-else>
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-3 py-2" v-for="(book, index) in books" :key="book._id">
+                      <div class="card h-100">
+                        <img
+                          class="card-img-top"
+                          :src="getPic(book.bookImage)"
+                          alt="card image collar"
+                        >
+                        <div class="card-body d-flex flex-column align-items-start">
+                          <h5 class="card-title">Book Request{{index + 1}}</h5>
+
+                          <!-- <button class="btn btn-primary mt-auto">Add To Cart</button> -->
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <label>Type</label>
+                              <br>
+                              <p>{{book.type}}</p>
+                            </div>
+                            <div class="col-sm-12">
+                              <label>Fields</label>
+                              <br>
+                              <p>{{book.field}}</p>
+                            </div>
+                            <div class="col-sm-12">
+                              <label>Copies</label>
+                              <br>
+                              <p>{{book.copies}}</p>
+                            </div>
+                            <div class="col-sm-12">
+                              <label>Status</label>
+                              <br>
+                              <p>{{book.status}}</p>
+                            </div>
+                            <div class="col-sm-12">
+                              <label>Request Date</label>
+                              <br>
+                              <p>{{book.created_at | formatDate}}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
             </div>
           </div>
-          <div id="tab-content2" class="tab-content">+
-            <div class="column width-12 no-padding mt-30">
-              <div class="event">
-                <div class="row">
-                  <div class="search-banner">
-                    <a>
-                      <div class="event-thumb">
-                        <div class="thumb">
-                          <img
-                            class="full-width search-img"
-                            src="../assets/images/blog/post1.jpg"
-                            alt
-                          >
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="search-details white-bg">
-                    <div class="event-content white-bg nb">
-                      <h5 class="event-title">
-                        <a href="#">Programming Cook Book PHP 7</a>
-                      </h5>
-                      <ul class="event-held">
-                        <li>Author : Eric Johnson</li>
-                        <li>Field : Technology</li>
-                        <li>Edition : 1st</li>
-                        <li>Issue Date : April 23 2018</li>
-                        <li>Copies : 3</li>
-                        <li>Collected From : School Name</li>
-                        <li>Delivered to : School Name</li>
-                        <li>Status: Awaiting Shipment</li>
-                      </ul>
-
-                      <div class="grid__half__sticky">
-                        <button
-                          class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                        >
-                          <i class="fas fa-book"></i> Show Less
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="event">
-                <div class="row">
-                  <div class="search-banner">
-                    <a>
-                      <div class="event-thumb">
-                        <div class="thumb">
-                          <img
-                            class="full-width search-img"
-                            src="../assets/images/blog/post1.jpg"
-                            alt
-                          >
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="search-details white-bg">
-                    <div class="event-content white-bg nb">
-                      <h5 class="event-title">
-                        <a href="#">Learning C++ Through Game Programming</a>
-                      </h5>
-                      <ul class="event-held">
-                        <li>Author : Eric Johnson</li>
-                        <li>Field : Technology</li>
-                        <li>Edition : 1st</li>
-                        <li>Issue Date : April 23 2018</li>
-                        <li>Copies : 3</li>
-                        <li>Collected From : School Name</li>
-                        <li>Delivered to : School Name</li>
-                        <li>Status: Awaiting Shipment</li>
-                      </ul>
-
-                      <div class="grid__half__sticky">
-                        <button
-                          class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                        >
-                          <i class="fas fa-book"></i> Show Less
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="event">
-                <div class="row">
-                  <div class="search-banner">
-                    <a>
-                      <div class="event-thumb">
-                        <div class="thumb">
-                          <img
-                            class="full-width search-img"
-                            src="../assets/images/blog/post1.jpg"
-                            alt
-                          >
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="search-details white-bg">
-                    <div class="event-content white-bg nb">
-                      <h5 class="event-title">
-                        <a href="#">The Go Programming Language</a>
-                      </h5>
-                      <ul class="event-held">
-                        <li>Author : Eric Johnson</li>
-                        <li>Field : Technology</li>
-                        <li>Edition : 1st</li>
-                        <li>Issue Date : April 23 2018</li>
-                        <li>Copies : 3</li>
-                        <li>Collected From : School Name</li>
-                        <li>Delivered to : School Name</li>
-                        <li>Status: Awaiting Shipment</li>
-                      </ul>
-
-                      <div class="grid__half__sticky">
-                        <button
-                          class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                        >
-                          <i class="fas fa-book"></i> Show Less
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="event">
-                <div class="row">
-                  <div class="search-banner">
-                    <a>
-                      <div class="event-thumb">
-                        <div class="thumb">
-                          <img
-                            class="full-width search-img"
-                            src="../assets/images/blog/post1.jpg"
-                            alt
-                          >
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="search-details white-bg">
-                    <div class="event-content white-bg nb">
-                      <h5 class="event-title">
-                        <a href="#">Andriod App Development with Kotlin</a>
-                      </h5>
-                      <ul class="event-held">
-                        <li>Author : Eric Johnson</li>
-                        <li>Field : Technology</li>
-                        <li>Edition : 1st</li>
-                        <li>Issue Date : April 23 2018</li>
-                        <li>Copies : 3</li>
-                        <li>Collected From : School Name</li>
-                        <li>Delivered to : School Name</li>
-                        <li>Status: Awaiting Shipment</li>
-                      </ul>
-
-                      <div class="grid__half__sticky">
-                        <button
-                          class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                        >
-                          <i class="fas fa-book"></i> Show Less
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!-- <div id="tab-content2" class="tab-content">
+            <div class="column width-12 no-padding mt-30">Book Cllected</div>
+          </div>-->
           <div id="tab-content3" class="tab-content">
             <div class="column width-12 no-padding mt-30">
-              <button class="btn btn-sm btn-dark pull-left">Request For Book</button>
+              <button class="btn btn-sm btn-dark pull-left">Book Collected</button>
             </div>
-            <div class="column width-12 no-padding mt-30">
-              <div class="event">
-                <div class="row">
-                  <div class="search-banner">
-                    <a>
-                      <div class="event-thumb">
-                        <div class="thumb">
-                          <img
-                            class="full-width search-img"
-                            src="../assets/images/blog/post1.jpg"
-                            alt
-                          >
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="search-details white-bg">
-                    <div class="event-content white-bg nb">
-                      <h5 class="event-title">
-                        <a href="#">Programming Cook Book PHP 7</a>
-                      </h5>
-                      <ul class="event-held">
-                        <li>Author : Eric Johnson</li>
-                        <li>Field : Technology</li>
-                        <li>Edition : 1st</li>
-                        <li>Issue Date : April 23 2018</li>
-                        <li>Copies : 3</li>
-                        <li>Collected From : School Name</li>
-                        <li>Delivered to : School Name</li>
-                        <li>Status: Awaiting Shipment</li>
-                      </ul>
+            <div id="e3" style="max-width: 400px; margin: auto;" class="grey lighten-3">
+              <v-toolbar color="pink" dark>
+                <v-toolbar-side-icon></v-toolbar-side-icon>
+                <v-toolbar-title>My Music</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-btn icon>
+                  <v-icon>search</v-icon>
+                </v-btn>
+              </v-toolbar>
 
-                      <div class="grid__half__sticky">
-                        <button
-                          class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                        >
-                          <i class="fas fa-book"></i> Show Less
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="event">
-                <div class="row">
-                  <div class="search-banner">
-                    <a>
-                      <div class="event-thumb">
-                        <div class="thumb">
-                          <img
-                            class="full-width search-img"
-                            src="../assets/images/blog/post1.jpg"
-                            alt
-                          >
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="search-details white-bg">
-                    <div class="event-content white-bg nb">
-                      <h5 class="event-title">
-                        <a href="#">Learning C++ Through Game Programming</a>
-                      </h5>
-                      <ul class="event-held">
-                        <li>Author : Eric Johnson</li>
-                        <li>Field : Technology</li>
-                        <li>Edition : 1st</li>
-                        <li>Issue Date : April 23 2018</li>
-                        <li>Copies : 3</li>
-                        <li>Collected From : School Name</li>
-                        <li>Delivered to : School Name</li>
-                        <li>Status: Awaiting Shipment</li>
-                      </ul>
+              <v-card>
+                <v-container fluid grid-list-lg>
+                  <v-layout row wrap>
+                    <v-flex xs12>
+                      <v-card color="blue-grey darken-2" class="white--text">
+                        <v-card-title primary-title>
+                          <div>
+                            <div class="headline">Unlimited music now</div>
+                            <span>Listen to your favorite artists and albums whenever and wherever, online and offline.</span>
+                          </div>
+                        </v-card-title>
+                        <v-card-actions>
+                          <v-btn flat dark>Listen now</v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-flex>
 
-                      <div class="grid__half__sticky">
-                        <button
-                          class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                        >
-                          <i class="fas fa-book"></i> Show Less
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="event">
-                <div class="row">
-                  <div class="search-banner">
-                    <a>
-                      <div class="event-thumb">
-                        <div class="thumb">
-                          <img
-                            class="full-width search-img"
-                            src="../assets/images/blog/post1.jpg"
-                            alt
-                          >
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="search-details white-bg">
-                    <div class="event-content white-bg nb">
-                      <h5 class="event-title">
-                        <a href="#">The Go Programming Language</a>
-                      </h5>
-                      <ul class="event-held">
-                        <li>Author : Eric Johnson</li>
-                        <li>Field : Technology</li>
-                        <li>Edition : 1st</li>
-                        <li>Issue Date : April 23 2018</li>
-                        <li>Copies : 3</li>
-                        <li>Collected From : School Name</li>
-                        <li>Delivered to : School Name</li>
-                        <li>Status: Awaiting Shipment</li>
-                      </ul>
+                    <v-flex xs12>
+                      <v-card color="cyan darken-2" class="white--text">
+                        <v-layout>
+                          <v-flex xs5>
+                            <v-img
+                              src="https://cdn.vuetifyjs.com/images/cards/foster.jpg"
+                              height="125px"
+                              contain
+                            ></v-img>
+                          </v-flex>
+                          <v-flex xs7>
+                            <v-card-title primary-title>
+                              <div>
+                                <div class="headline">Supermodel</div>
+                                <div>Foster the People</div>
+                                <div>(2014)</div>
+                              </div>
+                            </v-card-title>
+                          </v-flex>
+                        </v-layout>
+                        <v-divider light></v-divider>
+                        <v-card-actions class="pa-3">
+                          Rate this album
+                          <v-spacer></v-spacer>
+                          <v-icon>star_border</v-icon>
+                          <v-icon>star_border</v-icon>
+                          <v-icon>star_border</v-icon>
+                          <v-icon>star_border</v-icon>
+                          <v-icon>star_border</v-icon>
+                        </v-card-actions>
+                      </v-card>
+                    </v-flex>
 
-                      <div class="grid__half__sticky">
-                        <button
-                          class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                        >
-                          <i class="fas fa-book"></i> Show Less
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="event">
-                <div class="row">
-                  <div class="search-banner">
-                    <a>
-                      <div class="event-thumb">
-                        <div class="thumb">
-                          <img
-                            class="full-width search-img"
-                            src="../assets/images/blog/post1.jpg"
-                            alt
-                          >
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="search-details white-bg">
-                    <div class="event-content white-bg nb">
-                      <h5 class="event-title">
-                        <a href="#">Andriod App Development with Kotlin</a>
-                      </h5>
-                      <ul class="event-held">
-                        <li>Author : Eric Johnson</li>
-                        <li>Field : Technology</li>
-                        <li>Edition : 1st</li>
-                        <li>Issue Date : April 23 2018</li>
-                        <li>Copies : 3</li>
-                        <li>Collected From : School Name</li>
-                        <li>Delivered to : School Name</li>
-                        <li>Status: Awaiting Shipment</li>
-                      </ul>
-
-                      <div class="grid__half__sticky">
-                        <button
-                          class="relax-left landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-                        >
-                          <i class="fas fa-book"></i> Show Less
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    <v-flex xs12>
+                      <v-card color="purple" class="white--text">
+                        <v-layout row>
+                          <v-flex xs7>
+                            <v-card-title primary-title>
+                              <div>
+                                <div class="headline">Halycon Days</div>
+                                <div>Ellie Goulding</div>
+                                <div>(2013)</div>
+                              </div>
+                            </v-card-title>
+                          </v-flex>
+                          <v-flex xs5>
+                            <v-img
+                              src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
+                              height="125px"
+                              contain
+                            ></v-img>
+                          </v-flex>
+                        </v-layout>
+                        <v-divider light></v-divider>
+                        <v-card-actions class="pa-3">
+                          Rate this album
+                          <v-spacer></v-spacer>
+                          <v-icon>star_border</v-icon>
+                          <v-icon>star_border</v-icon>
+                          <v-icon>star_border</v-icon>
+                          <v-icon>star_border</v-icon>
+                          <v-icon>star_border</v-icon>
+                        </v-card-actions>
+                      </v-card>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card>
             </div>
           </div>
           <div id="tab-content4" class="tab-content">
             <div class="column width-12 no-padding mt-30">Shipment ........................</div>
+            <div id="app" class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <h1 class="text-center">Products</h1>
+                  <hr>
+                </div>
+              </div>
+
+              <img v-if="loading" src="//placehold.it/100">
+
+              <section v-else style="margin-left: 10px;"></section>
+            </div>
           </div>
         </div>
       </div>
@@ -1391,9 +312,76 @@
 </template>
 <script>
 import axios from "../api/efiwe";
+var prodData = [
+  {
+    albumId: 1,
+    id: 1,
+    title: "accusamus beatae ad facilis cum similique qui sunt",
+    url: "http://placehold.it/600/92c952",
+    thumbnailUrl: "https://gradientjoy.com/300"
+  },
+  {
+    albumId: 1,
+    id: 2,
+    title: "reprehenderit est deserunt velit ipsam",
+    url: "http://placehold.it/600/771796",
+    thumbnailUrl: "https://gradientjoy.com/300"
+  },
+  {
+    albumId: 1,
+    id: 3,
+    title: "officia porro iure quia iusto qui ipsa ut modi",
+    url: "http://placehold.it/600/24f355",
+    thumbnailUrl: "https://gradientjoy.com/300"
+  },
+  {
+    albumId: 1,
+    id: 4,
+    title: "culpa odio esse rerum omnis laboriosam voluptate repudiandae",
+    url: "http://placehold.it/600/d32776",
+    thumbnailUrl: "http://gradientjoy.com/300"
+  },
+  {
+    albumId: 1,
+    id: 5,
+    title: "natus nisi omnis corporis facere molestiae rerum in",
+    url: "http://placehold.it/600/f66b97",
+    thumbnailUrl: "https://gradientjoy.com/300"
+  },
+  {
+    albumId: 1,
+    id: 6,
+    title: "accusamus ea aliquid et amet sequi nemo",
+    url: "http://placehold.it/600/56a8c2",
+    thumbnailUrl: "https://gradientjoy.com/300"
+  },
+  {
+    albumId: 1,
+    id: 7,
+    title: "officia delectus consequatur vero aut veniam explicabo molestias",
+    url: "http://placehold.it/600/b0f7cc",
+    thumbnailUrl: "https://gradientjoy.com/300"
+  },
+  {
+    albumId: 1,
+    id: 8,
+    title: "aut porro officiis laborum odit ea laudantium corporis",
+    url: "http://placehold.it/600/54176f",
+    thumbnailUrl: "https://gradientjoy.com/300"
+  },
+  {
+    albumId: 1,
+    id: 9,
+    title: "qui eius qui autem sed",
+    url: "http://placehold.it/600/51aa97",
+    thumbnailUrl: "https://gradientjoy.com/300"
+  }
+];
 export default {
   data() {
     return {
+      loading: false,
+      cart: [],
       books: [],
       active: true,
       validEmail: false,
@@ -1408,7 +396,7 @@ export default {
         password: ""
       },
       searchState: 1,
-      authenticated: "",
+
       userData: [],
       currentUser: "",
       userType: 0
@@ -1416,12 +404,16 @@ export default {
   },
   props: ["session"],
   methods: {
-     getPic(index) {
-       console.log(index);
-       const src = 'http://localhost:3000/' +index;
-       console.log(src);
-    return src;
-  },
+    getPic(index) {
+      console.log(index);
+      const src = "http://efiwe.org:3100/" + index;
+      console.log(src);
+      return src;
+    },
+    addProductToCart: function(product) {
+      this.cart.push(product);
+      console.log(this.cart);
+    },
     tokenizer() {
       const validation = localStorage.getItem("loginToken");
       if (validation) {
@@ -1454,10 +446,11 @@ export default {
       this.$router.push({ name: "AddBook" });
     },
     getBooks() {
-      axios.get('/books')
+      axios
+        .get("/books")
         .then(response => {
-         this.books = response.data;
-           console.log(this.books);
+          this.books = response.data;
+          console.log(this.books);
         })
         .catch(err => console.log(err));
     }
@@ -1482,12 +475,16 @@ export default {
     }
   },
   beforeMount() {
-    this.tokenizer();
-    this.authenticated = this.session;
+    //this.tokenizer();
   },
   mounted() {
     this.userSwitcher();
     this.getBooks();
+  },
+  created() {
+    this.loading = true;
+    this.products = prodData;
+    this.loading = false;
   }
 };
 </script>

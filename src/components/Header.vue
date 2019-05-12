@@ -46,10 +46,36 @@
                       <div class="dropdown">
                         <nav class="navigation nav-block primary-navigation">
                           <ul class="relax-right">
+                            <li
+                              :class="menuSwitcher.contact"
+                              v-if="user.isAdmin || user.role_id === 3"
+                            >
+                              <router-link to="/librarian">Librarian</router-link>
+                            </li>
+                            <li
+                              :class="menuSwitcher.contact"
+                              v-if="user.isAdmin || user.role_id === 5"
+                            >
+                              <router-link to="/volunteer">Volunteer</router-link>
+                            </li>
                             <li :class="menuSwitcher.contact" v-if="user.isAdmin">
                               <a @click="users()">Users</a>
                             </li>
-                            <li class="contains-sub-menu" v-if="!authenticated">
+                            <li class="contains-sub-menu" v-if="authenticated">
+                              <a @click.prevent>
+                                <i class="fas fa-chevron-circle-down"></i>
+                                {{user.firstname}} {{user.lastname}}
+                              </a>
+                              <ul class="sub-menu">
+                                <li>
+                                  <a @click.prevent="logout">Logout</a>
+                                </li>s
+                                <!-- <li>
+                                  <a @click.prevent="register">Join Us</a>
+                                </li>-->
+                              </ul>
+                            </li>
+                            <li class="contains-sub-menu" v-else>
                               <a @click.prevent>
                                 <i class="fas fa-chevron-circle-down"></i> My
                                 Account
@@ -63,20 +89,7 @@
                                 </li>
                               </ul>
                             </li>
-                             <li class="contains-sub-menu" v-if="authenticated">
-                              <a @click.prevent>
-                                <i class="fas fa-chevron-circle-down"></i> 
-                                {{user.firstname}} {{user.lastname}}
-                              </a>
-                              <ul class="sub-menu">
-                                <li>
-                                  <a @click.prevent="logout">Logout</a>
-                                </li>
-                                <!-- <li>
-                                  <a @click.prevent="register">Join Us</a>
-                                </li> -->
-                              </ul>
-                            </li>
+
                             <li>
                               <button
                                 @click="donate()"
@@ -151,7 +164,7 @@ export default {
     return {
       user: "{}",
       destination: "",
-      authenticated: "",
+      //authenticated: "",
       deviceWidth: "",
       baseWidth: "",
       baseHeight: "",
@@ -378,7 +391,7 @@ export default {
     logout() {
       localStorage.removeItem("loginToken");
       localStorage.removeItem("loginUser");
-      delete axios.defaults.headers.common['x-auth-token'];
+      delete axios.defaults.headers.common["x-auth-token"];
       window.location.href = "./login";
     },
     search() {
@@ -478,6 +491,11 @@ export default {
         this.destination = document.getElementById(dest);
         scrollToItem(this.destination);
       }, 100);
+    },
+    getLoginUserData() {
+      //this.authenticated = !!localStorage.getItem("loginToken");
+      const userData = JSON.parse(localStorage.getItem("loginUser"));
+      this.user = userData || "{}";
     }
   },
   props: ["session"],
@@ -516,7 +534,10 @@ export default {
       this.blog();
     });
 
-    this.authenticated = this.session;
+    this.$root.$on("auth", () => {
+      this.getLoginUserData();
+    });
+    //this.authenticated = this.session;
     this.headerTag = { "animated fadeInDown": true };
     setTimeout(() => {
       this.headerTag = { "animated fadeInDown": false };
@@ -525,13 +546,16 @@ export default {
     // if (token === null){
     //    this.$router.push("/login");
     // }
-    this.authenticated = !!localStorage.getItem("loginToken");
-    const userData = JSON.parse(localStorage.getItem("loginUser"));
-    this.user = userData || '{}';
   },
   created() {
     this.dynamicViews();
     this.stickyHeader();
+    this.getLoginUserData();
+  },
+  computed: {
+    authenticated() {
+      return JSON.parse(localStorage.getItem("loginUser"));
+    }
   }
 };
 </script>

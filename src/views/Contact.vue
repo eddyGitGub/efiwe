@@ -1,64 +1,76 @@
 <template>
   <div id="contact-ui" class="header-bg">
     <main class="grid__padding__sm static-form">
-
       <div class="webapp-content__inner">
         <div class="center-txt">
-
           <div class="webapp-user-form-wrapper" :class="headerTag">
-
             <div class="webapp-user-form-inner np">
               <div class="form-wrapper">
                 <div v-if="contactVerification === 1" class="form-loader form-loader-login verify">
-                  <div class="center-txt webapp-ripple-text"><i class="fas fa-envelope"></i> Sending Your Message</div>
+                  <div class="center-txt webapp-ripple-text">
+                    <i class="fas fa-envelope"></i> Sending Your Message
+                  </div>
 
                   <!--<div class="webapp-ripple">-->
-                    <!--<div></div><div></div>-->
+                  <!--<div></div><div></div>-->
                   <!--</div>-->
 
                   <!-- <div class="center-txt webapp-ripple-text"><i class="fas fa-business-time"></i> Coming Soon</div> -->
 
                   <div class="webapp-ripple">
-                    <div></div><div></div>
+                    <div></div>
+                    <div></div>
                   </div>
-
                 </div>
-                <div v-else-if="contactVerification === 2" class="form-loader form-loader-login success">
-                  <div class="center-txt webapp-ripple-text">   <i class="fas fa-check-circle"></i> Message Sent Successful</div>
+                <div
+                  v-else-if="contactVerification === 2"
+                  class="form-loader form-loader-login success"
+                >
+                  <div class="center-txt webapp-ripple-text">
+                    <i class="fas fa-check-circle"></i> Message Sent Successful
+                  </div>
 
                   <div class="webapp-ripple">
                     <div></div>
                     <i class="webapp-ripple-notification fa fa-check-circle"></i>
                     <div></div>
                   </div>
-
                 </div>
-                <div v-else-if="contactVerification === 3" class="form-loader form-loader-login failure">
-                  <div class="center-txt webapp-ripple-text">   <i class="fa fa-bell"></i> Message Sending Failed</div>-->
-
+                <div
+                  v-else-if="contactVerification === 3"
+                  class="form-loader form-loader-login failure"
+                >
+                  <div class="center-txt webapp-ripple-text">
+                    <i class="fa fa-bell"></i> Message Sending Failed
+                  </div>
+-->
                   <div class="webapp-ripple">
                     <!--<div></div>-->
                     <i class="webapp-ripple-notification fa fa-times-circle"></i>
                     <!--<div></div>-->
-                 </div>
+                  </div>
                   <!-- <div class="center-txt webapp-ripple-text"><i class="fas fa-business-time"></i> Coming Soon</div> -->
 
                   <div class="webapp-ripple">
-                    <div></div><div></div>
+                    <div></div>
+                    <div></div>
                   </div>
-
                 </div>
                 <div class="login-form grid__padding pt-15" v-else>
-                  <div  class="webapp-user-form-header m-b-sm nb ns">
+                  <div class="webapp-user-form-header m-b-sm nb ns">
                     <div class="webapp-user-form-inner">
                       <div class="grid__full">
                         <div class="card" style="width:70%">
                           <div class="card-body">
                             <div class="d-flex flex-row">
-                              <div class="round round-lg align-self-center"><i class="fas fa-envelope"></i></div>
+                              <div class="round round-lg align-self-center">
+                                <i class="fas fa-envelope"></i>
+                              </div>
                               <div class="m-l-10 align-self-center">
                                 <h3 class="wallet m-b-0 font-light text-white">Contact Us</h3>
-                                <h5 class="wallet text-muted m-b-0 text-white"><i class="palette4 fas fa-map-signs"></i> 135 Springer Avenue, Edwardsville, Il, 62025 </h5>
+                                <h5 class="wallet text-muted m-b-0 text-white">
+                                  <i class="palette4 fas fa-map-signs"></i> 135 Springer Avenue, Edwardsville, IL, 62025
+                                </h5>
                               </div>
                             </div>
                           </div>
@@ -66,51 +78,87 @@
                       </div>
                     </div>
                   </div>
-                  <br />
+                  <br>
                   <div class="form-group grid__full mt-10">
                     <label class="form-component text-white" for="formName">Name</label>
                     <div class="input-group full-border">
-                      <div class="input-group-addon"><i class="fas fa-user"></i></div>
-                      <input id="formName" v-model.trim="contactData.name" :class="validateForm.name_error" class="form-control" type="text" placeholder="Enter FullName">
+                      <div class="input-group-addon">
+                        <i class="fas fa-user"></i>
+                      </div>
+                      <input
+                        id="formName"
+                        v-model.trim="contactData.name"
+                        :class="validateForm.name_error"
+                        class="form-control"
+                        type="text"
+                        placeholder="Enter FullName"
+                      >
                     </div>
                   </div>
                   <div class="form-group grid__full mt-10">
                     <label class="form-component text-white" for="formEmail">Email ID</label>
                     <div class="input-group full-border">
-                      <div class="input-group-addon"><i class="fas fa-envelope"></i></div>
-                      <input id="formEmail" v-model.trim="contactData.email" :class="validateForm.email_error" class="form-control" type="text" placeholder="Email Address">
+                      <div class="input-group-addon">
+                        <i class="fas fa-envelope"></i>
+                      </div>
+                      <input
+                        id="formEmail"
+                        v-model.trim="contactData.email"
+                        :class="validateForm.email_error"
+                        class="form-control"
+                        type="text"
+                        placeholder="Email Address"
+                      >
                     </div>
                   </div>
-                  <div class="form-group grid__full mt-10" >
+                  <div class="form-group grid__full mt-10">
                     <label class="form-component text-white" for="formPhone">Phone</label>
                     <div class="input-group full-border">
-                      <div class="input-group-addon"><i class="fas fa-mobile"></i></div>
-                      <input id="formPhone" v-model.trim="contactData.phone" :class="validateForm.phone_error" class="form-control" type="text" placeholder="Phone Number">
-
-                  </div>
+                      <div class="input-group-addon">
+                        <i class="fas fa-mobile"></i>
+                      </div>
+                      <input
+                        id="formPhone"
+                        v-model.trim="contactData.phone"
+                        :class="validateForm.phone_error"
+                        class="form-control"
+                        type="text"
+                        placeholder="Phone Number"
+                      >
+                    </div>
                   </div>
                   <div class="form-group grid__full mt-10">
                     <label class="form-component text-white" for="formMessage">Message</label>
                     <div class="input-group full-border">
-                      <div class="input-group-addon"><i class="fas fa-comment"></i></div>
-                      <textarea id="formMessage" v-model.trim="contactData.message" :class="validateForm.message_error" class="form-control" type="text" placeholder="Enter Message"></textarea>
+                      <div class="input-group-addon">
+                        <i class="fas fa-comment"></i>
+                      </div>
+                      <textarea
+                        id="formMessage"
+                        v-model.trim="contactData.message"
+                        :class="validateForm.message_error"
+                        class="form-control"
+                        type="text"
+                        placeholder="Enter Message"
+                      ></textarea>
                     </div>
                   </div>
 
                   <div class="grid__full mt-10">
-                    <button @click.prevent="sendMessage"  type="submit" class="button medium rounded bkg-green bkg-hover-green color-white color-hover-white"><i class="fas fa-envelope"></i> Send Message</button>
+                    <button
+                      @click.prevent="sendMessage"
+                      type="submit"
+                      class="button medium rounded bkg-green bkg-hover-green color-white color-hover-white"
+                    >
+                      <i class="fas fa-envelope"></i> Send Message
+                    </button>
                   </div>
-
-
                 </div>
               </div>
             </div>
-
           </div>
-
         </div>
       </div>
-
     </main>
   </div>
 </template>

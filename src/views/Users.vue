@@ -35,13 +35,9 @@
                   <tbody>
                     <tr v-for="(user, index) in users" :key="user._id">
                       <th>{{ index + 1}}</th>
-
                       <th>{{ user.firstname }}</th>
-
                       <td>{{ user.lastname }}</td>
-
                       <td>{{ user.email }}</td>
-
                       <td>{{user.phone }}</td>
                       <td>
                         <span v-if="user.role_id === 1">Admin</span>
@@ -77,6 +73,9 @@
                         </span>
                       </td>
                     </tr>
+                    <tr v-if="users.length == 0">
+                      <td colspan="11">No user fond</td>
+                    </tr>
                   </tbody>
                 </table>
                 <div class="mt-3 text-center">
@@ -93,178 +92,6 @@
             </div>
           </div>
 
-          <!-- <div class="column width-3 no-padding-right">
-            <div class="mb-60">
-              <h4 class="font-mont">Upcoming Events</h4>
-              <div class=" row flex boxes two-columns-on-mobile">
-                <div class="column width-12 left center no-padding-left blog-entry-inline">
-                  <div class="event">
-                    <div class="row">
-                      <div class="event-banner">
-                        <a>
-                          <div class="event-thumb">
-                            <div class="thumb">
-                              <img class="full-width event-img-small" src="../assets/images/blog/post9.jpg" alt="">
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="event-details">
-                        <div class="event-content-small white-bg nb">
-                          <h5 class="event-title small-text"><a href="#">Event Name</a></h5>
-                          <ul class="event-held list-inline">
-                            <li><i class="fas fa-calendar"></i> SEP 20 2018</li>
-                            <li><i class="fas fa-eye"></i> View Event</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-                <div class="column width-12 left center no-padding-left blog-entry-inline">
-                  <div class="event">
-                    <div class="row">
-                      <div class="event-banner">
-                        <a>
-                          <div class="event-thumb">
-                            <div class="thumb">
-                              <img class="full-width event-img-small" src="../assets/images/blog/post11.jpg" alt="">
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="event-details">
-                        <div class="event-content-small white-bg nb">
-                          <h5 class="event-title small-text"><a href="#">Event Name</a></h5>
-                          <ul class="event-held list-inline">
-                            <li><i class="fas fa-calendar"></i> SEP 20 2018</li>
-                            <li><i class="fas fa-eye"></i> View Event</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-                <div class="column width-12 left center no-padding-left blog-entry-inline">
-                  <div class="event">
-                    <div class="row">
-                      <div class="event-banner">
-                        <a>
-                          <div class="event-thumb">
-                            <div class="thumb">
-                              <img class="full-width event-img-small" src="../assets/images/blog/post2.jpg" alt="">
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="event-details">
-                        <div class="event-content-small white-bg nb">
-                          <h5 class="event-title small-text"><a href="#">Event Name</a></h5>
-                          <ul class="event-held list-inline">
-                            <li><i class="fas fa-calendar"></i> NOV 20 2018</li>
-                            <li><i class="fas fa-eye"></i> View Event</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-                <div class="column width-12 left center no-padding-left blog-entry-inline">
-                  <div class="event">
-                    <div class="row">
-                      <div class="event-banner">
-                        <a>
-                          <div class="event-thumb">
-                            <div class="thumb">
-                              <img class="full-width event-img-small" src="../assets/images/blog/post10.jpg" alt="">
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="event-details">
-                        <div class="event-content-small white-bg nb">
-                          <h5 class="event-title small-text"><a href="#">Event Name</a></h5>
-                          <ul class="event-held list-inline">
-                            <li><i class="fas fa-calendar"></i> SEP 20 2018</li>
-                            <li><i class="fas fa-eye"></i> View Event</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-
-
-              </div>
-            </div>
-            <div class="mb-60">
-              <h4 class="font-mont">Categories</h4>
-              <div class="mt-20 blog-entry-inline">
-                <div class=" row flex boxes  two-columns-on-mobile">
-                  <div class="column width-6 left center no-padding-left blog-entry-inline">
-                    <div class="blog-entry card-2">
-                      <div class="img-box">
-                        <img src="../assets/images/blog/post2.jpg" alt="Blog Post Image">
-                      </div>
-                      <div class="content-box">
-                        <div class="content">
-                          <h3 class="category-text bold-font text-uppercase category-name center-txt">Category Name </h3>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="column width-6 left center no-padding-right blog-entry-inline">
-                    <div class="blog-entry card-2">
-                      <div class="img-box">
-                        <img src="../assets/images/blog/post3.jpg" alt="Blog Post Image">
-                      </div>
-                      <div class="content-box">
-                        <div class="content">
-                          <h3 class="category-text bold-font text-uppercase category-name center-txt">Category Name </h3>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mt-20 blog-entry-inline">
-                <div class=" row flex boxes  two-columns-on-mobile">
-                <div class="column width-6 left center no-padding-left blog-entry-inline">
-                  <div class="blog-entry card-2">
-                    <div class="img-box">
-                      <img src="../assets/images/blog/post9.jpg" alt="Blog Post Image">
-                    </div>
-                    <div class="content-box">
-                      <div class="content">
-                        <h3 class="category-text bold-font text-uppercase category-name center-txt">Category Name </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="column width-6 left center no-padding-right blog-entry-inline">
-                  <div class="blog-entry card-2">
-                    <div class="img-box">
-                      <img src="../assets/images/blog/post5.png" alt="Blog Post Image">
-                    </div>
-                    <div class="content-box">
-                      <div class="content">
-                        <h3 class="category-text bold-font text-uppercase category-name center-txt">Category Name </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </div>
-              </div>
-
-            </div>
-
-
-          </div>-->
           <b-modal ref="myModalRef" hide-footer title="Using Component Methods">
             <div class="d-block text-center">
               <h3>Hello From My Modal!</h3>
@@ -385,6 +212,9 @@ export default {
       this.getUsers();
     }
   },
+  // beforeMount() {
+  //   this.getUsers();
+  // }
   created() {
     this.getUsers();
   }

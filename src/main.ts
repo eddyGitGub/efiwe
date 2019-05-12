@@ -6,8 +6,11 @@ import BootstrapVue from 'bootstrap-vue'
 import moment from 'moment'
 import axios from 'axios'
 
+
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+
 import './assets/css/style.css'
+import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 import './assets/css/style-flex.css'
 import './assets/css/animate.css'
 import './assets/css/landing.css'
@@ -15,6 +18,9 @@ import VueSweetalert2 from 'vue-sweetalert2'
 import VueToastr from '@deveodk/vue-toastr'
 import VuePlaceAutocomplete from 'vue-place-autocomplete/dist/VuePlaceAutocomplete.umd.js'
 import '@deveodk/vue-toastr/dist/@deveodk/vue-toastr.css'
+import Vuetify from 'vuetify'
+
+Vue.use(Vuetify)
 Vue.config.productionTip = true
 // Vue.use(VueGmaps, {
 //   key: 'AIzaSyAL98Xl6IHlR9sTIgkFCn11rAijLPmDCVM'
@@ -41,10 +47,10 @@ if (token) {
   Vue.prototype.$http.defaults.headers.common['x-auth-token'] = token
 }
 axios.interceptors.response.use((response) => {
-  console.log('Response:',response)
+  console.log('Response:', response)
   return response;
-}, (error)=>{
-  console.log('Error:',error)
+}, (error) => {
+  console.log('Error:', error)
   return Promise.reject(error)
 })
 // Vue.prototype.interceptors.response.use(response => { // intercept the global error

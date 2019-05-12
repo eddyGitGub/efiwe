@@ -86,11 +86,15 @@
                       <input
                         id="loginEmail"
                         v-model.trim="loginData.email"
-                        :class="validateUser.email_error"
+                        :class="{ 'form-error': submitted && $v.loginData.email.$error }"
                         class="form-control"
                         type="text"
                         placeholder="Email Address"
                       >
+                      <div v-if="submitted && $v.loginData.email.$error" class="invalid-fback">
+                        <span v-if="!$v.loginData.email.required">Email is required</span>
+                        <span v-if="!$v.loginData.email.email">Email is invalid</span>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group grid__full">
@@ -102,11 +106,14 @@
                       <input
                         id="loginPasskey"
                         v-model.trim="loginData.password"
-                        :class="validateUser.password_error"
+                        :class="{ 'form-error': submitted && $v.loginData.password.$error }"
                         class="form-control"
                         type="password"
                         placeholder="Password"
                       >
+                      <div v-if="submitted && $v.loginData.password.$error" class="invalid-fback">
+                        <span v-if="!$v.loginData.password.required">Password is required</span>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group grid__full">
@@ -159,10 +166,16 @@
 <script>
 import axios from "../api/efiwe";
 import jwt_decode from "jwt-decode";
+import Vue from "vue";
+import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
+import Vuelidate from "vuelidate";
+
+Vue.use(Vuelidate);
 //import {store} from "./store.js";
 export default {
   data() {
     return {
+      submitted: false,
       active: true,
       authenticated: "",
       validEmail: false,
@@ -179,32 +192,24 @@ export default {
       loginVerification: 0
     };
   },
+  validations: {
+    loginData: {
+      email: { required, email },
+      password: { required }
+    }
+  },
   methods: {
     loginUser() {
-      var app = this;
-      const reg = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+.([A-Za-z]{2,4})$/;
-      this.validEmail = reg.test(this.loginData.email);
-
-      if (this.validEmail === false) {
-        this.validateUser.email_error = { "form-error": true };
-        this.proceed = false;
-      } else {
-        this.validateUser.email_error = { "form-error": false };
+      this.submitted = true;
+      // stop here if form is invalid
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
       }
+      this.proceed = true;
+      let formActor = this.proceed;
 
-      if (this.loginData.password.length <= 3) {
-        this.validateUser.password_error = { "form-error": true };
-        this.proceed = false;
-      } else {
-        this.validateUser.password_error = { "form-error": false };
-      }
-
-      if (this.validEmail === true && this.loginData.password.length > 3) {
-        this.proceed = true;
-        let formActor = this.proceed;
-
-        this.processRequest(formActor);
-      }
+      this.processRequest(formActor);
     },
     processRequest(formActor) {
       if (formActor) {
@@ -222,20 +227,22 @@ export default {
 
                 //"session-id" = crypto;
                 localStorage.setItem("loginToken", loginRequest.data.token);
-                localStorage.setItem("loginUser",JSON.stringify(loginRequest.data.loginUser));
-                 const authUser = JSON.parse(localStorage.getItem('loginUser'));
+                localStorage.setItem(
+                  "loginUser",
+                  JSON.stringify(loginRequest.data.loginUser)
+                );
+                const authUser = JSON.parse(localStorage.getItem("loginUser"));
+                this.$root.$emit("auth");
                 setTimeout(() => {
                   if (authUser.role_id === 1) {
                     this.$router.push("/users");
-                  } else if (authUser.role_id === 3) {
+                  } else if (authUser.role_name === "Librarian") {
                     this.$router.push("/librarian");
-                  } else if (authUser.role_id === 5){
+                  } else if (authUser.role_id === 5) {
                     this.$router.push("/volunteer");
+                  } else {
+                    this.$router.push("/books");
                   }
-                  else {
-                     this.$router.push("/books");
-                  }
-                 
                 }, 4000);
               }, 500);
             } else if (loginRequest.status === 500) {
@@ -290,3 +297,13 @@ export default {
   }
 };
 </script>
+<style scoped>
+.invalid-fback {
+  display: block !important;
+  width: 100%;
+  margin-top: 0;
+  color: #fff !important;
+  background: #f46b45;
+}
+</style>
+

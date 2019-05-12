@@ -14,17 +14,25 @@
     <div id="dashboard" class="top-border animated fadeInUp">
       <div class="card w-85" v-if="details">
         <div class="search-banner">
-                          <a>
-                            <div class="event-thumb">
-                              <div class="thumb">
-                                <img class="full-width search-img card-img-top" :src="getPic(details.bookImage)" alt="">
-                              </div>
-                            </div>
-                          </a>
-                        </div>
-        <div class="view overlay">
-          <img :src="getPic(details.bookImage)" class="card-img-top full-width search-img" alt="...">
+          <a>
+            <div class="offset-8 event-thumb-img">
+              <div class="view overlay">
+                <img
+                  class="full-width search-img card-img-top"
+                  :src="getPic(details.bookImage)"
+                  alt
+                >
+              </div>
+            </div>
+          </a>
         </div>
+        <!-- <div class="view overlay">
+          <img
+            :src="getPic(details.bookImage)"
+            class="full-width search-img card-img-top"
+            alt="..."
+          >
+        </div>-->
 
         <div class="card-body">
           <div class="row mx-auto" style="width: 70%;">
@@ -80,6 +88,7 @@
             <div class="col-12" v-if="details.status == 'Book Request'">
               <button
                 type="button"
+                v-if="authenticated"
                 class="relax-left button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white float-right"
                 :disabled="submitting"
                 @click="ownedBookReq(details._id)"
@@ -119,7 +128,6 @@ export default {
   },
   methods: {
     ownedBookReq(id) {
-      console.log(this.field1);
       this.submitting = true;
       const model = {
         id: id,
@@ -138,7 +146,7 @@ export default {
         });
     },
     getPic(index) {
-      return "http://localhost:3000/" + index;
+      return "http://efiwe.org:3100/" + index;
     }
   },
   created() {
@@ -157,6 +165,14 @@ export default {
       .catch(err => {
         console.log(err);
       });
+  },
+  computed: {
+    authenticated() {
+      const userData = JSON.parse(localStorage.getItem("loginUser"));
+      const auth = userData || "{}";
+      console.log("user", auth);
+      return auth.role_id !== 3;
+    }
   }
 };
 </script>

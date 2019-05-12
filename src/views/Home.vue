@@ -1,30 +1,32 @@
 <template>
   <div class="content clearfix">
     <div id="intro">
-      <app-slider @miniScrollHandler="miniScroll" />
-      <div @click="miniScroll('donate-stats')" class="for-pc link-down animated fadeInUp" style="opacity: 1;"></div>
+      <app-slider @miniScrollHandler="miniScroll"/>
+      <div
+        @click="miniScroll('donate-stats')"
+        class="for-pc link-down animated fadeInUp"
+        style="opacity: 1;"
+      ></div>
     </div>
 
-    <div id="donate-stats"
-      class="section-block animated fadeInUp bkg-light">
+    <div id="donate-stats" class="section-block animated fadeInUp bkg-light">
       <div class="row">
         <div class="column width-12">
-          <div class="tabs rounded button-nav pill small nb center ">
+          <div class="tabs rounded button-nav pill small nb center">
             <div class="tab-panes">
               <div class="row flex boxes two-columns-on-tablet">
                 <div class="grid__full">
                   <div class="card">
                     <div class="card-body">
                       <div class="column width-12">
-
                         <div class="row flex">
                           <div class="column width-8 push-2">
                             <div class="feature-content">
                               <div class="feature-content-inner center">
                                 <div class="round round-lg align-self-center">
-                                    <i class="fas fa-gift"></i>
+                                  <i class="fas fa-gift"></i>
                                 </div>
-                                <h3 class=" mb-0 font-mont">Our Donations</h3>
+                                <h3 class="mb-0 font-mont">Our Donations</h3>
                                 <p class="lead grid__padding">
                                   Efiwe has been raising funds for the shipment of
                                   collected books, outreaches to more schools to start
@@ -39,37 +41,35 @@
 
                         <div class="row flex boxes two-columns-on-tablet">
                           <div class="features column width-3 left center magic-b">
-                            <div class="grid-boxes rounded large style-3 columns-1 mb-0 border-grey-light">
+                            <div
+                              class="grid-boxes rounded large style-3 columns-1 mb-0 border-grey-light"
+                            >
                               <div class="grid-boxes-column">
                                 <div class="grid-boxes-header">
                                   <div class="grid__full no-padding">
-
-                                      <div class="countCenter">
-                                        <div class="font-mont full-width light-txt">
-                                          <i class="fas fa-book-open"></i>
-                                        </div>
+                                    <div class="countCenter">
+                                      <div class="font-mont full-width light-txt">
+                                        <i class="fas fa-book-open"></i>
                                       </div>
-
+                                    </div>
                                   </div>
                                 </div>
                                 <hr class="no-margins">
                                 <div class="grid-boxes-text bkg-white">
                                   <p class="lead">
-                                    <span class="title-name"> 10,277 Books Donated </span>
-                                    <span class="title-post">
-
-
-                                      Books Donated since 2016, 18 benefitting Institution Libraries in Nigeria and Ghana.
-
-                                    </span>
+                                    <span class="title-name">10,277 Books Donated</span>
+                                    <span
+                                      class="title-post"
+                                    >Books Donated since 2016, 18 benefitting Institution Libraries in Nigeria and Ghana.</span>
                                   </p>
                                 </div>
-
                               </div>
                             </div>
                           </div>
                           <div class="features column width-3 left center magic-b">
-                            <div class="grid-boxes rounded large style-3 columns-1 mb-0 border-grey-light">
+                            <div
+                              class="grid-boxes rounded large style-3 columns-1 mb-0 border-grey-light"
+                            >
                               <div class="grid-boxes-column">
                                 <div class="grid-boxes-header">
                                   <div class="countCenter">
@@ -81,22 +81,19 @@
                                 <hr class="no-margins">
                                 <div class="grid-boxes-text bkg-white">
                                   <p class="lead">
-
-                                    <span class="title-name"> Four Locations </span>
-                                    <span class="title-post">
-
-
-                                      Book drives currently happening @ Brown U., Ewardsville Il. University of Idaho. Join us
-
-                                    </span>
+                                    <span class="title-name">Four Locations</span>
+                                    <span
+                                      class="title-post"
+                                    >Book drives currently happening @ Brown U., Edwardsville IL. University of Idaho. Join us</span>
                                   </p>
                                 </div>
-
                               </div>
                             </div>
                           </div>
                           <div class="features column width-3 left center magic-b">
-                            <div class="grid-boxes rounded large style-3 columns-1 mb-0 border-grey-light">
+                            <div
+                              class="grid-boxes rounded large style-3 columns-1 mb-0 border-grey-light"
+                            >
                               <div class="grid-boxes-column">
                                 <div class="grid-boxes-header">
                                   <div class="countCenter">
@@ -108,20 +105,19 @@
                                 <hr class="no-margins">
                                 <div class="grid-boxes-text bkg-white">
                                   <p class="lead">
-
-                                    <span class="title-name"> Over 150 Volunteers </span>
-                                    <span class="title-post">
-                                      We've got support from numerous volunteers working hard to helpus reach our goals.
-
-                                    </span>
+                                    <span class="title-name">Over 150 Volunteers</span>
+                                    <span
+                                      class="title-post"
+                                    >We've got support from numerous volunteers working hard to help us reach our goals.</span>
                                   </p>
                                 </div>
-
                               </div>
                             </div>
                           </div>
                           <div class="features column width-3 left center magic-b">
-                            <div class="grid-boxes rounded large style-3 columns-1 mb-0 border-grey-light">
+                            <div
+                              class="grid-boxes rounded large style-3 columns-1 mb-0 border-grey-light"
+                            >
                               <div class="grid-boxes-column">
                                 <div class="grid-boxes-header">
                                   <div class="countCenter">
@@ -133,19 +129,18 @@
                                 <hr class="no-margins">
                                 <div class="grid-boxes-text bkg-white">
                                   <p class="lead">
-                                    <span class="title-name">Over $7898 Donated </span>
-                                    <span class="title-post">With the support of friends and colleagues, we've raised $7898
-                                    for the shipment of books collected
+                                    <span class="title-name">Over $7898 Donated</span>
+                                    <span class="title-post">
+                                      With the support of friends and colleagues, we've raised $7898
+                                      for the shipment of books collected
                                     </span>
                                   </p>
                                 </div>
-
                               </div>
                             </div>
                           </div>
                           <br>
                         </div>
-
                       </div>
                     </div>
                   </div>
@@ -157,62 +152,57 @@
       </div>
       <div class="row flex boxes one-column-on-tablet">
         <div class="column width-8 mt-30 push-2">
-
           <div class="feature-content center-block center-elem">
             <div class="feature-content-inner center">
               <div class="center-block center-elem">
                 <button
                   @click="donateHandler()"
-                  class="landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white">
+                  class="landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
+                >
                   <i class="fas fa-gift"></i> Donate
                 </button>
                 <button
                   @click.prevent="miniScroll('about')"
-                  class="landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white">
+                  class="landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
+                >
                   <i class="fab fa-black-tie"></i> About Us
                 </button>
-
               </div>
             </div>
           </div>
-
-
         </div>
       </div>
     </div>
 
-    <div id="about"
-      class="section-block top-border animated fadeInUp ">
+    <div id="about" class="section-block top-border animated fadeInUp">
       <div class="row">
         <div class="column width-12 center grid__padding">
-          <div class="round round-lg align-self-center"><i class="fab fa-black-tie"></i></div>
-          <h3 class=" mb-0 font-mont">About Us</h3>
-          <p class="lead font-mont grid__padding">We are very passionate about our work and continuously
-          strive for
-          excellence.</p>
+          <div class="round round-lg align-self-center">
+            <i class="fab fa-black-tie"></i>
+          </div>
+          <h3 class="mb-0 font-mont">About Us</h3>
+          <p class="lead font-mont grid__padding">
+            We are very passionate about our work and continuously
+            strive for
+            excellence.
+          </p>
         </div>
       </div>
       <div class="row flex boxes one-column-on-tablet mt-30">
         <div class="column width-3 no-padding-right">
-          <div class="about-wrapper box xlarge rounded border-grey-light box-shadow bkg-charcoal-light">
+          <div
+            class="about-wrapper box xlarge rounded border-grey-light box-shadow bkg-charcoal-light"
+          >
             <div class="table">
-
               <div class="about-img">
-                <img
-                  class="about-logo"
-                  src="../assets/images/efiwe-about.png"
-                  alt="Efiwe Logo">
-
+                <img class="about-logo" src="../assets/images/efiwe-about.png" alt="Efiwe Logo">
               </div>
-
-
             </div>
           </div>
         </div>
         <div class="column width-9 no-padding-right">
-          <div class="box xlarge rounded border-grey-light box-shadow ">
+          <div class="box xlarge rounded border-grey-light box-shadow">
             <div class="table">
-
               <div>
                 <h4 class="font-mont left-txt">Profile</h4>
                 <p class="lead mb-20 left-txt font-mont">
@@ -220,7 +210,6 @@
                   aim of continuing
                   to enrich the educational experiences of Africans in higher institutions back on the
                   continent.
-
                 </p>
 
                 <p class="lead mb-20 left-txt font-mont">
@@ -228,7 +217,6 @@
                   on the human
                   capital in Africa and therefore lead to a more educated populace and a better
                   Africa.
-
                 </p>
 
                 <p class="lead mb-20 left-txt font-mont">
@@ -237,74 +225,68 @@
                   and to deserving institutions. Please feel free to ask us questions about our
                   process and handling of
                   resources (financial, educational etc.).
-
                 </p>
-
               </div>
-
-
             </div>
           </div>
         </div>
 
         <div class="column width-8 mt-50 push-2">
-
           <div class="feature-content center-block center-elem">
             <div class="feature-content-inner center">
               <div class="center-block center-elem">
                 <button
                   @click="aboutHandler()"
-                  class="landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white">
+                  class="landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
+                >
                   <i class="fas fa-check-circle"></i> Read More
                 </button>
                 <button
                   @click.prevent="miniScroll('team')"
-                  class="landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white">
+                  class="landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
+                >
                   <i class="fas fa-users"></i> Our Team
                 </button>
               </div>
             </div>
           </div>
-
-
         </div>
       </div>
     </div>
 
-    <div id="team"
-      class="animated fadeInUp">
+    <div id="team" class="animated fadeInUp">
       <div class="section-block bkg-light">
         <div class="row">
           <div class="column width-12 center grid__padding">
-            <div class="round round-lg align-self-center"><i class="fas fa-users"></i></div>
-            <h3 class=" mb-0 font-mont">Our Team</h3>
-            <p class="lead font-mont grid__padding">We believe tha great inventions worthy of note are never
-            done by one
-            person</p>
+            <div class="round round-lg align-self-center">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3 class="mb-0 font-mont">Our Team</h3>
+            <p class="lead font-mont grid__padding">
+              We believe tha great inventions worthy of note are never
+              done by one
+              person
+            </p>
           </div>
         </div>
         <div class="row">
           <div class="column width-12">
-            <div class="tabs rounded button-nav pill small nb center ">
+            <div class="tabs rounded button-nav pill small nb center">
               <div class="tab-panes">
                 <div class="row flex boxes two-columns-on-tablet">
                   <div class="features column width-3 left center magic-b">
                     <div class="grid-boxes rounded large style-3 columns-1 mb-0 border-grey-light">
                       <div class="grid-boxes-column">
                         <div class="grid-boxes-header">
-                          <img
-                            src="../assets/images/teams/ee.jpg"
-                            alt=""
-                            class="round-img">
+                          <img src="../assets/images/teams/ee.jpg" alt class="round-img">
                         </div>
                         <hr class="no-margins">
                         <div class="grid-boxes-text bkg-white">
                           <p class="lead">
-                            <span class="title-name">Prof. Emmanuel Eneyo </span>
-                            <span class="title-post">Board Memeber / Treasurer </span>
+                            <span class="title-name">Prof. Emmanuel Eneyo</span>
+                            <span class="title-post">Board Memeber / Treasurer</span>
                           </p>
                         </div>
-
                       </div>
                     </div>
                   </div>
@@ -312,10 +294,7 @@
                     <div class="grid-boxes rounded large style-3 columns-1 mb-0 border-grey-light">
                       <div class="grid-boxes-column">
                         <div class="grid-boxes-header">
-                          <img
-                            src="../assets/images/teams/jc.jpg"
-                            alt=""
-                            class="round-img">
+                          <img src="../assets/images/teams/jc.jpg" alt class="round-img">
                         </div>
                         <hr class="no-margins">
                         <div class="grid-boxes-text bkg-white">
@@ -324,7 +303,6 @@
                             <span class="title-post">Vice Chairman/ Board Secretary</span>
                           </p>
                         </div>
-
                       </div>
                     </div>
                   </div>
@@ -332,19 +310,15 @@
                     <div class="grid-boxes rounded large style-3 columns-1 mb-0 border-grey-light">
                       <div class="grid-boxes-column">
                         <div class="grid-boxes-header">
-                          <img
-                            src="../assets/images/teams/pa.jpg"
-                            alt=""
-                            class="round-img">
+                          <img src="../assets/images/teams/pa.jpg" alt class="round-img">
                         </div>
                         <hr class="no-margins">
                         <div class="grid-boxes-text bkg-white">
                           <p class="lead">
-                            <span class="title-name">Philip Alabi </span>
+                            <span class="title-name">Philip Alabi</span>
                             <span class="title-post">Founder / Managing Director</span>
                           </p>
                         </div>
-
                       </div>
                     </div>
                   </div>
@@ -352,26 +326,19 @@
                     <div class="grid-boxes rounded large style-3 columns-1 mb-0 border-grey-light">
                       <div class="grid-boxes-column">
                         <div class="grid-boxes-header">
-                          <img
-                            src="../assets/images/teams/ao.jpg"
-                            alt=""
-                            class="round-img">
+                          <img src="../assets/images/teams/ao.jpg" alt class="round-img">
                         </div>
                         <hr class="no-margins">
                         <div class="grid-boxes-text bkg-white">
                           <p class="lead">
-                            <span class="title-name">Ayodeji Oluyemi </span>
+                            <span class="title-name">Ayodeji Oluyemi</span>
                             <span class="title-post">Logistics, Nigeria</span>
                           </p>
                         </div>
-
                       </div>
                     </div>
                   </div>
-
                 </div>
-
-
               </div>
             </div>
           </div>
@@ -379,85 +346,98 @@
 
         <div class="row flex boxes one-column-on-tablet">
           <div class="column width-8 mt-30 push-2">
-
             <div class="feature-content center-block center-elem">
               <div class="feature-content-inner center">
                 <div class="center-block center-elem">
                   <button
                     @click.prevent="teamsHandler()"
-                    class="landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white">
+                    class="landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
+                  >
                     <i class="fas fa-users"></i> View All
                   </button>
                   <button
                     @click.prevent="miniScroll('stories')"
-                    class="landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white">
+                    class="landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
+                  >
                     <i class="fas fa-newspaper"></i> Our Stories
                   </button>
-
                 </div>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
     </div>
 
-    <div id="stories" class="top-border  animated fadeInUp">
+    <div id="stories" class="top-border animated fadeInUp">
       <div class="section-block bkg-light">
         <div class="row">
           <div class="column width-12 center grid__padding">
-            <div class="round round-lg align-self-center"><i class="fas fa-newspaper"></i></div>
-            <h3 class=" mb-0 font-mont">Our Stories</h3>
-            <p class="lead font-mont grid__padding">We've been mentioned in numerous articles regarding our mission, vision and impact in the African Educational sector.</p>
+            <div class="round round-lg align-self-center">
+              <i class="fas fa-newspaper"></i>
+            </div>
+            <h3 class="mb-0 font-mont">Our Stories</h3>
+            <p
+              class="lead font-mont grid__padding"
+            >We've been mentioned in numerous articles regarding our mission, vision and impact in the African Educational sector.</p>
           </div>
         </div>
         <div class="row">
           <div class="column width-12">
-            <div class="tabs rounded button-nav pill small nb center ">
+            <div class="tabs rounded button-nav pill small nb center">
               <div class="tab-panes">
                 <button>
-                <div class="row boxes" v-if="this.newStories.length > 0">
-                  <app-carousel
-                  :navigationEnabled=true
-                  :perPageCustom="[[480, 2], [768, 3], [1200, 4], [1366, 4], [1500, 4] ]"
-                  :autoplay=true
-                  :loop=true
-                  :autoplayTimeout=3000
-                  :autoplayHoverPause=true
-                  :scrollPerPage=false
-                  :paginationSize=10
-                  :easing=this.linear
-                  :speed=700
-                  >
-                  <app-content v-for="(story, index) in newStories" :key="index" class="animated fadeInDown">
-
-                      <div class="features column width-12">
-                        <div class="grid-boxes rounded large style-3 columns-1 mb-0 border-grey-light">
-                          <div :id="story.id" class="grid-boxes-column animated webapp-scaleUpCenter">
-                            <div class="grid-boxes-header">
-                              <img :src="require('../assets/images/stories/' + story.img)" alt="" class="square-img">
+                  <div class="row boxes" v-if="this.newStories.length > 0">
+                    <app-carousel
+                      :navigationEnabled="true"
+                      :perPageCustom="[[480, 2], [768, 3], [1200, 4], [1366, 4], [1500, 4] ]"
+                      :autoplay="true"
+                      :loop="true"
+                      :autoplayTimeout="3000"
+                      :autoplayHoverPause="true"
+                      :scrollPerPage="false"
+                      :paginationSize="10"
+                      :easing="this.linear"
+                      :speed="700"
+                    >
+                      <app-content
+                        v-for="(story, index) in newStories"
+                        :key="index"
+                        class="animated fadeInDown"
+                      >
+                        <div class="features column width-12">
+                          <div
+                            class="grid-boxes rounded large style-3 columns-1 mb-0 border-grey-light"
+                          >
+                            <div
+                              :id="story.id"
+                              class="grid-boxes-column animated webapp-scaleUpCenter"
+                            >
+                              <div class="grid-boxes-header">
+                                <img
+                                  :src="require('../assets/images/stories/' + story.img)"
+                                  alt
+                                  class="square-img"
+                                >
+                              </div>
+                              <hr class="no-margins">
+                              <div class="grid-boxes-text bkg-white">
+                                <p class="lead">
+                                  <span class="title-name">{{ story.name }}</span>
+                                  <a
+                                    :href="story.url"
+                                    class="story-link landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white mt-10"
+                                  >
+                                    <i class="fas fa-newspaper"></i> View Story
+                                  </a>
+                                </p>
+                              </div>
                             </div>
-                            <hr class="no-margins">
-                            <div class="grid-boxes-text bkg-white">
-                              <p class="lead">
-                                <span class="title-name">{{ story.name }} </span>
-                                <a :href="story.url"
-                                   class="story-link landing-button button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white mt-10">
-                                  <i class="fas fa-newspaper"></i> View Story
-                                </a>
-
-
-                              </p>
-                            </div>
-
                           </div>
                         </div>
-                      </div>
-                    </app-content>
-                  </app-carousel>
-                </div>
+                      </app-content>
+                    </app-carousel>
+                  </div>
                 </button>
               </div>
             </div>
@@ -469,14 +449,13 @@
     <div id="footer-block">
       <app-footernav/>
     </div>
-
   </div>
 </template>
 <script>
 import Slider from "./Slider.vue";
 import { Carousel, Slide } from "vue-carousel";
 import FooterNav from "./FooterNav.vue";
-import jwt_decode from 'jwt-decode';
+import jwt_decode from "jwt-decode";
 export default {
   data() {
     return {
