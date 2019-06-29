@@ -15,7 +15,9 @@ import './assets/css/style-flex.css'
 import './assets/css/animate.css'
 import './assets/css/landing.css'
 import VueSweetalert2 from 'vue-sweetalert2'
+// @ts-ignore
 import VueToastr from '@deveodk/vue-toastr'
+// @ts-ignore
 import VuePlaceAutocomplete from 'vue-place-autocomplete/dist/VuePlaceAutocomplete.umd.js'
 import '@deveodk/vue-toastr/dist/@deveodk/vue-toastr.css'
 import Vuetify from 'vuetify'

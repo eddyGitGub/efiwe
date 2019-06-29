@@ -306,7 +306,6 @@ export default {
       for (const key in this.book) {
         let value = this.book[key];
         let pty = key;
-        console.log("Test", key + " " + value);
         formData.append(key, this.book[key]);
       }
       this.isLoading = true;
@@ -323,7 +322,6 @@ export default {
           this.$router.push("/librarian");
         })
         .catch(err => {
-          console.log(err);
           this.isLoading = false;
         });
     },
@@ -354,9 +352,7 @@ export default {
     onSelectType(items1, lastSelectType) {
       this.items1 = items1;
       this.types.push(lastSelectType.text);
-      console.log(this.types);
       this.book.type = this.types.join();
-      console.log(this.book.type);
     },
     // deselect option
     reset() {

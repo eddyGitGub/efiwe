@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // const CORS = 'https://cors-anywhere.herokuapp.com/';
 // eslint-disable-next-line semi
-const PRIVATE_URL = 'http://efiwe.org:3100/api/'; // 'http://localhost:3100/api/'; // 'efiwe.org/backend/api/';
+const PRIVATE_URL = 'http://localhost/api/'; // 'http://efiwe.org:3100/api/'; // 'http://18.191.156.12/api/'; //  // 'efiwe.org/backend/api/';
 // const PRIVATE_URL = 'http://d0a172b0.ngrok.io/api/';
 
 const efiweApi = axios.create({

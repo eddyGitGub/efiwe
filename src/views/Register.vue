@@ -8,7 +8,12 @@
               <form name="form" @submit.prevent="submit">
                 <div class="form-wrapper">
                   <div class="mt-60-pc"></div>
-                  <div v-if="regVerification === 1" class="form-loader form-loader-signup verify">
+                  <div
+                    align="center"
+                    v-if="regVerification === 1"
+                    class="form-loader form-loader-signup verify"
+                    style="width:50%;"
+                  >
                     <!--<div class="center-txt webapp-ripple-text"><i class="fas fa-user-plus"></i> Creating Account</div>-->
                     <!--<div class="webapp-ripple">-->
                     <!--<div></div>-->
@@ -1037,6 +1042,59 @@
                             <!-- <div v-if="!$v.otherData.lastname.minLength" >Lastname must have at least {{$v.otherData.lastname.$params.minLength.min}} letters.</div> -->
                           </div>
                         </div>
+                        <div class="form-group grid__full">
+                          <div class="form-check my-3">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              value
+                              id="defaultCheck1"
+                              v-model.trim="otherData.isABody"
+                            >
+                            <label
+                              class="form-check-label text-white"
+                              for="defaultCheck1"
+                            >Are you registering as an organization or a body?</label>
+                          </div>
+                        </div>
+
+                        <div class="form-group grid__full" v-if="otherData.isABody">
+                          <label
+                            class="form-component text-white"
+                            for="motivation"
+                          >Body/Organization Name</label>
+                          <div
+                            class="input-group grid__full full-border"
+                            :class="{ 'form-error': submitted && otherData.isAbody && otherData.organizationName.length < 3 }"
+                          >
+                            <input
+                              v-model="otherData.organizationName"
+                              name="organizationName"
+                              id="organizationName"
+                              class="form-control"
+                              type="text"
+                              placeholder="Organization Name"
+                            >
+                            <!-- <textarea
+                              v-model="otherData.organizationName"
+                              name="organizationName"
+                              id="organizationName"
+                              class="form-control"
+                              rows="5"
+                              cols="30"
+                              placeholder="Tell us why to want to join us"
+                            ></textarea>-->
+                          </div>
+                          <div
+                            class="invalid-fback"
+                            v-if="submitted && otherData.isABody && otherData.organizationName.length < 3"
+                          >
+                            <div
+                              v-if="submitted && otherData.isABody && otherData.organizationName.length < 3"
+                            >Body/Organization Name is required</div>
+                            <!-- <div v-if="!$v.otherData.lastname.minLength" >Lastname must have at least {{$v.otherData.lastname.$params.minLength.min}} letters.</div> -->
+                          </div>
+                        </div>
                         <div class="grid__full">
                           <button
                             @click.prevent="createUser('other')"
@@ -1136,7 +1194,6 @@ import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
 import Vue from "vue";
 import Vuelidate from "vuelidate";
 import countries from "../data/countries.json";
-
 Vue.use(Vuelidate);
 export default {
   data() {
@@ -1270,7 +1327,8 @@ export default {
         studyField: "",
         volunteerRole: "",
         africanDegree: "",
-        africanSchool: ""
+        africanSchool: "",
+        isABody: false
       },
       otherData: {
         firstname: "",
@@ -1283,7 +1341,9 @@ export default {
         location: "",
         volunteerRole: "",
         workHours: "",
-        motivation: ""
+        motivation: "",
+        isABody: false,
+        organizationName: ""
       },
       regVerification: 0,
       regStep: 1
@@ -1302,6 +1362,12 @@ export default {
       volunteerRole: { required },
       workHours: { required },
       motivation: { required }
+      // organizationName: {
+      //   requiredIf: requiredIf(function() {
+      //     return this.otherData.isABody == true;
+      //   }),
+      //   inLength: minLength(10)
+      // } //this.rules //{ required, minLength: minLength(10) }
     },
     librarianData: {
       firstname: { required, minLength: minLength(3) },
@@ -1329,7 +1395,6 @@ export default {
       }
     },
     createUser(category) {
-      this.submitted = true;
       const reg = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+.([A-Za-z]{2,4})$/;
       const numbersOnly = /[0-9]|\./;
       if (category === "librarian") {
@@ -1583,6 +1648,12 @@ export default {
           if (this.$v.$invalid) {
             return;
           }
+          if (
+            this.otherData.isABody &&
+            this.otherData.organizationName.length < 3
+          ) {
+            return;
+          }
         }
       } else {
         console.log("Invalid category type for new user");
@@ -1611,6 +1682,7 @@ export default {
             // code block
             return;
         }
+        this.submitted = true;
         axios
           .post(url, data)
           .then(signupResponse => {
@@ -1651,8 +1723,15 @@ export default {
                 this.regVerification = 3;
               }, 3500);
             }
+            this.submitted = false;
           })
-          .catch(error => console.log(error));
+          .catch(error => {
+            console.log(error.text);
+            this.submitted = false;
+            setTimeout(() => {
+              this.regVerification = 0;
+            }, 5000);
+          });
       }
     },
     populateForms() {

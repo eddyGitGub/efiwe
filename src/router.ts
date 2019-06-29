@@ -100,6 +100,13 @@ export const router = new Router({
       //meta: { requiresAuth: true, adminAuth: true, libAuth: false, volunteerAuth: false }
     },
     {
+      path: "/organization",
+      name: "organization",
+      component: () => import("./views/OrganizationMembers.vue")
+      // meta: { authorize: [1] }
+      //meta: { requiresAuth: true, adminAuth: true, libAuth: false, volunteerAuth: false }
+    },
+    {
       path: "/404",
       name: "404",
       component: () => import("./views/NotFound.vue")
@@ -113,7 +120,7 @@ router.beforeEach((to, from, next) => {
   const { authorize } = to.meta;
   let token = localStorage.getItem('loginToken');
   let userData = localStorage.getItem('loginUser') || '';
-  let currentUser = {}
+  let currentUser = {};
   if (userData !== '') {
     currentUser = JSON.parse(userData) || {};
   }
@@ -126,6 +133,7 @@ router.beforeEach((to, from, next) => {
     }
 
     // check if route is restricted by role
+    // @ts-ignore
     if (authorize.length && !authorize.includes(currentUser.role_id)) {
       // role not authorised so redirect to home page
       return next({ path: '/' });
@@ -215,4 +223,6 @@ router.beforeEach((to, from, next) => {
 //   else next();
 //   isFirstTransition = false;
 // });
-
+export class CurrentUser {
+  public role_id!: number;
+}

@@ -69,7 +69,7 @@
                               <ul class="sub-menu">
                                 <li>
                                   <a @click.prevent="logout">Logout</a>
-                                </li>s
+                                </li>
                                 <!-- <li>
                                   <a @click.prevent="register">Join Us</a>
                                 </li>-->
