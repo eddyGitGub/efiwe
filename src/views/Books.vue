@@ -1,15 +1,98 @@
  <template>
-  <div>
-    <div id="page-header" class="section-block landing-bg">
+  <div class="content clearfix bkg-light">
+    <div id="dashboard-header" class="section-block landing-bg">
       <div class="row flex">
-        <!-- <div class="column width-8 push-2">
-          <div class="feature-content">
-            <div class="feature-content-inner center">
-              <h1 class="color-white mb-0 font-mont">Hi {{currentUser}}</h1>
-             
+        <div class="column width-12">
+          <div class="row flex boxes three-columns-on-tablet">
+            <div class="column width-2" style="margin-bottom:0">
+              <div class="box xlarge rounded box-shadow hiw border-charcoal">
+                <div class="grid__full no-padding">
+                  <h4 class="font-mont full-width">
+                    <div class="countCenter">{{dashboard.totalRequest}}</div>
+                  </h4>
+                </div>
+                <div class="grid__full no-padding mt-10">
+                  <p class="font-mont text-white center-txt medium-text">Total Books Request</p>
+                </div>
+              </div>
             </div>
+            <div class="column width-2">
+              <div class="box xlarge rounded box-shadow hiw border-charcoal">
+                <div class="grid__full no-padding">
+                  <h4 class="font-mont full-width">
+                    <div class="countCenter">{{dashboard.totalDonated}}</div>
+                  </h4>
+                </div>
+                <div class="grid__full no-padding mt-10">
+                  <p class="font-mont text-white center-txt medium-text">Total Books Donated</p>
+                </div>
+              </div>
+            </div>
+            <div class="column width-2">
+              <div class="box xlarge rounded box-shadow hiw border-charcoal">
+                <div class="grid__full no-padding">
+                  <h4 class="font-mont full-width">
+                    <div class="countCenter">{{dashboard.totalReceived}}</div>
+                  </h4>
+                </div>
+                <div class="grid__full no-padding mt-10">
+                  <p class="font-mont text-white center-txt medium-text">Total Books Received</p>
+                </div>
+              </div>
+            </div>
+            <div class="column width-2">
+              <div class="box xlarge rounded box-shadow hiw border-charcoal">
+                <div class="grid__full no-padding">
+                  <h4 class="font-mont full-width">
+                    <div class="countCenter">0</div>
+                  </h4>
+                </div>
+                <div class="grid__full no-padding mt-10">
+                  <p class="font-mont text-white center-txt medium-text">Total Fund Donated</p>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="column width-2">
+                <div class="box xlarge rounded box-shadow hiw border-charcoal">
+                  <div class="grid__full no-padding">
+                    <h4 class="font-mont full-width">
+                      <div class="countCenter">640</div>
+                    </h4>
+                  </div>
+                  <div class="grid__full no-padding mt-10">
+                    <p class="font-mont text-white center-txt medium-text">Total Books Shipped to Africa</p>
+                  </div>
+                </div>
+            </div>-->
+
+            <div class="column width-2">
+              <div class="box xlarge rounded box-shadow hiw border-charcoal">
+                <div class="grid__full no-padding">
+                  <h4 class="font-mont full-width">
+                    <div class="countCenter">0</div>
+                  </h4>
+                </div>
+                <div class="grid__full no-padding mt-10">
+                  <p class="font-mont text-white center-txt medium-text">Total Funds Received</p>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="column width-2">
+                <div class="box xlarge rounded box-shadow hiw border-charcoal">
+                  <div class="grid__full no-padding">
+                    <h4 class="font-mont full-width">
+                      <div class="countCenter">100</div>
+                    </h4>
+                  </div>
+                  <div class="grid__full no-padding mt-10">
+                    <p
+                      class="font-mont text-white center-txt medium-text"
+                    >Books Awaiting Shipment (USA)</p>
+                  </div>
+                </div>
+            </div>-->
           </div>
-        </div>-->
+        </div>
       </div>
     </div>
     <div id="dashboard" class="top-border animated fadeInUp">
@@ -28,14 +111,14 @@
                           <div class="form-check form-check-inline">
                             <label class="control-vertical control--checkbox">
                               Book
-                              <input type="radio" value="Book" v-model="search.type">
+                              <input type="radio" value="Book" v-model="search.type" />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
                           <div class="form-check form-check-inline">
                             <label class="control-vertical control--checkbox">
                               Journal
-                              <input type="radio" value="Journal" v-model="search.type">
+                              <input type="radio" value="Journal" v-model="search.type" />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
@@ -46,7 +129,7 @@
                                 type="radio"
                                 value="Encyclopedia"
                                 v-model="search.type"
-                              >
+                              />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
@@ -60,35 +143,35 @@
                           <div class="form-check form-check-inline">
                             <label class="control-vertical control--checkbox">
                               Arts
-                              <input type="radio" value="Arts" v-model="search.field">
+                              <input type="radio" value="Arts" v-model="search.field" />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
                           <div class="form-check form-check-inline">
                             <label class="control-vertical control--checkbox">
                               Science
-                              <input type="radio" value="Science" v-model="search.field">
+                              <input type="radio" value="Science" v-model="search.field" />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
                           <div class="form-check form-check-inline">
                             <label class="control-vertical control--checkbox">
                               History
-                              <input type="radio" value="History" v-model="search.field">
+                              <input type="radio" value="History" v-model="search.field" />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
                           <div class="form-check form-check-inline">
                             <label class="control-vertical control--checkbox">
                               Law
-                              <input type="radio" value="Law" v-model="search.field">
+                              <input type="radio" value="Law" v-model="search.field" />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
                           <div class="form-check form-check-inline">
                             <label class="control-vertical control--checkbox">
                               Medicine
-                              <input type="radio" value="Medicine" v-model="search.field">
+                              <input type="radio" value="Medicine" v-model="search.field" />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
@@ -102,7 +185,7 @@
                           <div class="form-check form-check-inline">
                             <label class="control-vertical control--checkbox">
                               All
-                              <input type="radio" value="All" v-model="search.status">
+                              <input type="radio" value="All" v-model="search.status" />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
@@ -114,7 +197,7 @@
                                 type="radio"
                                 value="Book Request"
                                 v-model="search.status"
-                              >
+                              />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
@@ -125,14 +208,14 @@
                                 type="radio"
                                 value="Awaiting Shipment"
                                 v-model="search.status"
-                              >
+                              />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
                           <div class="form-check form-check-inline">
                             <label class="control-vertical control--checkbox">
                               Shipped
-                              <input type="radio" value="Shipped" v-model="search.status">
+                              <input type="radio" value="Shipped" v-model="search.status" />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
@@ -143,14 +226,14 @@
                                 type="radio"
                                 value="Delivered"
                                 v-model="search.status"
-                              >
+                              />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
                           <div class="form-check form-check-inline">
                             <label class="control-vertical control--checkbox">
                               Owned
-                              <input type="radio" value="Owned" v-model="search.status">
+                              <input type="radio" value="Owned" v-model="search.status" />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
@@ -169,7 +252,7 @@
                                 class="form-control"
                                 type="text"
                                 placeholder="Year"
-                              >
+                              />
                             </div>
                           </div>
                           <!-- <div class="form-group grid__half__sticky mt-10">
@@ -224,12 +307,12 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Requested By</th>
-                  <th scope="col">Country</th>
-                <th scope="col">School</th>
+                <th scope="col">Country</th>
+                <th scope="col">Lib Name</th>
                 <th scope="col">Type</th>
-                <th scope="col">Fields</th>
-                <th scope="col">Copies</th>
-                <th scope="col">Duration of Request</th>
+                <th scope="col">Subjects</th>
+                <th scope="col">Nos.Req</th>
+                <th scope="col">Duration</th>
                 <th scope="col">Request Date</th>
                 <th scope="col">Status</th>
                 <th>>>>></th>
@@ -239,12 +322,20 @@
               <template v-if="books.length">
                 <tr v-for="(book, index) in books" :key="book._id">
                   <th scope="row">{{ index + 1}}</th>
-                  <td>{{ book.requestedBy.user.firstname}} {{ book.requestedBy.user.lastname}}</td>
-                   <td>{{ book.requestedBy.country}}</td>
-                  <td>{{ book.requestedBy.school}}</td>
+                  <td>
+                    <span
+                      v-if="book.requestedBy"
+                    >{{ book.requestedBy.user.firstname}} {{ book.requestedBy.user.lastname}}</span>
+                  </td>
+                  <td>
+                    <span v-if="book.requestedBy">{{ book.requestedBy.country}}</span>
+                  </td>
+                  <td>
+                    <span v-if="book.requestedBy">{{ book.requestedBy.school}}</span>
+                  </td>
                   <td>{{book.type}}</td>
-                  <td>{{book.field}}</td>
-                  <td>{{book.copies}}</td>
+                  <td>{{book.subjects}}</td>
+                  <td>{{book.numberofbooks}}</td>
                   <td>{{book.durationOfRequest}}</td>
                   <td>{{book.created_at | formatDate}}</td>
                   <td>{{book.status}}</td>
@@ -299,6 +390,12 @@ export default {
         status: "",
         min: "",
         max: ""
+      },
+      dashboard: {
+        totalRequest: 0,
+        totalReceived: 0,
+        ownedRequest: 0,
+        totalDonated: 0
       }
     };
   },
@@ -317,7 +414,9 @@ export default {
       axios
         .get(`/books/${this.currentPage}`, request)
         .then(res => {
-          (this.books = res.data.data), (this.total = res.data.count);
+          console.log(res);
+          this.books = res.data.data;
+          this.total = res.data.count;
         })
         .catch(err => console.log(err))
         .then(fin => console.log(fin));
@@ -337,10 +436,24 @@ export default {
     },
     searchRequest() {
       console.log(this.search);
+    },
+    getDashboardData() {
+      axios
+        .get("/dashboard/bookCounter/")
+        .then(response => {
+          console.log("response", response.data.counter);
+          let data = response.data.counter;
+          this.dashboard.totalRequest = data.totalRequest;
+          this.dashboard.totalReceived = data.totalReceived;
+          this.dashboard.ownedRequest = data.ownedRequest;
+          console.log("dashboard", this.dashboard);
+        })
+        .catch(err => console.log(err));
     }
   },
   created() {
     this.getBooks();
+    this.getDashboardData();
   }
 };
 </script>

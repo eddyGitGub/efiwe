@@ -21,7 +21,10 @@ import VueToastr from '@deveodk/vue-toastr'
 import VuePlaceAutocomplete from 'vue-place-autocomplete/dist/VuePlaceAutocomplete.umd.js'
 import '@deveodk/vue-toastr/dist/@deveodk/vue-toastr.css'
 import Vuetify from 'vuetify'
-
+import Antd from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.css'
+// import CxltToastr from 'cxlt-vue2-toastr'
+// Vue.use(CxltToastr)
 Vue.use(Vuetify)
 Vue.config.productionTip = true
 // Vue.use(VueGmaps, {
@@ -31,9 +34,11 @@ Vue.use(VuePlaceAutocomplete);
 Vue.use(VueSweetalert2)
 export const EventBus = new Vue()
 Vue.use(BootstrapVue)
+Vue.use(Antd)
+
 Vue.use(VueToastr, {
   defaultPosition: 'toast-top-right',
-  defaultType: 'info',
+  //defaultType: 'info',
   defaultTimeout: 5000
 })
 
@@ -52,9 +57,14 @@ axios.interceptors.response.use((response) => {
   console.log('Response:', response)
   return response;
 }, (error) => {
-  console.log('Error:', error)
+  if (error.response.status === 401) { // if the error is 401 and hasent already been retried
+    console.log('working')
+    window.location.href = '/login'
+  }
+  console.log('Errorhh:', error.status)
   return Promise.reject(error)
 })
+
 // Vue.prototype.interceptors.response.use(response => { // intercept the global error
 //   return response
 // }, function (error:any) {

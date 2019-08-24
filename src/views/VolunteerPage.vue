@@ -16,11 +16,11 @@
                 <div class="box xlarge rounded box-shadow hiw border-charcoal">
                   <div class="grid__full no-padding">
                     <h4 class="font-mont full-width">
-                      <div class="countCenter">{{dashboard.totalRequest}}</div>
+                      <div class="countCenter">{{dashboard.ownedRequest}}</div>
                     </h4>
                   </div>
                   <div class="grid__full no-padding mt-10">
-                    <p class="font-mont text-white center-txt medium-text">Total Books Request</p>
+                    <p class="font-mont text-white center-txt medium-text">Total Owned Requests</p>
                   </div>
                 </div>
               </div>
@@ -103,14 +103,6 @@
               </div>-->
             </div>
           </div>
-          <!-- <div class="column width-12 center-block center-elem mt-10">
-            <button
-              @click.prevent="miniScroll('dashboard')"
-              class="center-elem button medium rounded bkg-theme bkg-hover-theme color-white color-hover-white"
-            >
-              <i class="fas fa-search"></i> Search
-            </button>
-          </div>-->
         </div>
         <div v-if="userType === 1">
           <div class="column width-12">
@@ -211,11 +203,11 @@
     <div id="dashboard" class="top-border animated fadeInUp">
       <div class="tab-wrapper">
         <div class="tabs cf">
-          <input type="radio" name="tabs" id="tab1" class="tab-radio" checked>
+          <input type="radio" name="tabs" id="tab1" class="tab-radio" checked />
           <label class="tab-label" for="tab1">Books Collection</label>
-          <input type="radio" name="tabs" id="tab2" class="tab-radio">
+          <input type="radio" name="tabs" id="tab2" class="tab-radio" />
           <label class="tab-label" for="tab2">Fund Donation</label>
-          <input type="radio" name="tabs" id="tab3" class="tab-radio">
+          <input type="radio" name="tabs" id="tab3" class="tab-radio" />
           <label class="tab-label" for="tab3">Awaiting Shipment</label>
           <div id="tab-content1" class="tab-content">
             <div class="column width-12 no-padding mt-30">
@@ -253,7 +245,7 @@
                             aria-describedby="button-addon2"
                             :disabled="submitting"
                             style="width:30%;"
-                          >
+                          />
                           <div class="input-group-append">
                             <button
                               :disabled="submitting"
@@ -304,12 +296,12 @@
                 placeholder="quantity"
                 required="required"
                 v-model="book.quantity"
-              >
+              />
               <div class="bg-danger text-white" v-if="error">Quantity must be greater than 0</div>
             </div>
             <div class="form-group">
               <label>Remark</label>
-              <input type="text" class="form-control" placeholder="remark" v-model="book.remark">
+              <input type="text" class="form-control" placeholder="remark" v-model="book.remark" />
             </div>
             <div class="form-group">
               <label>Upload File in any</label>
@@ -319,7 +311,7 @@
                 id="file"
                 ref="file"
                 v-on:change="handleFileUpload()"
-              >
+              />
             </div>
           </form>
         </div>
@@ -420,7 +412,6 @@ export default {
         this.error = true;
         return;
       }
-      console.log(this.book);
       let formData = new FormData();
       formData.append("bookImage", this.file, this.file.name);
       for (const key in this.book) {
@@ -437,7 +428,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);
           this.getBooks();
           this.isLoading = false;
           this.closeModal();
@@ -455,8 +445,6 @@ export default {
     },
     addToCart: function(event, id) {
       this.quantity = event;
-      console.log(this.quantity);
-      console.log(id);
     },
     Add(id) {
       const model = {
@@ -515,7 +503,6 @@ export default {
         .get("/volunteers")
         .then(response => {
           this.books = response.data.books;
-          console.log(this.books);
         })
         .catch(err => console.log(err));
     },

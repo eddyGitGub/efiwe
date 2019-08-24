@@ -76,7 +76,7 @@
                       </div>
                     </div>
                   </div>
-                  <br>
+                  <br />
                   <div class="form-group grid__full mt-10">
                     <label class="form-component text-white" for="loginEmail">Email ID</label>
                     <div class="input-group full-border">
@@ -90,7 +90,7 @@
                         class="form-control"
                         type="text"
                         placeholder="Email Address"
-                      >
+                      />
                       <div v-if="submitted && $v.loginData.email.$error" class="invalid-fback">
                         <span v-if="!$v.loginData.email.required">Email is required</span>
                         <span v-if="!$v.loginData.email.email">Email is invalid</span>
@@ -110,7 +110,7 @@
                         class="form-control"
                         type="password"
                         placeholder="Password"
-                      >
+                      />
                       <div v-if="submitted && $v.loginData.password.$error" class="invalid-fback">
                         <span v-if="!$v.loginData.password.required">Password is required</span>
                       </div>
@@ -120,7 +120,7 @@
                     <div class="input-group">
                       <div class="login-session">
                         <label class="md-check form-component text-white" for="loginSession">
-                          <input id="loginSession" type="checkbox" class="has-value">
+                          <input id="loginSession" type="checkbox" class="has-value" />
                           <i class="primary"></i> Keep me signed in
                         </label>
                       </div>
@@ -131,8 +131,9 @@
                     <span
                       @click.prevent="forgotPass"
                       class="form-nav relax-right color-white color-hover-white"
+                      style="margin-right:-20%"
                     >
-                      <i class="fas fa-question-circle"></i> Forgot Pass
+                      <i class="fas fa-question-circle"></i> Forgot password
                     </span>
                   </div>
 
@@ -151,7 +152,7 @@
                       @click.prevent="register"
                       class="form-nav relax-left color-white color-hover-white"
                     >
-                      <i class="fas fa-user-plus"></i> New User
+                      <i class="fas fa-user-plus"></i> Join us
                     </span>
                   </div>
                 </div>

@@ -1,6 +1,7 @@
 <template>
   <div class="content clearfix">
     <div id="search-ui" class="header-bg ">
+      
       <main class="grid__padding__sm static-form">
 
         <div class="webapp-content__inner">
@@ -355,9 +356,7 @@
 
               </div>
             </div>
-
-
-          </div>
+             </div>
           <div class="column width-10 no-padding-right">
             <div class="event">
               <div class="row">
@@ -534,7 +533,7 @@ export default {
         input: "",
         type: ""
       },
-      searchState: 0,
+      searchState: 2,
       searchResults: false,
       searchRequest: {}
     };
@@ -577,14 +576,14 @@ export default {
     },
     processRequest(formActor) {
       if (formActor) {
-        this.searchState = 2;
+        this.searchState = 3;
          this.searchResults = true;
         axios
           .post("/auth-user.php", this.searchRequest)
           .then(searchResponse => {
             if (searchResponse.data.status === "Results Received") {
               setTimeout(() => {
-                this.searchState = 2;
+                this.searchState = 3;
                 this.searchResults = true;
                 setTimeout(() => {
                   this.searchState = 0;

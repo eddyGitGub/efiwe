@@ -26,10 +26,20 @@ export const router = new Router({
       name: "register",
       component: () => import("./views/Register.vue")
     },
+    // {
+    //   path: "/forgot-password",
+    //   name: "forgot-password",
+    //   component: () => import("./views/Recovery.vue")
+    // },
     {
-      path: "/forgot-password",
-      name: "forgot-password",
-      component: () => import("./views/Recovery.vue")
+      path: '/forgot-password',
+      name: 'forgot-password',
+      component: () => import("./views/ForgotPassword.vue")
+    },
+    {
+      path: '/reset-password/:userId/:token',
+      name: 'reset-password-form',
+      component: () => import("./views/ResetPasswordForm.vue")
     },
     {
       path: "/search",
@@ -91,6 +101,11 @@ export const router = new Router({
       path: "/BookDetails",
       name: "BookDetails",
       component: () => import("./views/BookDetails.vue")
+    },
+    {
+      path: "/Register-Shipper",
+      name: "RegisterShipper",
+      component: () => import("./views/AddShipper.vue")
     },
     {
       path: "/users",

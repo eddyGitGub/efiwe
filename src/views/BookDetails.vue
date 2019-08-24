@@ -21,7 +21,7 @@
                   class="full-width search-img card-img-top"
                   :src="getPic(details.bookImage)"
                   alt
-                >
+                />
               </div>
             </div>
           </a>
@@ -37,8 +37,8 @@
         <div class="card-body">
           <div class="row mx-auto" style="width: 70%;">
             <div class="col-4">
-              <h5>Field</h5>
-              <p>{{details.field}}</p>
+              <h5>Subjects</h5>
+              <p>{{details.subjects}}</p>
             </div>
             <div class="col-4">
               <h5>Type</h5>
@@ -48,14 +48,14 @@
               <h5>Status</h5>
               <p>{{details.status}}</p>
             </div>
-            <hr>
+            <hr />
             <div class="col-4">
-              <h5>Min Publish Year</h5>
-              <p>{{details.year}}</p>
+              <h5>Restrictions</h5>
+              <p>{{details.restrictions}}</p>
             </div>
             <div class="col-4">
-              <h5>Copies</h5>
-              <p>{{details.copies}}</p>
+              <h5>Number of books</h5>
+              <p>{{details.numberofbooks}}</p>
             </div>
             <div class="col-3" v-if="details.requestedBy">
               <h5>Requested By</h5>
@@ -146,7 +146,7 @@ export default {
         });
     },
     getPic(index) {
-      return "http://efiwe.org:3100/" + index;
+      return "http://localhost:3000/" + index;
     }
   },
   created() {

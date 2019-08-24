@@ -16,26 +16,64 @@
         <div class="card" style="margin-left: 20% !important;width: 50rem; margin-top:3%">
           <div class="card-body">
             <form v-on:submit.prevent="addItem">
-              <!-- 
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="form-group grid__full">
-                  <label class="form-component">Title:</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    v-model="book.title"
-                    :class="{ 'border border-danger': $v.book.title.$error }"
-                  >
-                  <div class="bg-danger text-white" v-if="$v.book.title.$error">
-                    <div v-if="!$v.book.title.required">Title is required</div>
-                    <div
-                      v-if="!$v.book.title.minLength"
-                    >Title must have at least {{$v.book.title.$params.minLength.min}} letters.</div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group grid__full">
+                    <label class="form-component">Name of library :</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="book.nameoflibrary "
+                      :class="{ 'border border-danger': $v.book.nameoflibrary.$error }"
+                    />
+                    <div class="bg-danger text-white" v-if="$v.book.nameoflibrary.$error">
+                      <div v-if="!$v.book.nameoflibrary.required">Name of library is required</div>
+                      <div
+                        v-if="!$v.book.nameoflibrary.minLength"
+                      >Name of library must have at least {{$v.book.nameoflibrary.$params.minLength.min}} letters.</div>
+                    </div>
                   </div>
                 </div>
               </div>
-              </div>-->
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label class="form-component">Number of books:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="book.numberofbooks "
+                      :class="{ 'border border-danger': $v.book.numberofbooks.$error }"
+                    />
+                    <div class="bg-danger text-white" v-if="$v.book.numberofbooks.$error">
+                      <div v-if="!$v.book.numberofbooks.required">Number of books is required</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label class="form-component">Description:</label>
+                    <textarea
+                      v-model="book.description"
+                      name="description"
+                      id="description"
+                      class="form-control"
+                      rows="5"
+                      cols="30"
+                      placeholder="Two paragraphs stating why these books are needed and relevant"
+                      :class="{ 'border border-danger': $v.book.description.$error }"
+                    ></textarea>
+                    <div class="bg-danger text-white" v-if="$v.book.description.$error">
+                      <div v-if="!$v.book.description.required">Description is required</div>
+                      <div
+                        v-if="!$v.book.description.minLength"
+                      >Description must have at least {{$v.book.description.$params.minLength.min}} letters.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group grid__full">
@@ -57,18 +95,18 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <label class="form-label">Field:</label>
+                    <label class="form-label">Subjects:</label>
                     <multi-select
                       :options="options"
                       :selected-options="items"
                       placeholder="select field(s)"
-                      v-model="book.field"
+                      v-model="book.subjects"
                       @select="onSelect"
-                      :class="{ 'border border-danger': $v.book.field.$error }"
+                      :class="{ 'border border-danger': $v.book.subjects.$error }"
                     ></multi-select>
 
-                    <div class="bg-danger text-white" v-if="$v.book.field.$error">
-                      <div v-if="!$v.book.field.required">Field is required</div>
+                    <div class="bg-danger text-white" v-if="$v.book.subjects.$error">
+                      <div v-if="!$v.book.subjects.required">subject(s) is required</div>
                     </div>
                   </div>
                 </div>
@@ -107,34 +145,20 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <label class="form-component">Min Publish Year:</label>
-                    <input type="text" class="form-control" v-model="book.year">
+                    <label class="form-component">Restrictions:</label>
+                    <!-- <input type="text" class="form-control" v-model="book.year" /> -->
+                    <date-picker v-model="book.restrictions" :config="dateoptions"></date-picker>
                     <div
                       class="bg-danger text-white"
-                      v-if="$v.book.year.$error"
-                      :class="{ 'border border-danger': $v.book.year.$error }"
+                      v-if="$v.book.restrictions.$error"
+                      :class="{ 'border border-danger': $v.book.restrictions.$error }"
                     >
-                      <div v-if="!$v.book.year.required">Min Year is required</div>
+                      <div v-if="!$v.book.restrictions.required">Restrictions is required</div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <label class="form-component">Copies:</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      v-model="book.copies"
-                      :class="{ 'border border-danger': $v.book.copies.$error }"
-                    >
-                    <div class="bg-danger text-white" v-if="$v.book.copies.$error">
-                      <div v-if="!$v.book.copies.required">Copies is required</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -159,47 +183,25 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <label class="form-component">Description:</label>
-                    <textarea
-                      v-model="book.description"
-                      name="description"
-                      id="description"
-                      class="form-control"
-                      rows="5"
-                      cols="30"
-                      placeholder="Tell Us More"
-                      :class="{ 'border border-danger': $v.book.description.$error }"
-                    ></textarea>
-                    <div class="bg-danger text-white" v-if="$v.book.description.$error">
-                      <div v-if="!$v.book.description.required">Description is required</div>
-                      <div
-                        v-if="!$v.book.description.minLength"
-                      >Description must have at least {{$v.book.description.$params.minLength.min}} letters.</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group grid__full">
-                    <label class="form-component">School Logo/Library Image:</label>
+                    <label class="form-component">Picture of library :</label>
                     <input
                       type="file"
                       id="file"
                       ref="file"
                       v-on:change="handleFileUpload()"
                       class="form-control"
-                    >
+                    />
                     <div class="bg-danger text-white" v-if="$v.file.$error">
-                      <div v-if="!$v.file.required">Logo or Library photo is required</div>
+                      <div v-if="!$v.file.required">Logo or Picture library photo is required</div>
                     </div>
                   </div>
                 </div>
               </div>
-              <br>
+              <br />
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
@@ -221,17 +223,36 @@ import Vuelidate from "vuelidate";
 import axios from "../api/efiwe";
 import { ajaxFindCountry, getCountries } from "../api/countriesApi";
 import fields from "../data/fields.json";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 import {
   ModelSelect,
   MultiSelect,
   ModelListSelect,
   MultiListSelect
 } from "vue-search-select";
+// Import required dependencies
+import "bootstrap/dist/css/bootstrap.css";
+
+// Import this component
+import datePicker from "vue-bootstrap-datetimepicker";
+
+// Import date picker css
+import "pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css";
 Vue.use(Vuelidate);
 export default {
-  components: { ModelSelect, MultiSelect, ModelListSelect, MultiListSelect },
+  components: {
+    ModelSelect,
+    MultiSelect,
+    ModelListSelect,
+    MultiListSelect,
+    datePicker
+  },
   data() {
     return {
+      dateoptions: {
+        format: "YYYY",
+        useCurrent: false
+      },
       isLoading: false,
       file: "",
       fields: [],
@@ -260,14 +281,13 @@ export default {
       ],
       options: [],
       book: {
-        //title: "",
+        nameoflibrary: "",
         type: "",
-        field: "",
-        // author: "",
-        //edition: "",
-        copies: "",
+        subjects: "",
+        numberofbooks: "",
         durationOfRequest: "",
-        description: ""
+        description: "",
+        restrictions: ""
       },
 
       searchText: "", // If value is falsy, reset searchText & searchItem
@@ -280,13 +300,13 @@ export default {
   validations: {
     file: { required },
     book: {
-      // title: { required, minLength: minLength(3) },
+      nameoflibrary: { required, minLength: minLength(3) },
       type: { required },
-      field: { required },
+      subjects: { required },
       //author: { required },
       //edition: { required },
-      year: { required },
-      copies: { required },
+      restrictions: { required },
+      numberofbooks: { required },
       durationOfRequest: { required },
       description: { required, minLength: minLength(10) }
     }
@@ -317,12 +337,31 @@ export default {
           }
         })
         .then(response => {
+          // const res = response.data;
           console.log(response);
+          console.log(`resonse ${response.data.status}`);
           this.isLoading = false;
-          this.$router.push("/librarian");
+          let status = response.data.status;
+          if (response.data.status) {
+            this.$router.push("/librarian");
+          }
+          Swal.fire({
+            position: "top-end",
+            type: "warning",
+            title: `${response.data.message}`,
+            showConfirmButton: false,
+            timer: 1500
+          });
         })
         .catch(err => {
           this.isLoading = false;
+          Swal.fire({
+            position: "top-end",
+            type: "error",
+            title:  `${res.message}`,
+            showConfirmButton: false,
+            timer: 1500
+          });
         });
     },
     addBook() {
@@ -346,8 +385,7 @@ export default {
     onSelect(items, lastSelectItem) {
       this.items = items;
       this.reqfields.push(lastSelectItem.text);
-      console.log(this.types);
-      this.book.field = this.reqfields.join();
+      this.book.subjects = this.reqfields.join();
     },
     onSelectType(items1, lastSelectType) {
       this.items1 = items1;
@@ -390,6 +428,29 @@ export default {
 };
 </script>
 <style scoped>
+.toast-container {
+  position: fixed;
+  z-index: 999999;
+  pointer-events: none;
+  background-color: #030303 !important;
+}
+
+.toast {
+  background-color: #030303 !important;
+  top: initial;
+}
+.toast-success {
+  background-color: #51a351;
+}
+.toast-error {
+  background-color: #bd362f !important;
+}
+.toast-info {
+  background-color: #2f96b4 !important;
+}
+.toast-warning {
+  background-color: #f89406 !important;
+}
 @import "~vue-multiselect/dist/vue-multiselect.min.css";
 .bg-danger text-white {
   display: block !important;

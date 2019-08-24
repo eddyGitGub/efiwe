@@ -2,16 +2,6 @@
   <div class="content clearfix bkg-light">
     <div id="dashboard-header" class="section-block landing-bg">
       <div class="row flex">
-        <!-- <div class="column width-8 push-2">
-          <div class="feature-content">
-            <div class="feature-content-inner center">
-              <h1 class="color-white mb-0 font-mont">Hi {{currentUser}}</h1>
-              <p
-                class="lead color-white grid__padding"
-              >We can pass any important message here so when philip logs in he gets a clear update from his last session.</p>
-            </div>
-          </div>
-        </div>-->
         <div v-if="userType === 0">
           <div class="column width-12">
             <div class="row flex boxes three-columns-on-tablet">
@@ -19,13 +9,11 @@
                 <div class="box xlarge rounded box-shadow hiw border-charcoal">
                   <div class="grid__full no-padding">
                     <h4 class="font-mont full-width">
-                      <div class="countCenter">100</div>
+                      <div class="countCenter">{{dashboard.totalRequest}}</div>
                     </h4>
                   </div>
                   <div class="grid__full no-padding mt-10">
-                    <p
-                      class="font-mont text-white center-txt medium-text"
-                    >Books Awaiting Shipment (USA)</p>
+                    <p class="font-mont text-white center-txt medium-text">Books Request</p>
                   </div>
                 </div>
               </div>
@@ -33,13 +21,11 @@
                 <div class="box xlarge rounded box-shadow hiw border-charcoal">
                   <div class="grid__full no-padding">
                     <h4 class="font-mont full-width">
-                      <div class="countCenter">125</div>
+                      <div class="countCenter">{{dashboard.ownedRequest}}</div>
                     </h4>
                   </div>
                   <div class="grid__full no-padding mt-10">
-                    <p
-                      class="font-mont text-white center-txt medium-text"
-                    >Books Awaiting Shipment (EUR)</p>
+                    <p class="font-mont text-white center-txt medium-text">Total Owned Requests</p>
                   </div>
                 </div>
               </div>
@@ -51,7 +37,7 @@
                     </h4>
                   </div>
                   <div class="grid__full no-padding mt-10">
-                    <p class="font-mont text-white center-txt medium-text">Books Shipped to Africa</p>
+                    <p class="font-mont text-white center-txt medium-text">Books Shipped</p>
                   </div>
                 </div>
               </div>
@@ -59,13 +45,11 @@
                 <div class="box xlarge rounded box-shadow hiw border-charcoal">
                   <div class="grid__full no-padding">
                     <h4 class="font-mont full-width">
-                      <div class="countCenter">259</div>
+                      <div class="countCenter">{{dashboard.totalReceived}}</div>
                     </h4>
                   </div>
                   <div class="grid__full no-padding mt-10">
-                    <p
-                      class="font-mont text-white center-txt medium-text"
-                    >Books Delivered to Students (Africa)</p>
+                    <p class="font-mont text-white center-txt medium-text">Books Delivered</p>
                   </div>
                 </div>
               </div>
@@ -77,11 +61,11 @@
                     </h4>
                   </div>
                   <div class="grid__full no-padding mt-10">
-                    <p class="font-mont text-white center-txt medium-text">Funds Received By You</p>
+                    <p class="font-mont text-white center-txt medium-text">Funds Received</p>
                   </div>
                 </div>
               </div>
-              <div class="column width-2">
+              <!-- <div class="column width-2">
                 <div class="box xlarge rounded box-shadow hiw border-charcoal">
                   <div class="grid__full no-padding">
                     <h4 class="font-mont full-width">
@@ -94,7 +78,7 @@
                     >Books Awaiting Shipment (USA)</p>
                   </div>
                 </div>
-              </div>
+              </div>-->
             </div>
           </div>
           <div class="column width-12 center-block center-elem mt-10">
@@ -116,13 +100,13 @@
       </div>
       <div class="tab-wrapper">
         <div class="tabs cf">
-          <input type="radio" name="tabs" id="tab1" class="tab-radio" checked>
-          <label class="tab-label" for="tab1">Search Books</label>
+          <input type="radio" name="tabs" id="tab1" class="tab-radio" checked />
+          <label class="tab-label" for="tab1">Books Request</label>
           <!-- <input type="radio" name="tabs" id="tab2" class="tab-radio">
           <label class="tab-label" for="tab2">List of Students</label>-->
-          <input type="radio" name="tabs" id="tab3" class="tab-radio">
+          <input type="radio" name="tabs" id="tab3" class="tab-radio" />
           <label class="tab-label" for="tab3">Books Collected</label>
-          <input type="radio" name="tabs" id="tab4" class="tab-radio">
+          <input type="radio" name="tabs" id="tab4" class="tab-radio" />
           <label class="tab-label" for="tab4">Awaiting Shipment</label>
           <div id="tab-content1" class="tab-content">
             <!-- Book Request -->
@@ -131,53 +115,92 @@
               <div class="row">
                 <div class="col-sm-12">
                   <h3 class="text-center">Book Requested</h3>
-                  <hr>
+                  <hr />
                 </div>
               </div>
 
-              <img v-if="loading" src="//placehold.it/100">
+              <img v-if="loading" src="//placehold.it/100" />
 
               <section v-else>
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-sm-3 py-2" v-for="(book, index) in books" :key="book._id">
-                      <div class="card h-100">
-                        <img
-                          class="card-img-top"
-                          :src="getPic(book.bookImage)"
-                          alt="card image collar"
-                        >
-                        <div class="card-body d-flex flex-column align-items-start">
-                          <h5 class="card-title">Book Request{{index + 1}}</h5>
-
-                          <!-- <button class="btn btn-primary mt-auto">Add To Cart</button> -->
-                          <div class="row">
-                            <div class="col-sm-12">
+                <div class="container-fluid" v-if="books">
+                  <div v-for="(book, i) in books" :key="book._id" class="offset-sm-3 col-sm-8">
+                    <div class="card mb-3">
+                      <img
+                        :src="getPic(book.bookImage)"
+                        class="card-img-top"
+                        alt="..."
+                        style="height: 18rem;"
+                      />
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-sm">
+                            <p>
+                              <small>Request By:</small>
+                              {{book.nameoflibrary}}
+                            </p>
+                            <p>
                               <label>Type</label>
-                              <br>
-                              <p>{{book.type}}</p>
-                            </div>
-                            <div class="col-sm-12">
-                              <label>Fields</label>
-                              <br>
-                              <p>{{book.field}}</p>
-                            </div>
-                            <div class="col-sm-12">
-                              <label>Copies</label>
-                              <br>
-                              <p>{{book.copies}}</p>
-                            </div>
-                            <div class="col-sm-12">
-                              <label>Status</label>
-                              <br>
-                              <p>{{book.status}}</p>
-                            </div>
-                            <div class="col-sm-12">
-                              <label>Request Date</label>
-                              <br>
-                              <p>{{book.created_at | formatDate}}</p>
-                            </div>
+                              :{{book.type}}
+                            </p>
+                            <p>
+                              <label>Number of books</label>
+                              :{{book.numberofbooks}}
+                            </p>
                           </div>
+                          <div class="col-sm">
+                            <label>Subjects</label>
+                            <p v-for=" tag in (book.subjects.split(','))">
+                              <span>{{tag}}</span>
+                            </p>
+                          </div>
+                          <div class="col-sm">
+                            <p>
+                              <label>Status</label>
+                              :
+                              <span
+                                :class="[book.status === 'Delivered' ? 'badge badge-success': '' ]"
+                              >{{book.status}}</span>
+                            </p>
+                            <p>
+                              <label>Request Date</label>
+                              : {{book.created_at | formatDate}}
+                            </p>
+                          </div>
+                        </div>
+
+                        <b-collapse :id="'collapse-' + i" class="mt-2">
+                          <b-card>
+                            <textarea class="form-control" cols="35" v-model="reviews[book._id]"></textarea>
+                            <b-col lg="4" class="pb-2">
+                              <b-button size="sm" @click.prevent="evaluate(book._id)">Small Button</b-button>
+                            </b-col>
+                          </b-card>
+                        </b-collapse>
+                        <div class="card-footer">
+                          <b-button-toolbar key-nav aria-label="Toolbar with button groups">
+                            <b-button-group class="mx-1">
+                              <b-button>&laquo;</b-button>
+                              <b-button>&lsaquo;</b-button>
+                            </b-button-group>
+                            <b-button-group class="mx-1">
+                              <b-button
+                                v-b-toggle="'collapse-' + i"
+                                variant="primary"
+                                v-if="!book.evaluation && book.status === 'Delivered'"
+                              >Evaluate this Request</b-button>
+                              <b-button variant="info">Extend request</b-button>
+                              <!-- <b-button>Undo</b-button> -->
+                              <b-button
+                                variant="warning"
+                                @click="activate(book._id)"
+                                v-if="book.status !== 'Delivered'"
+                              >Delivered ?</b-button>
+                            </b-button-group>
+                            <b-button-group class="mx-1">
+                              <b-button>&rsaquo;</b-button>
+                              <b-button>&raquo;</b-button>
+                            </b-button-group>
+                          </b-button-toolbar>
                         </div>
                       </div>
                     </div>
@@ -296,11 +319,11 @@
               <div class="row">
                 <div class="col-md-12">
                   <h1 class="text-center">Products</h1>
-                  <hr>
+                  <hr />
                 </div>
               </div>
 
-              <img v-if="loading" src="//placehold.it/100">
+              <img v-if="loading" src="//placehold.it/100" />
 
               <section v-else style="margin-left: 10px;"></section>
             </div>
@@ -312,6 +335,7 @@
 </template>
 <script>
 import axios from "../api/efiwe";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 var prodData = [
   {
     albumId: 1,
@@ -380,7 +404,9 @@ var prodData = [
 export default {
   data() {
     return {
+      reviews: [],
       loading: false,
+      collapse: false,
       cart: [],
       books: [],
       active: true,
@@ -399,16 +425,19 @@ export default {
 
       userData: [],
       currentUser: "",
-      userType: 0
+      userType: 0,
+      dashboard: {
+        totalRequest: 0,
+        totalReceived: 0,
+        ownedRequest: 0,
+        totalDonated: 0
+      }
     };
   },
   props: ["session"],
   methods: {
     getPic(index) {
-      console.log(index);
-      const src = "http://efiwe.org:3100/" + index;
-      console.log(src);
-      return src;
+      return "http://localhost:3000/" + index;
     },
     addProductToCart: function(product) {
       this.cart.push(product);
@@ -453,6 +482,73 @@ export default {
           console.log(this.books);
         })
         .catch(err => console.log(err));
+    },
+    getDashboardData() {
+      axios
+        .get("/dashboard/libStat/")
+        .then(response => {
+          console.log("response", response.data.counter);
+          let data = response.data.counter;
+          this.dashboard.totalRequest = data.totalRequest;
+          this.dashboard.totalReceived = data.totalReceived;
+          this.dashboard.ownedRequest = data.ownedRequest;
+          console.log("dashboard", this.dashboard);
+        })
+        .catch(err => console.log(err));
+    },
+    evaluate(i) {
+      const model = {
+        id: i,
+        evaluation: this.reviews[i]
+      };
+      console.log(model);
+      axios
+        .post("/books/evaluate", model)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    activate(id) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Request Delivered!"
+      }).then(result => {
+        if (result.value) {
+          this.isDelivered(id);
+        }
+      });
+    },
+    async isDelivered(id) {
+      console.log(id);
+      await axios
+        .put("/books/changeStatus/" + id, { status: "Delivered" })
+        .then(function(response) {
+          if (response) {
+            if (m == 1) {
+              Swal.fire("Dilevered!", "updated successfully", "success");
+            } else {
+              Swal.fire(
+                "Error!",
+                "Error Occurred please try again later.",
+                "danger"
+              );
+            }
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+          Swal.fire("Oops...", "Something went wrong!", "error");
+        })
+        .then(function() {});
+      this.getBooks();
     }
   },
   computed: {
@@ -480,6 +576,7 @@ export default {
   mounted() {
     this.userSwitcher();
     this.getBooks();
+    this.getDashboardData();
   },
   created() {
     this.loading = true;
