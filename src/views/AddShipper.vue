@@ -10,7 +10,12 @@
           <div class="webapp-user-form-wrapper">
             <div class="webapp-user-form-inner np">
               <div class="form-wrapper">
-                <div class="alert alert-danger" role="alert" v-if="message">{{message}}</div>
+                <div
+                  class="alert"
+                  v-bind:class="{ 'alert-success': this.isSuccessful, 'alert-danger': !this.isSuccessful }"
+                  role="alert"
+                  v-if="message"
+                >{{message}}</div>
                 <div class="webapp-user-form-header speedo">
                   <form autocomplete="off" @submit.prevent="registerShipper" method="post">
                     <div class="form-group grid__full mt-10">
@@ -34,7 +39,34 @@
                         <span v-if="!$v.shipper.name.minLength">Name must be at least 4 characters</span>
                       </div>
                     </div>
-                    <div class="form-group grid__full mt-10">
+                    <div class="form-group grid__full">
+                      <label class="form-component text-white" for="location">Current Location</label>
+                      <div
+                        class="input-group top-border right-border bottom-border left-border-mobile"
+                        :class="{ 'form-error': loading && $v.shipper.location.$error }"
+                      >
+                        <div class="input-group-addon">
+                          <i class="fas fa-map-marker-alt"></i>
+                        </div>
+
+                        <div class="grid__full">
+                          <place-autocomplete-field
+                            v-model="shipper.location"
+                            placeholder="Enter Current Location"
+                            name="location"
+                            api-key="AIzaSyAhSv9zWvisiTXRPRw6K8AE0DCmrRMpQcU"
+                            class="m-t-1"
+                          ></place-autocomplete-field>
+                        </div>
+                        <div class="invalid-fback" v-if="loading && $v.shipper.location.$error">
+                          <div
+                            v-if="loading && !$v.shipper.location.required"
+                          >Current Location is required</div>
+                          <!-- <div v-if="!$v.otherData.lastname.minLength" >Lastname must have at least {{$v.otherData.lastname.$params.minLength.min}} letters.</div> -->
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="form-group grid__full mt-10">
                       <label class="form-component text-white" for="location">Location</label>
                       <div class="input-group full-border">
                         <div class="input-group-addon">
@@ -56,7 +88,7 @@
                           v-if="!$v.shipper.location.minLength"
                         >Location must be at least 4 characters</span>
                       </div>
-                    </div>
+                    </div>-->
                     <div class="form-group grid__full mt-10">
                       <label
                         class="form-component text-white"
@@ -67,8 +99,8 @@
                           <i class="fas fa-envelope"></i>
                         </div>
                         <input
-                          id="shipmentDestinations"
-                          v-model.trim="shipmentDestinations"
+                          id="whatsAppLink"
+                          v-model.trim="shipper.shipmentDestinations"
                           :class="{ 'form-error': loading && $v.shipper.shipmentDestinations.$error }"
                           class="form-control"
                           type="text"
@@ -85,7 +117,7 @@
                         >Shipment Destinations is required</span>
                         <span
                           v-if="!$v.shipper.shipmentDestinations.minLength"
-                        >Shipment Destinations must be at least 4 characters</span>
+                        >Shipment Destinations must be at least 6 characters</span>
                       </div>
                     </div>
                     <div class="form-group grid__full mt-10">
@@ -135,17 +167,19 @@ import { required, email, minLength } from "vuelidate/lib/validators";
 import Vue from "vue";
 import Vuelidate from "vuelidate";
 Vue.use(Vuelidate);
+const initFromData = {
+  name: "",
+  location: "",
+  shipmentDestinations: "",
+  whatsAppLink: ""
+};
 export default {
   data() {
     return {
       message: "",
-      shipper: {
-        name: "",
-        location: "",
-        shipmentDestinations: "",
-        whatsAppLink: ""
-      },
-      loading: false
+      shipper: Object.assign({}, initFromData),
+      loading: false,
+      isSuccessful: false
     };
   },
   validations: {
@@ -166,9 +200,16 @@ export default {
       this.loading = true;
       axios.post("/shippers", this.shipper).then(
         result => {
-          this.message = result.data;
+          const { message, status } = result.data;
+          if (status) {
+            this.message = message;
+            this.isSuccessful = status;
+            this.shipper = Object.assign({}, initFromData);
+          } else {
+            this.message = message;
+            this.isSuccessful = status;
+          }
           this.loading = false;
-          console.log(result.data);
         },
         error => {
           this.loading = false;
@@ -179,3 +220,19 @@ export default {
   }
 };
 </script>
+<style scoped>
+.autocomplete-field {
+  background-color: #fff;
+  position: absolute !important;
+  z-index: 1000;
+  border-radius: 2px;
+  border-top: 1px solid #d9d9d9;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: inherit !important;
+  overflow: hidden;
+}
+</style>

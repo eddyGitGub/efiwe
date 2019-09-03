@@ -11,12 +11,6 @@
                     <i class="fas fa-envelope"></i> Sending Your Message
                   </div>
 
-                  <!--<div class="webapp-ripple">-->
-                  <!--<div></div><div></div>-->
-                  <!--</div>-->
-
-                  <!-- <div class="center-txt webapp-ripple-text"><i class="fas fa-business-time"></i> Coming Soon</div> -->
-
                   <div class="webapp-ripple">
                     <div></div>
                     <div></div>
@@ -43,7 +37,6 @@
                   <div class="center-txt webapp-ripple-text">
                     <i class="fa fa-bell"></i> Message Sending Failed
                   </div>
--->
                   <div class="webapp-ripple">
                     <!--<div></div>-->
                     <i class="webapp-ripple-notification fa fa-times-circle"></i>
@@ -66,9 +59,9 @@
                               <div class="round round-lg align-self-center">
                                 <i class="fas fa-envelope"></i>
                               </div>
-                              <div class="m-l-10 align-self-center">
-                                <h3 class="wallet m-b-0 font-light text-white">Contact Us</h3>
-                                <h5 class="wallet text-muted m-b-0 text-white">
+                              <div class="m-l-10">
+                                <h3 class="wallet m-b-0 font-light">Contact Us</h3>
+                                <h5 class="wallet text-muted m-b-0">
                                   <i class="palette4 fas fa-map-signs"></i> 135 Springer Avenue, Edwardsville, IL, 62025
                                 </h5>
                               </div>
@@ -78,7 +71,7 @@
                       </div>
                     </div>
                   </div>
-                  <br>
+                  <br />
                   <div class="form-group grid__full mt-10">
                     <label class="form-component text-white" for="formName">Name</label>
                     <div class="input-group full-border">
@@ -88,11 +81,19 @@
                       <input
                         id="formName"
                         v-model.trim="contactData.name"
-                        :class="validateForm.name_error"
+                        :class="{ 'form-error': submitted && $v.contactData.name.$error }"
                         class="form-control"
                         type="text"
                         placeholder="Enter FullName"
-                      >
+                      />
+                    </div>
+                    <div class="invalid-fback" v-if="submitted && $v.contactData.name.$error">
+                      <div v-if="submitted && !$v.contactData.name.required">
+                        <small>Name is required</small>
+                      </div>
+                      <div v-if="!$v.contactData.name.minLength">
+                        <small>Name must have at least {{$v.contactData.name.$params.minLength.min}} letters.</small>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group grid__full mt-10">
@@ -104,11 +105,19 @@
                       <input
                         id="formEmail"
                         v-model.trim="contactData.email"
-                        :class="validateForm.email_error"
+                        :class="{ 'form-error': submitted && $v.contactData.email.$error }"
                         class="form-control"
                         type="text"
                         placeholder="Email Address"
-                      >
+                      />
+                    </div>
+                    <div v-if="submitted && $v.contactData.email.$error" class="invalid-fback">
+                      <span v-if="!$v.contactData.email.required">
+                        <small>Email is required</small>
+                      </span>
+                      <span v-if="!$v.contactData.email.email">
+                        <small>Email is invalid</small>
+                      </span>
                     </div>
                   </div>
                   <div class="form-group grid__full mt-10">
@@ -120,11 +129,18 @@
                       <input
                         id="formPhone"
                         v-model.trim="contactData.phone"
-                        :class="validateForm.phone_error"
+                        :class="{ 'form-error': submitted && $v.contactData.phone.$error }"
                         class="form-control"
                         type="text"
                         placeholder="Phone Number"
-                      >
+                      />
+                    </div>
+                    <div class="invalid-fback" v-if="submitted && $v.contactData.phone.$error">
+                      <div v-if="submitted && !$v.contactData.phone.required"></div>
+                      <small>Phone is required</small>
+                      <div v-if="!$v.contactData.phone.minLength">
+                        <small>Phone must have at least {{$v.contactData.phone.$params.minLength.min}} Digits.</small>
+                      </div>
                     </div>
                   </div>
                   <div class="form-group grid__full mt-10">
@@ -136,11 +152,19 @@
                       <textarea
                         id="formMessage"
                         v-model.trim="contactData.message"
-                        :class="validateForm.message_error"
+                        :class="{ 'form-error': submitted && $v.contactData.message.$error }"
                         class="form-control"
                         type="text"
                         placeholder="Enter Message"
                       ></textarea>
+                    </div>
+                    <div class="invalid-fback" v-if="submitted && $v.contactData.message.$error">
+                      <div v-if="submitted && !$v.contactData.message.required">
+                        <small>Message is required</small>
+                      </div>
+                      <div v-if="!$v.contactData.message.minLength">
+                        <small>Message must have at least {{$v.contactData.message.$params.minLength.min}} letters.</small>
+                      </div>
                     </div>
                   </div>
 
@@ -164,21 +188,16 @@
 </template>
 <script>
 import axios from "../api/efiwe";
+import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
+import Vue from "vue";
+import Vuelidate from "vuelidate";
+Vue.use(Vuelidate);
 export default {
   data() {
     return {
-      validEmail: false,
-      proceed: true,
-      validateForm: {
-        name_error: { "form-error": false },
-        email_error: { "form-error": false },
-        phone_error: { "form-error": false },
-        message_error: { "form-error": false }
-      },
+      submitted: false,
       headerTag: { "animated fadeInUp": false, hidden: true },
       contactData: {
-        token:
-          "C30A52470BFCD552CBA9BD20DF5736A30A17914C83A8E1DF2E05F4A430213CE0D35DD0D2EB7946A16F34ABD60E84F5C901E310DB044A3844572041B01E3D64F3",
         name: "",
         email: "",
         phone: "",
@@ -187,82 +206,48 @@ export default {
       contactVerification: 0
     };
   },
+  validations: {
+    contactData: {
+      name: { required, minLength: minLength(3) },
+      phone: { required, minLength: minLength(6) },
+      email: { required, email },
+      message: { required, minLength: minLength(6) }
+    }
+  },
   methods: {
     sendMessage() {
-      const reg = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+.([A-Za-z]{2,4})$/;
-      this.validEmail = reg.test(this.contactData.email);
-
-      if (this.contactData.name.length <= 3) {
-        this.validateForm.name_error = { "form-error": true };
-        this.proceed = false;
-      } else {
-        this.validateForm.name_error = { "form-error": false };
+      this.submitted = true;
+      this.$v.contactData.$touch();
+      if (this.$v.contactData.$invalid) {
+        return;
       }
-
-      if (this.validEmail === false) {
-        this.validateForm.email_error = { "form-error": true };
-        this.proceed = false;
-      } else {
-        this.validateForm.email_error = { "form-error": false };
-      }
-
-      if (this.contactData.phone.length <= 5) {
-        this.validateForm.phone_error = { "form-error": true };
-        this.proceed = false;
-      } else {
-        this.validateForm.phone_error = { "form-error": false };
-      }
-
-      if (this.contactData.message.length <= 10) {
-        this.validateForm.message_error = { "form-error": true };
-        this.proceed = false;
-      } else {
-        this.validateForm.message_error = { "form-error": false };
-      }
-
-      if (
-        this.contactData.name.length > 3 &&
-        this.validEmail === true &&
-        this.contactData.phone.length > 5 &&
-        this.contactData.message.length > 10
-      ) {
-        this.proceed = true;
-        let formActor = this.proceed;
-
-        this.processRequest(formActor);
-      }
-    },
-    processRequest(formActor) {
-      const validUser = formActor;
-      if (validUser) {
-        this.contactVerification = 1;
-        axios
-          .post("/send-message.php", this.contactData)
-          .then(serverRespsonse => {
-            if (serverRespsonse.data.status == "Message Successful") {
+      this.contactVerification = 1;
+      axios
+        .post("/send-message.php", this.contactData)
+        .then(serverRespsonse => {
+          if (serverRespsonse.data.status == "Message Successful") {
+            setTimeout(() => {
+              this.contactVerification = 2;
               setTimeout(() => {
-                this.contactVerification = 2;
-                setTimeout(() => {
-                  window.location.href = "./";
-                }, 4000);
-              }, 500);
-            } else if (serverRespsonse.data.status == "Message Failed") {
-              setTimeout(() => {
-                this.contactVerification = 3;
-                setTimeout(() => {
-                  this.contactVerification = 0;
-                }, 4000);
-              }, 500);
-            } else {
+                window.location.href = "./";
+              }, 4000);
+            }, 500);
+          } else if (serverRespsonse.data.status == "Message Failed") {
+            setTimeout(() => {
+              this.contactVerification = 3;
               setTimeout(() => {
                 this.contactVerification = 0;
-              }, 500);
-            }
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      }
+              }, 4000);
+            }, 500);
+          } else {
+            setTimeout(() => {
+              this.contactVerification = 0;
+            }, 500);
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   },
   mounted() {
@@ -275,3 +260,15 @@ export default {
   }
 };
 </script>
+<style scoped>
+.form-group {
+  margin-bottom: 0.1rem !important;
+}
+.invalid-fback {
+  display: block !important;
+  width: 100%;
+  margin-top: 0;
+  color: #fff !important;
+  background: #f46b45;
+}
+</style>

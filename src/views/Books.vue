@@ -138,40 +138,44 @@
                     </div>
                     <div class="card-no-border grid__five">
                       <div class="event-content-small nb">
-                        <h6 class="event-title">Field</h6>
+                        <h6 class="event-title">Subjects</h6>t
                         <div class="col-md-12 custom-checkbox mt-5">
                           <div class="form-check form-check-inline">
                             <label class="control-vertical control--checkbox">
                               Arts
-                              <input type="radio" value="Arts" v-model="search.field" />
+                              <input type="radio" value="Arts" v-model="search.subjects" />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
                           <div class="form-check form-check-inline">
                             <label class="control-vertical control--checkbox">
                               Science
-                              <input type="radio" value="Science" v-model="search.field" />
+                              <input type="radio" value="Science" v-model="search.subjects" />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
                           <div class="form-check form-check-inline">
                             <label class="control-vertical control--checkbox">
                               History
-                              <input type="radio" value="History" v-model="search.field" />
+                              <input type="radio" value="History" v-model="search.subjects" />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
                           <div class="form-check form-check-inline">
                             <label class="control-vertical control--checkbox">
                               Law
-                              <input type="radio" value="Law" v-model="search.field" />
+                              <input type="radio" value="Law" v-model="search.subjects" />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
                           <div class="form-check form-check-inline">
                             <label class="control-vertical control--checkbox">
                               Medicine
-                              <input type="radio" value="Medicine" v-model="search.field" />
+                              <input
+                                type="radio"
+                                value="Medicine"
+                                v-model="search.subjects"
+                              />
                               <div class="control__indicator"></div>
                             </label>
                           </div>
@@ -255,6 +259,7 @@
                               />
                             </div>
                           </div>
+
                           <!-- <div class="form-group grid__half__sticky mt-10">
                                 <label class="form-component">Max</label>
                                 <div class="input-group full-border">
@@ -288,17 +293,25 @@
               </div>
             </div>
           </div>
-          <!-- <ul class="nav nav-pills card-header-pills">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Active</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-          </ul>-->
+          <div class="row">
+            <div class="column width-12">
+              <div class="col-sm-3 grid__five">
+                <label class="control-vertical">Input with datalist</label>
+                <b-form-input list="input-list" id="input-with-list"></b-form-input>
+                <b-form-datalist id="input-list" :options="options"></b-form-datalist>
+              </div>
+              <div class="col-sm-3 grid__five">
+                <label for="input-with-list">Input with datalist</label>
+                <b-form-input list="input-list" id="input-with-list"></b-form-input>
+                <b-form-datalist id="input-list" :options="options"></b-form-datalist>
+              </div>
+              <div class="col-sm-3 grid__five">
+                <label for="input-with-list">Input with datalist</label>
+                <b-form-input list="input-list" id="input-with-list"></b-form-input>
+                <b-form-datalist id="input-list" :options="options"></b-form-datalist>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="card-body">
           <h5 class="card-title">List of Book Request</h5>
@@ -386,11 +399,25 @@ export default {
       books: [],
       search: {
         type: "",
-        field: "",
+        subjects: "",
         status: "",
         min: "",
         max: ""
       },
+      form: {
+        email: "",
+        name: "",
+        food: null,
+        checked: []
+      },
+      foods: [
+        { text: "Select One", value: null },
+        "Carrots",
+        "Beans",
+        "Tomatoes",
+        "Corn"
+      ],
+      options: ["Apple", "Banana", "Grape", "Kiwi", "Orange"],
       dashboard: {
         totalRequest: 0,
         totalReceived: 0,
@@ -403,7 +430,7 @@ export default {
     getBooks() {
       const params = new URLSearchParams();
       params.append("type", this.search.type);
-      params.append("field", this.search.field);
+      params.append("subjects", this.search.subjects);
       params.append("status", this.search.status);
       params.append("min", this.search.min);
       params.append("max", this.search.max);
@@ -411,10 +438,10 @@ export default {
       var request = {
         params: params
       };
+      console.log(request);
       axios
         .get(`/books/${this.currentPage}`, request)
         .then(res => {
-          console.log(res);
           this.books = res.data.data;
           this.total = res.data.count;
         })

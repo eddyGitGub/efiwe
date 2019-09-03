@@ -162,18 +162,18 @@
                           </div>
                         </div>
                         <div class="form-group grid__half">
-                          <label class="form-component text-white" for="regEmail">Email ID</label>
+                          <label class="form-component text-white" for="email">Email ID</label>
                           <div class="input-group full-border">
                             <div class="input-group-addon">
                               <i class="fas fa-envelope"></i>
                             </div>
                             <input
-                              id="regEmail"
+                              id="email"
                               v-model.trim="librarianData.email"
                               :class="{ 'form-error': submitted && $v.librarianData.email.$error }"
                               class="form-control"
-                              type="text"
-                              placeholder="Email Address"
+                              type="email"
+                              placeholder="Email"
                             />
                             <div
                               v-if="submitted && $v.librarianData.email.$error"
@@ -392,7 +392,7 @@
                               <span
                                 v-if="!$v.librarianData.schoolAdminEmail.required"
                               >Email of school admin is required</span>
-                              <span v-if="!$v.librarianData.schoolAdmin.email">Email is invalid</span>
+                              <span v-if="!$v.librarianData.schoolAdminEmail.email">Email is invalid</span>
                             </div>
                           </div>
                         </div>
@@ -933,6 +933,9 @@
                             <div
                               class="input-group top-border right-border bottom-border left-border-mobile"
                             >
+                              <div class="input-group-addon">
+                                <i class="fas fa-check-double"></i>
+                              </div>
                               <input
                                 id="overify-password"
                                 v-model.trim="otherData.verify_password"
@@ -1494,7 +1497,7 @@ export default {
       const numbersOnly = /[0-9]|\./;
       if (category === "librarian") {
         this.validEmail = reg.test(this.librarianData.email);
-        this.validAdmin = reg.test(this.librarianData.schoolAdminEmail);
+        //this.validAdmin = reg.test(this.librarianData.schoolAdminEmail);
 
         if (this.librarianData.firstname.length <= 3) {
           this.validateUser.fname_error = { "form-error": true };
@@ -1554,6 +1557,7 @@ export default {
           this.validateUser.verify_password_error = { "form-error": false };
         }
         console.log("invalid", this.$v.librarianData.$invalid);
+        console.log("value", this.$v.librarianData);
         if (
           this.librarianData.firstname.length > 3 &&
           this.librarianData.lastname.length > 3 &&
@@ -1567,10 +1571,9 @@ export default {
           this.processRequest(formActor, category);
         } else {
           // stop here if form is invalid
-          console.log("pass", this.$v.librarianData.$invalid);
+          this.submitted = true;
           this.$v.librarianData.$touch();
           if (this.$v.librarianData.$invalid) {
-            console.log("failed");
             return;
           }
           // console.log("coudnt validate all fields");
@@ -1738,7 +1741,6 @@ export default {
         } else {
           // stop here if form is invalid
           this.$v.otherData.$touch();
-          console.log(this.otherData);
           if (this.$v.otherData.$invalid) {
             return;
           }
@@ -1871,5 +1873,19 @@ export default {
 }
 .m-t-1 {
   margin-top: -0.5rem !important;
+}
+.autocomplete-field {
+  background-color: #fff;
+  position: absolute !important;
+  z-index: 1000;
+  border-radius: 2px;
+  border-top: 1px solid #d9d9d9;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: inherit !important;
+  overflow: hidden;
 }
 </style>
