@@ -223,8 +223,9 @@ export default {
       }
       this.contactVerification = 1;
       axios
-        .post("/send-message.php", this.contactData)
+        .post("reset_password/contactUs", this.contactData)
         .then(serverRespsonse => {
+          console.log(serverRespsonse);
           if (serverRespsonse.data.status == "Message Successful") {
             setTimeout(() => {
               this.contactVerification = 2;
