@@ -470,9 +470,15 @@ export default {
         .then(response => {
           console.log("response", response.data.counter);
           let data = response.data.counter;
-          this.dashboard.totalRequest = data.totalRequest;
-          this.dashboard.totalReceived = data.totalReceived;
-          this.dashboard.ownedRequest = data.ownedRequest;
+          this.dashboard.totalRequest = data.totalRequest
+            ? data.totalRequest
+            : 0;
+          this.dashboard.totalReceived = data.totalReceived
+            ? data.totalReceived
+            : 0;
+          this.dashboard.ownedRequest = data.ownedRequest
+            ? data.ownedRequest
+            : 0;
           console.log("dashboard", this.dashboard);
         })
         .catch(err => console.log(err));

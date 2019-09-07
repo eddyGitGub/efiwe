@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.b00c96014eb2bb621d66649f8bfeac0d.js"
+  "/precache-manifest.b93584d5b562ceb1cf9894a29ded1044.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "efiwe-ngo"});
