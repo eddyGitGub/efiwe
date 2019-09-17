@@ -111,7 +111,7 @@ export const router = new Router({
       path: "/users",
       name: "Users",
       component: () => import("./views/Users.vue"),
-      meta: { authorize: [1] }
+      // meta: { authorize: [1] }
       //meta: { requiresAuth: true, adminAuth: true, libAuth: false, volunteerAuth: false }
     },
     {

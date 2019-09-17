@@ -1880,6 +1880,7 @@ export default {
   z-index: 1000;
   border-radius: 2px;
   border-top: 1px solid #d9d9d9;
+  color: green !important;
   font-family: Arial, sans-serif;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   -moz-box-sizing: border-box;
@@ -1887,5 +1888,8 @@ export default {
   box-sizing: border-box;
   width: inherit !important;
   overflow: hidden;
+}
+.autocomplete-list-item > a {
+  color: green !important;
 }
 </style>
